@@ -8,10 +8,31 @@
         
         <style>
 
+            a {
+              text-decoration: none;
+              color: black;
+              font-size: 1.6rem;
+            }
+
+            .img-perfil {
+              display: inline-block;
+              width: 35px;
+              height: 35px;
+              background-image: url("img/user.png");
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
+              vertical-align: text-bottom;
+            }
+
+            .nav-text {
+              font-size: 1.6rem;
+            }
+
             .carrito-de-compra-nav {
                 display: inline-block;
-                width: 25px;
-                height: 25px;
+                width: 35px;
+                height: 35px;
                 background-image: url("img/cart.png");
                 background-position: center;
                 background-size: cover;
@@ -29,8 +50,8 @@
                 border-radius: 50%;
                 background: rgb(255, 254, 254);
                 position: relative;
-                top: -10px;
-                right: 150px;
+                top: -15px;
+                right: 230px;
             }
 
             .carrito-de-compra {
@@ -73,23 +94,23 @@
         <header>
             <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary" style="background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);">
                 <div class="container-lg">
-                    <a class="navbar-brand" href="#">INSIDE</a>
+                    <a class="navbar-brand" style="font-size: 2rem;" href="#">INSIDE|<span style="font-size: 1.8rem;">store</span></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav d-flex align-items-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Pagina principal</a>
+                            <li class="nav-item nav-text">
+                                <a class="nav-link nav-text ms-2" aria-current="page" href="#">Pagina principal</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/vistas/login.html">Login</a>
+                                <a class="nav-link nav-text ms-2" href="/vistas/login.html">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Servicio al cliente</a>
+                                <a class="nav-link nav-text ms-2" href="#">Servicio al cliente</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Productos
                                 </a>
                                 <ul class="dropdown-menu">
@@ -100,17 +121,20 @@
                                 </ul>
                             </li>
                             <li class="nav-item d-flex align-items-center">
-                                <a class="nav-link" href="#"><span class="carrito-de-compra-nav"></span>Carrito de compra</a>
+                                <a class="nav-link nav-text ms-3" href="#"><span class="carrito-de-compra-nav"></span>Carrito de compra</a>
                                 <span class="carrito-compra-circulo">0</span>
+                            </li>
+                            <li class="nav-item ms-3">
+                              <a href="#"><p class="m-0"><span class="img-perfil"></span> Perfil</p></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        <main>
+        <main style="margin-top: 130px;">
             <div class="container-lg">
-                <section class="carousel-ropa mt">
+                <section class="carousel-ropa mt-5">
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
@@ -269,7 +293,7 @@
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <h1 class="display-1 text-center mb-5">INSIDE</h1>    
+                    <h1 class="display-1 text-center mb-5">INSIDE|<span style="font-size: 4rem;">store</span></h1>    
                 </div>
             </div>            
         </footer>
