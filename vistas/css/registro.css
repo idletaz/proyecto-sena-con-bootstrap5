@@ -1,0 +1,61 @@
+* ESTILOS GENERALES */
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.6rem;
+}
+
+/* BODY */
+body {
+    background-color: rgb(227, 245, 247);
+}
+
+
+/* HEADER */
+nav {
+    background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+}
+
+/* TAMAÑO DEL TEXTO DEL LOGO */
+.navbar-brand {
+    font-size: 2rem;
+}
+
+/* TAMAÑO DEL TEXTO DEL LOGO 'Store' */
+.navbar-brand__span {
+    font-size: 1.6rem;
+}
+
+/* TAMAÑO DEL TEXTO DE LAS OPCIONES DEL NAVBAR */
+.nav-text {
+    font-size: 1.5rem;
+}
+
+/* MAIN */
+.container {
+    margin-top: 120px;
+}
+
+/* CONTENEDOR FORMULARIO */
+            
+.contenedor-formulario {
+    background: linear-gradient(164deg, rgba(255,255,255,1) 5%, rgba(34,87,94,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+    border-radius: 1rem;
+    border: 2px solid white;
+    height: 700px;
+}
+
+.formulario {
+    height: 695px;
+}
+
+.formulario__img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: url("/vistas/img/ropas/banners/cuadrados-alargados/BANNER-HOME-BELLE-IN-BLACK-SM.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 1rem 0 0 1rem;
+}

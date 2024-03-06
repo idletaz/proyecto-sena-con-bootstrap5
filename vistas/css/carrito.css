@@ -1,0 +1,203 @@
+/* ESTILOS GENERALES */
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.6rem;
+}
+
+/* BODY */
+body {
+    background-color: rgb(227, 245, 247);
+}
+
+
+/* HEADER */
+nav {
+    background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+}
+
+/* TAMAÑO DEL TEXTO DEL LOGO */
+.navbar-brand {
+    font-size: 2rem;
+}
+
+/* TAMAÑO DEL TEXTO DEL LOGO 'Store' */
+.navbar-brand__span {
+    font-size: 1.6rem;
+}
+
+/* TAMAÑO DEL TEXTO DE LAS OPCIONES DEL NAVBAR */
+.nav-text {
+    font-size: 1.5rem;
+}
+
+/* ICONO DEL NAVBAR 'PERFIL' */
+.img-perfil {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-image: url("/vistas/img/iconos/user.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    vertical-align: text-bottom;
+}
+
+/* ICONO CARRITO DE COMPRA */
+.carrito-de-compra-nav {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-image: url("/vistas/img/iconos/cart.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+
+/* CIRCULO DEL CARRITO DEL CARRITO DE COMPRA */
+.carrito-compra-circulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgb(255, 254, 254);
+    position: relative;
+    top: -12px;
+    right: 28px;
+}
+
+/* MAIN */
+main {
+    margin-top: 90px;
+}
+
+/*SECCION CARRITO DE COMPRA */
+
+/* CAJA CONTENEDORA DESCRIPCION DE PRODUCTOS A COMPRAR */
+/* CAJA CONTENEDORA IMAGEN Y DESCRIPCION DEL PRODUCTO */
+.contenedor-imagen-y-descripcion-del-producto{
+    width: 280px;
+}
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+/* IMAGEN PRODUCTOS CARRITO */
+.aside-img__imagen-del-producto {
+    width: 280px;
+    height: 330px;
+}
+.itemside .info {
+    padding-left: 20px;
+    padding-right: 7px;
+}
+
+/* PRECIO DEL PRODUCTO */
+.price-wrap {
+    margin-top: 10px;
+}
+.price {
+    font-weight: 600;
+    color: #212529
+}
+
+/* BOTON ELIMINAR PRODUCTO */
+.btn-light {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #f8f9fa;
+    font-size: 16px;
+    border-radius: 12px;    
+}
+.btn-light:hover {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #F44336;
+    font-size: 24px;
+}
+
+/* TARJETAS DERECHAS CUPON, SEGUIR COMPRANDO Y FINALIZAR COMPRA */
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0px;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.40rem;
+}
+
+/* CONTENEDOR BOTON E INPUT DE APLICAR DESCUENTO */
+.coupon {
+    border-radius: 1px
+}
+
+/* BOTON APLICAR */
+.btn-apply {
+    font-size: 17px;
+    border-radius: 12px;
+}
+
+/* ESTILOS BOTON SEGUIR COMPRANDO Y FINALIZAR COMPRA */
+.btn-main {
+    border-radius: 12px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 19px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%
+}
+.btn.btn-out {
+    outline: 1px solid #fff;
+    outline-offset: -5px
+}
+
+/* FOOTER */
+.footer__p {
+    font-size: 1.6rem;
+}
+
+footer {
+    background: linear-gradient(164deg, rgba(255,255,255,1) 5%, rgba(34,87,94,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%) !important;
+}
+
+.footer__img-redes {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 8px;
+}
+
+.facebook {
+    background-image: url("/vistas/img/iconos/facebook\ \(1\).png");
+}
+
+.instagram {
+    background-image: url("/vistas/img/iconos/instagram\ \(1\).png");
+}
+
+.tiktok {
+    background-image: url("/vistas/img/iconos/tik-tok.png");
+}
