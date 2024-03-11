@@ -53,7 +53,7 @@ nav {
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-image: url("/vistas/img/ropas/banners/cuadrados-alargados/BANNER-HOME-BELLE-IN-BLACK-SM.webp");
+    background-image: url("../img/ropas/banners/cuadrados-alargados/BANNER-HOME-BELLE-IN-BLACK-SM.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
