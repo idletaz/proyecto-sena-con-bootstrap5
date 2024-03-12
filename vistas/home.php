@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit(); 
 }
-//obtemos el id del usuario logeado
+//obtenemos el id del usuario logeado
 $user_id = $_SESSION['user_id'];
 $stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
 $stmt->bind_param("i", $user_id);
@@ -16,6 +16,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
+  
     $row = $result->fetch_assoc();
     $nombre_usuario = $row['nombre'];
 } else {
@@ -54,18 +55,18 @@ $conexion->close();
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="vistas/catalogo-camisas.html">Camisas</a>
+                                    <a class="dropdown-item" href="catalogo-camisas.html">Camisas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="vistas/catalogo-bolsos.html">Bolsos</a>
+                                    <a class="dropdown-item" href="catalogo-bolsos.html">Bolsos</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="vistas/catalogo-zapatos.html">Zapatos</a>
+                                    <a class="dropdown-item" href="catalogo-zapatos.html">Zapatos</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link nav-text ms-2" href="vistas/contacto.html">Servicio al cliente</a>
+                          <a class="nav-link nav-text ms-2" href="contacto.php">Servicio al cliente</a>
                         </li>
                         <li class="nav-item">
                           <a href="vistas/perfil.html"><p class="ms-5 mb-0"><span class="img-perfil"></span><?php echo $nombre_usuario?></p></a>
@@ -108,6 +109,16 @@ $conexion->close();
               </p>
             </div>            
           </article>
+          <!-- Apertura php para productos -->
+          <?php
+          include "../modelo/conexion.php";
+          $query="SELECT nombre_producto,precio_producto,color,talla,descripcion,ruta_img from tprodu";
+          $result=$conexion->query($query);
+          while ($row = $result->fetch_assoc()) {
+            
+            ?>
+
+          
           <article class="main-secciones-articulos primero container-expand-lg">
             <h2 class="display-5 mb-4 mt-4 text-center">Nueva coleccion</h2>
             <div id="carouselNuevaColeccion" class="carousel slide" data-bs-ride="carousel">
@@ -116,214 +127,17 @@ $conexion->close();
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <div class="card">
-                        <img src="vistas/img/ropas/bolsos/222787-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="../admin/<?php echo $row['ruta_img'] ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title"><?php echo $row['nombre_producto'] ?></h5>
                           <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: <span><?php echo $row['precio_producto'] ?></span></li>
+                            <li>Colores: <span><?php echo $row['color'] ?></span></li>
+                            <li>Tallas: <span><?php echo $row['talla'] ?></span></li>
                           </ul>
                           <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/222787-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/222787-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/257935-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/258568-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>                    
-                <div class="carousel-item">
-                  <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
-                    <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330260-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>               
-                </div>
-                <div class="carousel-item">
-                  <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
-                    <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
                       </div>
                     </div>                    
                   </div>
@@ -338,6 +152,10 @@ $conexion->close();
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            <!-- Se cierra php -->
+         <?php }      
+         
+          ?>
           </article>
           <article class="main-secciones-articulos container-expand-lg">
             <h2 class="display-5 mb-4 text-center">Ofertas</h2>

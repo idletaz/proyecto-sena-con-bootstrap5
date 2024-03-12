@@ -36,7 +36,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("/vistas/img/iconos/user.png");
+    background-image: url("../img/iconos/user.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -48,7 +48,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("/vistas/img/iconos/cart.png");
+    background-image: url("../img/iconos/cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -513,13 +513,13 @@ footer {
 }
 
 .facebook {
-    background-image: url("/vistas/img/iconos/facebook\ \(1\).png");
+    background-image: url("../img/iconos/facebook\ \(1\).png");
 }
 
 .instagram {
-    background-image: url("/vistas/img/iconos/instagram\ \(1\).png");
+    background-image: url("../img/iconos/instagram\ \(1\).png");
 }
 
 .tiktok {
-    background-image: url("/vistas/img/iconos/tik-tok.png");
+    background-image: url("../img/iconos/tik-tok.png");
 }

@@ -1,3 +1,19 @@
+<?php
+include_once("../modelo/conexion.php");
+
+// Verificar si el usuario no ha iniciado sesión
+if (isset($_SESSION['user_id'])) {
+    // Redirigir al usuario al formulario de inicio de sesión
+    header('Location:home.php');
+    exit();
+     
+}
+
+
+
+?>
+
+
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -50,7 +66,7 @@
                       <div class="row">
                         <div class="col-12 d-flex flex-column">
                            <p>¿Olvidó su contraseña? <a href="#" class="ancla">Recuperar</a></p>
-                           <p>Cree una cuenta <a href="../vistas/registro.php" class="ancla">aquí</a></p>
+                           <p>Cree una cuenta <a href="registro.php" class="ancla">aquí</a></p>
                         </div>
                       </div>
                       <div class="row">
