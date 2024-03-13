@@ -69,7 +69,7 @@ $conexion->close();
                           <a class="nav-link nav-text ms-2" href="contacto.php">Servicio al cliente</a>
                         </li>
                         <li class="nav-item">
-                          <a href="vistas/perfil.html"><p class="ms-5 mb-0"><span class="img-perfil"></span><?php echo $nombre_usuario?></p></a>
+                          <a href="perfil.php"><p class="ms-5 mb-0"><span class="img-perfil"></span><?php echo $nombre_usuario?></p></a>
                         </li>
                         
                         <li class="nav-item d-flex align-items-center">

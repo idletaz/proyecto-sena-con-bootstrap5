@@ -1,18 +1,3 @@
-<?php
-include_once("../modelo/conexion.php");
-
-// Verificar si el usuario no ha iniciado sesión
-if (isset($_SESSION['user_id'])) {
-    // Redirigir al usuario al formulario de inicio de sesión
-    header('Location:home.php');
-    exit();
-     
-}
-
-
-
-?>
-
 
 <html lang="es">
     <head>
@@ -28,7 +13,7 @@ if (isset($_SESSION['user_id'])) {
         <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
             <div class="container-lg">
               <div>
-                <a class="navbar-brand" href="../index.html">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                <a class="navbar-brand" href="home.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
               </div>
             </div>              
         </nav>

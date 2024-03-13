@@ -1,3 +1,44 @@
+<?php
+include_once("../modelo/conexion.php");
+session_start();
+
+// Verificar si el usuario no ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {   
+    header('Location: login.php');
+    exit(); 
+}
+//obtenemos el id del usuario logeado
+$user_id = $_SESSION['user_id'];
+$stmt = $conexion->prepare("SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
+                           FROM tusuarios
+                           INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
+                           INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero
+                           WHERE tusuarios.id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  
+    $row = $result->fetch_assoc();
+    $nombre_usuario = $row['nombre'];
+    $apellido_usuario=$row['apellido'];
+    $email_usuario=$row['email'];
+    $telefono_usuario=$row['Telefono'];
+    $ciudad_usuario=$row['nombre_ciudad'];
+    $barrio_usuario=$row['nombre_barrio'];
+    $direccion_usuario=$row['direccion'];
+    $genero_usuario=$row['nombre_genero'];
+    $cedula_usuario=$row['cedula'];
+
+}
+$stmt->close();
+$conexion->close();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -12,7 +53,7 @@
             <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
                 <div class="container-lg">
                   <div>
-                    <a class="navbar-brand" href="../index.html">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                    <a class="navbar-brand" href="home.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
                   </div>
                   <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +62,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav d-flex align-items-center">
                             <li class="nav-item">
-                                <a class="nav-link nav-text ms-2" href="login.php">Login</a>
+                                <a class="nav-link nav-text ms-2" href="login.php">**Login**</a>
                             </li>                            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,13 +70,13 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="/vistas/catalogo-camisas.html">Camisas</a>
+                                        <a class="dropdown-item" href="catalogo-camisas.html">Camisas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/vistas/catalogo-bolsos.html">Bolsos</a>
+                                        <a class="dropdown-item" href="catalogo-bolsos.html">Bolsos</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/vistas/catalogo-zapatos.html">Zapatos</a>
+                                        <a class="dropdown-item" href="catalogo-zapatos.html">Zapatos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -46,7 +87,7 @@
                               <a href="#"><p class="ms-5 mb-0"><span class="img-perfil"></span> Perfil</p></a>
                             </li>
                             <li class="nav-item d-flex align-items-center">
-                                <a class="nav-link nav-text ms-3" href="/vistas/carrito.html"><span class="carrito-de-compra-nav"></span></a>
+                                <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
                                 <span class="carrito-compra-circulo">0</span>
                             </li>                        
                         </ul>
@@ -62,10 +103,10 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                                    <img src="img/img_users/User.png" alt="avatar"
                                         class="rounded-circle img-fluid" style="width: 150px;">
-                                    <h5 class="my-3">Usuario</h5>
-                                    <p class="text-muted mb-4">Barranquilla, Colombia</p>
+                                    <h5 class="my-3"><?php echo $nombre_usuario?></h5>
+                                    <p class="text-muted mb-4"><?php echo $ciudad_usuario?>, Colombia</p>
                                     <div class="d-flex justify-content-center mb-2">
                                         <button type="button" class="btn btn-primary">Editar</button>
                                     </div>
@@ -75,12 +116,21 @@
                         <div class="col-lg-8">
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <div class="row">
+                                <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0">Nombre</p>
+                                            <p class="mb-0">Cedula</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">Kevin Salazar Molinares</p>
+                                            <p class="text-muted mb-0"><?php echo $cedula_usuario;?></p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Nombre y apellido</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0"><?php echo $nombre_usuario; echo " ", $apellido_usuario?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -89,7 +139,7 @@
                                             <p class="mb-0">Email</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">example@example.com</p>
+                                            <p class="text-muted mb-0"><?php echo $email_usuario?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -98,7 +148,16 @@
                                             <p class="mb-0">Celular</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">xxx xxx xx xx</p>
+                                            <p class="text-muted mb-0"><?php echo $telefono_usuario?></p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Barrio</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0"><?php echo $barrio_usuario?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -107,7 +166,16 @@
                                             <p class="mb-0">Direccion</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">Carrera 00 # 00 00</p>
+                                            <p class="text-muted mb-0"><?php echo $direccion_usuario?></p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Genero</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0"><?php echo $genero_usuario?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -2,12 +2,6 @@
 include_once("../modelo/conexion.php");
 session_start();
 
-// Verificar si el usuario no ha iniciado sesión
-if (!isset($_SESSION['user_id'])) {
-    //Si la persona no está logueada entonces
-    //$nombre_usuario='Registrarse';
-}
-//obtemos el id del usuario logeado
 $user_id = $_SESSION['user_id'];
 $stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
 $stmt->bind_param("i", $user_id);
@@ -17,8 +11,10 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $nombre_usuario = $row['nombre'];
+    
 } else {
-    $nombre_usuario = "Registarse";
+    $nombre_usuario = "Registrarse";
+   
 }
 $stmt->close();
 $conexion->close();
@@ -66,13 +62,15 @@ $conexion->close();
                                 </ul>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link nav-text ms-2" href="contacto.html">Servicio al cliente</a>
+                              <a class="nav-link nav-text ms-2" href="contacto.php">**Servicio al cliente**</a>
                             </li>
                             <li class="nav-item">
-                            <a href="../controlador/controlador_cerrarsesion.php" class="btn btn-danger">
-                            <i class="fa fa-power-off"></i>
-                            Cerrar sesión
-                         </a> 
+                            <a href="<?php echo isset($_SESSION['user_id']) ? '../controlador/controlador_cerrarsesion.php' : 'login.php';?>">
+                            <button class="btn <?php echo isset($_SESSION['user_id']) ? 'btn-danger' : 'btn-primary'; ?>">
+                                <i class="fa <?php echo isset($_SESSION['user_id']) ? 'fa-power-off' : 'fa-sign-in'; ?>"></i>
+                                <?php echo isset($_SESSION['user_id']) ? 'Cerrar sesión' : 'Iniciar sesión'; ?>
+                            </button>
+                            </a>
                             </li> 
                             <li class="nav-item">
                                 <!-- Apertura php -->
@@ -92,24 +90,36 @@ $conexion->close();
         <main>
             <div class="container-contact100">        
                 <div class="wrap-contact100">                    
-                    <form class="contact100-form validate-form">
+                    <form class="contact100-form validate-form" method="post">
+                        <!-- Apertura php -->
+                        <?php
+                        require "../modelo/conexion.php";
+                        require "../controlador/controlador_contacto.php";
+                        
+                        ?>
                         <span class="display-6 contact100-form-title">
                             Contactenos
                         </span>            
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingEmail" placeholder="Nombre" required>
+                            <input type="text" class="form-control" id="floatingEmail" placeholder="Nombre" name="nombre" id="nombre" required>
                             <label for="floatingEmail">Nombre</label>
-                          </div>            
+                          </div>    
+                          <br>        
                           <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingEmail" placeholder="Correo electrónico" required>
+                            <input type="email" class="form-control" id="floatingEmail" placeholder="Correo electrónico" name="email" id="email" required>
                             <label for="floatingEmail">Correo electrónico</label>
+                          </div>
+                          <br>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingEmail" placeholder="Asunto" name="asunto" id="asunto" required>
+                            <label for="floatingEmail">Asunto</label>
                           </div>            
                         <div class="wrap-input100 validate-input" data-validate="Please enter your message">
-                            <textarea class="input100" name="message" placeholder="Comentario..." required></textarea>
+                            <textarea class="input100" name="mensaje" placeholder="Comentario..." required></textarea>
                             <span class="focus-input100"></span>
                         </div>            
                         <div class="container-contact100-form-btn">
-                            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                            <button name="contacto" id="contacto" type="submit" class="btn btn-primary btn-lg">Enviar</button>
                         </div>
                     </form>
                 </div>
