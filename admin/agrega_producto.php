@@ -2,8 +2,9 @@
 <html lang="en">
   <?php
   session_start();
-  if (  isset ($_SESSION['id'])  == false){
+  if (  isset ($_SESSION['user_id'])  == false){
     header("location: login.php");
+    exit();
 
   }else
   {
@@ -238,8 +239,7 @@
                 <select id="categoria" name="categoria" class="form-control" required>
                     <option >Selecciona</option>
                     <option value="Accesorio">Accesorio</option>
-                    <option value="Blusa">Blusa</option>
-                    <option value="Jean">Jean</option>
+                    <option value="Ropa">Ropa</option>                    
                     <option value="Bolso">Bolso</option>                    
                 </select>
             </div>

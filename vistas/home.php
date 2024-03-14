@@ -73,7 +73,7 @@ $conexion->close();
                         </li>
                         
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link nav-text ms-3" href="vistas/carrito.html"><span class="carrito-de-compra-nav"></span></a>
+                            <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
                             <span class="carrito-compra-circulo">0</span>
                         </li>   
                         <li class="nav-item">

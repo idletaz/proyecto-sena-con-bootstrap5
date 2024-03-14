@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
             <div class="container-lg">
               <div>
-                <a class="navbar-brand" href="home.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                <a class="navbar-brand" href="../index.html">INSIDE |<span class="navbar-brand__span">Store</span></a>
               </div>
             </div>              
         </nav>
