@@ -140,7 +140,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="Usuarios_admin.php" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
@@ -237,7 +237,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="Usuarios_admin.php" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

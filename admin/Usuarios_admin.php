@@ -13,43 +13,43 @@
   
   ?>
   <!-- Llamar para la paginacion -->
-  <?php
+   
+   <?php
   include_once "db_proyecto.php";
   $conn=mysqli_connect($host,$user,$password,$db);
-  require_once 'Paginar_productos.php';
+  require_once 'Paginar_user.php';
 
   // Configuración
-  $productos_por_pagina = 5;
+  $users_por_pagina = 5;
   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
-  $offset = ($pagina - 1) * $productos_por_pagina;
-
-  $consulta_busqueda = isset($_GET['q']) ? $_GET['q'] : '';
-  $campo = isset($_GET['campo']) ? $_GET['campo'] : 'categoria';
+  $offset = ($pagina - 1) * $users_por_pagina;
 
  
-  $sql = "SELECT id_producto, ruta_img, nombre_producto, precio_producto, cantidad, estado, talla, categoria, descripcion, color FROM tprodu";
 
-  if ($consulta_busqueda != '') {
-    $consulta_busqueda = strtolower($consulta_busqueda);
-    $sql .= " WHERE LOWER(nombre_producto) LIKE '%$consulta_busqueda%'";
-  }
+ 
+  $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
+        FROM tusuarios
+        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
+        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
+
 
   // Agregar LIMIT y OFFSET para la paginación
-  $sql .= " LIMIT $offset, $productos_por_pagina";
+  $sql .= " LIMIT $offset, $users_por_pagina";
   $resultado = mysqli_query($conn, $sql);
 
 
     // Obtener el total de registros
-    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_producto FROM tprodu"));
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM tusuarios"));
     // Calcular el total de páginas
-    $total_paginas = ceil($total_registros / $productos_por_pagina);
+    $total_paginas = ceil($total_registros / $users_por_pagina);
     // Generar enlaces de paginación
-    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $productos_por_pagina, $pagina);
+    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $users_por_pagina, $pagina);
 
 
 
   
   ?>
+  
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -212,12 +212,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Productos</h1>
+            <h1 class="m-0">Usuarios</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Productos</a></li>
-              <li class="breadcrumb-item active">Panel de Productos</li>
+              <li class="breadcrumb-item"><a href="#">Usuarios</a></li>
+              <li class="breadcrumb-item active">Panel de Usuarios</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -226,18 +226,19 @@
     <div class="container">
         <div class="text-right">
             <!-- Botón a la Derecha -->
-            <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a>
+            <!-- <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a> -->
         </div>
     </div>
-    <!-- Barra de buscar -->
-    <div class="container">
+     <!-- Barra de buscar -->
+     <div class="container">
         <div class="text-center">
           <form class="form-inline mb-3">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar por categoria" aria-label="Buscar" name="q">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar cedula" aria-label="Buscar" name="q">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
       </form>
         </div>
     </div>
+    
 
 
     <!-- Main content -->
@@ -254,7 +255,10 @@
         <?php
         require "db_proyecto.php";
         $conn=mysqli_connect($host,$user,$password,$db);
-        $sql="SELECT id_producto, ruta_img, nombre_producto, precio_producto, cantidad,estado,talla,categoria,descripcion,color FROM tprodu";
+        $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
+        FROM tusuarios
+        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
+        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
         $result=mysqli_query($conn,$sql);              
 
         ?>
@@ -262,10 +266,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre del Producto</th>
-                <th>Img</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+                <th>Nombre y apellido</th>
+                <th>Email</th>
+                <th>Cedula</th>
+                <th>Telefono</th>
+                <th>Fecha de registro</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -274,41 +279,39 @@
           <?php
           while($datos=mysqli_fetch_assoc($resultado)){
            echo "<tr>";
-           echo "<td>"; echo $datos["id_producto"];"</td>";
-           echo "<td>"; echo $datos["nombre_producto"];"</td>";
-           echo "<td>";
-           echo "<img src='" . $datos["ruta_img"] . "' alt='" . $datos["ruta_img"] .  "' style='width: 80px;'>";
-           echo "</td>";
-           echo "<td>"; echo $datos["precio_producto"];"</td>";
-           echo "<td>"; echo $datos["cantidad"];"</td>";
+           echo "<td>"; echo $datos["id"];"</td>";
+           echo "<td>"; echo $datos["nombre"]; echo " "; echo $datos['apellido'];"</td>";          
+           echo "<td>"; echo $datos["email"];"</td>";
+           echo "<td>"; echo $datos["cedula"];"</td>";
+           echo "<td>"; echo $datos["Telefono"];"</td>";
+           echo "<td>"; echo $datos["Fecha_registro"];"</td>";
            echo "<td>"; 
               //Botones de acciones
-           echo "<a href='mod_producto.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-warning btn-circle'><i class='fas fa-pencil-alt'>Modificar</i></button></a> ";
-           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminarProducto(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id'] . '"><i class="fas fa-book"></i> Ver más</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminarusuario(' . $datos['id'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
 
-            echo '<div class="modal fade" id="modalProducto_' . $datos['id_producto'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id_producto'] . '" aria-hidden="true">';
+            echo '<div class="modal fade" id="modalProducto_' . $datos['id'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id'] . '" aria-hidden="true">';
             echo '  <div class="modal-dialog modal-lg" role="document">';
             echo '      <div class="modal-content">';
             echo '          <div class="modal-header bg-primary text-white">';
-            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id_producto'] . '">Detalles del Producto</h5>';
+            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id'] . '">Detalles del Producto</h5>';
             echo '              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">';
             echo '                  <span aria-hidden="true">&times;</span>';
             echo '              </button>';
             echo '          </div>';
             echo '          <div class="modal-body">';
-            echo '              <h5 class="text-primary">' . $datos['nombre_producto'] . '</h5>';
-            echo '<img src="' . $datos["ruta_img"] . '" alt="Imagen del producto" class="img-fluid" style="max-height: 200px;">';
-            echo '              <p><strong>Precio:</strong> $' . $datos['precio_producto'] . '</p>';
-            echo '              <p><strong>Cantidad:</strong> ' . $datos['cantidad'] . '</p>';
-            echo '              <p><strong>Descripción:</strong> ' . $datos['descripcion'] . '</p>';
-            echo '              <p><strong>Estado:</strong> ' . $datos['estado'] . '</p>';
-            echo '              <p><strong>Talla:</strong> ' . $datos['talla'] . '</p>';
-            echo '              <p><strong>Categoría:</strong> ' . $datos['categoria'] . '</p>';
-            echo '              <p><strong>Color:</strong> ' . $datos['color'] . '</p>';
+            echo '              <h5 class="text-primary">' . $datos['nombre'] .' '. $datos['apellido']. '</h5>';           
+            echo '              <p><strong>Email:</strong> ' . $datos['email'] . '</p>';
+            echo '              <p><strong>Cedula: </strong> ' . $datos['cedula'] . '</p>';
+            echo '              <p><strong>Telefono:</strong> ' . $datos['Telefono'] . '</p>';
+            echo '              <p><strong>Direccion:</strong> ' . $datos['direccion'] . '</p>';
+            echo '              <p><strong>Barrio:</strong> ' . $datos['nombre_barrio'] . '</p>';
+            echo '              <p><strong>Ciudad: </strong> ' . $datos['nombre_ciudad'] . '</p>';
+            echo '              <p><strong>Genero:</strong> ' . $datos['nombre_genero'] . '</p>';
+            echo '              <p><strong>Fecha de registro: </strong> ' . $datos['Fecha_registro'] . '</p>';            
             echo '          </div>';
             echo '          <div class="modal-footer">';
             echo '              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
@@ -323,31 +326,32 @@
             </tbody>         
          </table> 
 </div>
-           <!-- Mostrar enlaces de paginación -->
-           <nav aria-label="Page navigation">
-             <ul class="pagination justify-content-center bg-ligth">
-            <!-- Botón para la página anterior -->
-               <li class="page-item <?php echo ($pagina <= 1) ? 'disabled' : ''; ?>">
-                 <a class="page-link" href="?pagina=<?php echo $pagina - 1; ?>" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                 </a>
-               </li>
+ <!-- Mostrar enlaces de paginación -->
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center bg-ligth">
+              <!-- Botón para la página anterior -->
+                <li class="page-item <?php echo ($pagina <= 1) ? 'disabled' : ''; ?>">
+                  <a class="page-link" href="?pagina=<?php echo $pagina - 1; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
 
             <!-- Enlaces para cada página -->
-                <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
-                 <li class="page-item <?php echo ($pagina == $i) ? 'active' : ''; ?>">
-                      <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
-                <?php endfor; ?>
+                  <?php for ($i = 1; $i <= $total_paginas; $i++) : ?>
+                  <li class="page-item <?php echo ($pagina == $i) ? 'active' : ''; ?>">
+                        <a class="page-link" href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                  </li>
+                  <?php endfor; ?>
 
             <!-- Botón para la página siguiente -->
-                 <li class="page-item <?php echo ($pagina >= $total_paginas) ? 'disabled' : ''; ?>">
-                    <a class="page-link" href="?pagina=<?php echo $pagina + 1; ?>" aria-label="Next">
-                     <span aria-hidden="true">&raquo;</span>
-                   </a>
-                 </li>
-                </ul>
-             </nav>
+                  <li class="page-item <?php echo ($pagina >= $total_paginas) ? 'disabled' : ''; ?>">
+                      <a class="page-link" href="?pagina=<?php echo $pagina + 1; ?>" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                  </ul>
+              </nav>
+          
 
 
 
@@ -363,11 +367,11 @@
 
 <!-- Script para Eliminar -->
 <script>
-    function eliminarProducto(id_producto) {
+    function eliminarusuario(id) {
         // Mostrar un mensaje de confirmación con SweetAlert2
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Esta acción eliminará el producto de forma permanente.',
+            text: 'Esta acción eliminará el usuario de forma permanente.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -378,11 +382,11 @@
             // Si el usuario confirma la eliminación
             if (result.isConfirmed) {
                 // Envía una solicitud POST al servidor para eliminar el producto
-                $.post("procesar_eliminar.php", {id_producto: id_producto}, function(data, status) {
+                $.post("procesar_eliminaruser.php", {id: id}, function(data, status) {
                     // Maneja la respuesta del servidor
                     if (status === "success") {
                         // Muestra un mensaje de éxito con SweetAlert2
-                        Swal.fire('Eliminado', 'El producto ha sido eliminado exitosamente.', 'success').then((result) => {
+                        Swal.fire('Eliminado', 'El usuario ha sido eliminado exitosamente.', 'success').then((result) => {
                             // Recarga la página después de cerrar el mensaje
                             if (result.isConfirmed || result.isDismissed) {
                                 window.location.reload();
@@ -390,7 +394,7 @@
                         });
                     } else {
                         // Si hay un error al eliminar el producto, muestra un mensaje de error con SweetAlert2
-                        Swal.fire('Error', 'Ha ocurrido un error al eliminar el producto.', 'error');
+                        Swal.fire('Error', 'Ha ocurrido un error al eliminar el usuario.', 'error');
                     }
                 });
             }
