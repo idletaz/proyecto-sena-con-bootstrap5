@@ -15,8 +15,7 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-  
+if ($result->num_rows > 0) {  
     $row = $result->fetch_assoc();
     $nombre_usuario = $row['nombre'];
 } else {
@@ -24,9 +23,8 @@ if ($result->num_rows > 0) {
 }
 $stmt->close();
 $conexion->close();
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -111,14 +109,8 @@ $conexion->close();
           </article>
           <!-- Apertura php para productos -->
           <?php
-          include "../modelo/conexion.php";
-          $query="SELECT nombre_producto,precio_producto,color,talla,descripcion,ruta_img from tprodu";
-          $result=$conexion->query($query);
-          while ($row = $result->fetch_assoc()) {
-            
-            ?>
-
-          
+          include "../modelo/conexion.php";                      
+          ?>          
           <article class="main-secciones-articulos primero container-expand-lg">
             <h2 class="display-5 mb-4 mt-4 text-center">Nueva coleccion</h2>
             <div id="carouselNuevaColeccion" class="carousel slide" data-bs-ride="carousel">
@@ -126,21 +118,53 @@ $conexion->close();
                 <div class="carousel-item active">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
-                        <img src="../admin/<?php echo $row['ruta_img'] ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title"><?php echo $row['nombre_producto'] ?></h5>
-                          <ul>
-                            <li>Precio: <span><?php echo $row['precio_producto'] ?></span></li>
-                            <li>Colores: <span><?php echo $row['color'] ?></span></li>
-                            <li>Tallas: <span><?php echo $row['talla'] ?></span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                      <?php
+                      $query = $query = "SELECT nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5";
+                      $result=$conexion->query($query);
+                      while($row = $result->fetch_assoc()){
+                        echo '
+                        <div class="card">
+                          <img src="../admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
+                            <ul>
+                              <li>Precio: <span>' . $row["precio_producto"] . '</span></li>
+                              <li>Colores: <span>' . $row["color"] . '</span></li>
+                              <li>Tallas: <span>' . $row["talla"] . '</span></li>
+                            </ul>
+                            <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          </div>
                         </div>
-                      </div>
-                      </div>
+                        ';
+                      }                      
+                      ?>
                     </div>                    
                   </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
+                    <div class="d-flex justify-content-center contenedor-tarjetas">
+                      <?php
+                      $query = "SELECT nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5, 5";
+                      $result=$conexion->query($query);
+                      while($row = $result->fetch_assoc()){
+                        echo '
+                          <div class="card">
+                            <img src="../admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
+                              <ul>
+                                <li>Precio: <span>' . $row["precio_producto"] . '</span></li>
+                                <li>Colores: <span>' . $row["color"] . '</span></li>
+                                <li>Tallas: <span>' . $row["talla"] . '</span></li>
+                              </ul>
+                              <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                            </div>
+                          </div>
+                          ';                     }                      
+                      ?>
+                    </div>
+                  </div>               
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselNuevaColeccion" data-bs-slide="prev">
@@ -152,10 +176,6 @@ $conexion->close();
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            <!-- Se cierra php -->
-         <?php }      
-         
-          ?>
           </article>
           <article class="main-secciones-articulos container-expand-lg">
             <h2 class="display-5 mb-4 text-center">Ofertas</h2>
