@@ -15,6 +15,8 @@ if (isset($_POST["Guardar"])) {
     $color = $_POST['color'];
     $estado = $_POST['estado'];
     $ruta_img = ''; 
+    $Fecha=date('Y-m-d H:i:s');
+    
 
     if ($_FILES['imagen']['error'] === 0) {
         // Obtener la extensión del archivo
@@ -35,7 +37,7 @@ if (isset($_POST["Guardar"])) {
             move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_imagen);
 
 
-            $sql = "UPDATE tprodu SET nombre_producto = '$nombre_producto', Precio_producto = '$precio_producto',        Cantidad = '$cantidad',        Descripcion = '$descripcion',        Talla = '$talla',        Categoria = '$categoria',        Color = '$color',        Estado = '$estado',        Ruta_img = '$ruta_imagen'    WHERE         id_producto = '$id_producto'";
+            $sql = "UPDATE tprodu SET nombre_producto = '$nombre_producto', Precio_producto = '$precio_producto',        Cantidad = '$cantidad',        Descripcion = '$descripcion',        Talla = '$talla',        Categoria = '$categoria',        Color = '$color',        Estado = '$estado',        Ruta_img = '$ruta_imagen', fecha_mod= '$Fecha'   WHERE         id_producto = '$id_producto'";
                 if ($conn->query($sql) === TRUE) {
                     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
                     echo 'Producto Modificado correctamente.';

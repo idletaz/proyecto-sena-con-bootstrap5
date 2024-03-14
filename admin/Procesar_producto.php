@@ -13,6 +13,7 @@ if (isset($_POST["aggprod"])) {
     $color = $_POST['color'];
     $estado = $_POST['estado'];
     $ruta_img = ''; 
+    $Fecha=date('Y-m-d H:i:s');
 
     if ($_FILES['imagen']['error'] === 0) {
         // Obtener la extensión del archivo
@@ -32,8 +33,8 @@ if (isset($_POST["aggprod"])) {
                     // Mover el archivo a la carpeta de destino
                     move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_imagen);
 
-                    $sql = "INSERT INTO tprodu (Nombre_producto, Precio_producto, Cantidad, Descripcion, Talla, Categoria, Color, Estado, Ruta_img)
-                            VALUES ('$nombre_producto', '$precio_producto', '$cantidad', '$descripcion', '$talla', '$categoria', '$color', '$estado', '$ruta_imagen')";
+                    $sql = "INSERT INTO tprodu (Nombre_producto, Precio_producto, Cantidad, Descripcion, Talla, Categoria, Color, Estado, Ruta_img, Ingreso_producto)
+                            VALUES ('$nombre_producto', '$precio_producto', '$cantidad', '$descripcion', '$talla', '$categoria', '$color', '$estado', '$ruta_imagen', '$Fecha')";
             
                     if ($conn->query($sql) === TRUE) {
                         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
