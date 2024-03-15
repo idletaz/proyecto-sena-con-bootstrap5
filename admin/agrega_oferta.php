@@ -3,12 +3,41 @@
   <?php
   session_start();
   if (  isset ($_SESSION['user_id'])  == false){
-    header("location: ../vistas/login.php");
+    header("location: login.php");
+    exit();
 
   }else
   {
     $nombre=$_SESSION['nombre'];
   }
+  
+  ?>
+
+  <!-- Consulta para traer los datos del producto -->
+  <?php
+  $consulta= Consultarproducto($_GET["id_producto"]);
+
+  function Consultarproducto($id_produc){
+    include 'db_proyecto.php';
+    $conn=mysqli_connect($host,$user,$password,$db);
+    $query="SELECT id_producto, nombre_producto, precio_producto, cantidad, color, descripcion, estado, talla, categoria, ruta_img FROM tprodu where id_producto='$id_produc' ;";
+    $result=$conn->query($query);
+    $datos=$result->fetch_assoc();
+
+    return [
+        $datos["id_producto"],
+        $datos["nombre_producto"],
+        $datos["precio_producto"]
+    
+    ];
+
+
+
+  }
+
+
+  
+
   
   ?>
 <head>
@@ -53,7 +82,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="panel.php" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">PQRS</a>
@@ -64,12 +93,9 @@
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-      <button class="btn btn-danger">
-      <a href="../controlador/controlador_cerrarsesion.php">
-        <i class="fas fa-power-off"></i> Cerrar Sesión
-      </a>
-    </button>
-
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
@@ -96,7 +122,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="panel.php" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="Logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">InsideStore</span>
     </a>
@@ -140,7 +166,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="Usuarios_admin.php" class="nav-link">
+                <a href="./index.html" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
@@ -149,12 +175,6 @@
                 <a href="CrudProductos.php" class="nav-link">
                   <i class="fas fa-shopping-bag nav-icon"></i>
                   <p>Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="ofertas_admin.php" class="nav-link">
-                  <i class="fas fa-chart-bar nav-icon"></i>
-                  <p>Ofertas activas</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -178,12 +198,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Seccion/ofertas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="panel.php">Home</a></li>
-              <li class="breadcrumb-item active">Panel de administrador</li>
+              <li class="breadcrumb-item"><a href="ofertas_admin.php">Ofertas</a></li>
+              <li class="breadcrumb-item active">Panel de ofertas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -193,72 +213,60 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+    <div class="container">
+        <h1 class="mt-5">Agregar Oferta</h1>
+        <?php
+        include 'db_proyecto.php';
+        include 'Procesar_oferta.php';
+        ?>
+        
 
-                <p>Pedidos</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">Ver más  <i class="fas fa-arrow-circle-right"></i></a>
+        <!-- Formulario para agregar un nuevo producto -->
+        <form id="formAgregaroferta" action="" method="post" enctype="multipart/form-data">
+        <div class="form-group d-flex flex-column">
+                <label for="id_producto">ID producto:</label>
+                <input type="hidden" id="id_producto" name="id_producto" value="<?php echo $consulta[0]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[0]?></span>
+                <!-- <span style="font-size: 24px;" id="id_producto" name="id_producto" ><?php echo $consulta[0]?></span> -->
+                <!-- <input type="text" id="id_producto" name="id_producto" class="form-control"> -->
             </div>
-          </div>
-          <!-- ./col -->
-          
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <!-- Mostrar Usuarios registrados en la pagina -->
-                <?php
-                include_once "db_proyecto.php";
-                $conn=mysqli_connect($host,$user,$password,$db);
-                $sql = "SELECT COUNT(*) as total_usuarios FROM tusuarios";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {                    
-                    $row = $result->fetch_assoc();
-                    echo "<h3>" . $row["total_usuarios"] . "</h3>";
-                    echo "<p>Usuarios registrados</p>";
-                } else {
-                    echo "No se encontraron usuarios registrados";
-                }
-
-                // Cerrar conexión
-                $conn->close();               
-                ?>
-                
-                <!-- <h3>44</h3>
-
-                <p>Usuarios registrados</p> -->
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="Usuarios_admin.php" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="hidden" id="nombre" name="nombre" value="<?php echo $consulta[1]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[1]?></span>
             </div>
-          </div>
-          <!-- ./col -->
-          
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-       
-      </div><!-- /.container-fluid -->
+            <div class="form-group">
+                <label for="nombre">Precio:</label>
+                <input type="hidden" id="precio" name="precio" value="<?php echo $consulta[2]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[2]?></span>
+            </div>
+            <div class="form-group">
+                <label for="descuento">Porcentaje de descuento:</label>
+                <input type="number" id="descuento" name="descuento" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="inicio">Fecha de inicio: </label>
+                <input type="date" id="f_inicio" name="f_inicio" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fin">Fecha de fin: </label>
+                <input type="date" id="f_fin" name="f_fin" class="form-control" required>
+            </div>
+
+            
+
+            <button type="submit" name="aggoferta" id="aggoferta" class="btn btn-primary" >Agregar oferta</button>
+        </form>
+    </div>
+   
+
+     
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2024-2031 <a href="panel.php">Inside Store</a>.</strong>
+    <strong>Copyright &copy; 2024-2031 <a href="Index.php">Inside Store</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.1.0

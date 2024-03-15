@@ -20,30 +20,29 @@
   require_once 'Paginar_user.php';
 
   // Configuración
-  $users_por_pagina = 5;
+  $ofertas_por_pagina = 5;
   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
-  $offset = ($pagina - 1) * $users_por_pagina;
+  $offset = ($pagina - 1) * $ofertas_por_pagina;
 
  
 
  
-  $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
-        FROM tusuarios
-        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
-        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
+  $sql = "SELECT tofertas.*, tprodu.*
+  FROM tofertas
+  INNER JOIN tprodu ON tofertas.id_producto = tprodu.id_producto";
 
 
   // Agregar LIMIT y OFFSET para la paginación
-  $sql .= " LIMIT $offset, $users_por_pagina";
+  $sql .= " LIMIT $offset, $ofertas_por_pagina";
   $resultado = mysqli_query($conn, $sql);
 
 
     // Obtener el total de registros
-    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM tusuarios"));
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_oferta FROM tofertas"));
     // Calcular el total de páginas
-    $total_paginas = ceil($total_registros / $users_por_pagina);
+    $total_paginas = ceil($total_registros / $ofertas_por_pagina);
     // Generar enlaces de paginación
-    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $users_por_pagina, $pagina);
+    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $ofertas_por_pagina, $pagina);
 
 
 
@@ -84,9 +83,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="Logo.png" alt="Logo" height="100" width=100">
-  </div>
+  </div> -->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -193,7 +192,7 @@
               </li>
               <li class="nav-item">
                 <a href="ofertas_admin.php" class="nav-link">
-                  <i class="fas fa-chart-bar nav-icon"></i>
+                  <i class="fas fa-shopping-bag nav-icon"></i>
                   <p>Ofertas activas</p>
                 </a>
               </li>
@@ -271,12 +270,12 @@
 
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre y apellido</th>
-                <th>Email</th>
-                <th>Cedula</th>
-                <th>Telefono</th>
-                <th>Fecha de registro</th>
+                <th>ID_producto</th>
+                <th>Nombre producto</th>
+                <th>Precio</th>
+                <th>Inicio oferta</th>
+                <th>Fin de la oferta</th>
+                <th>Precio con descuento</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -285,39 +284,39 @@
           <?php
           while($datos=mysqli_fetch_assoc($resultado)){
            echo "<tr>";
-           echo "<td>"; echo $datos["id"];"</td>";
-           echo "<td>"; echo $datos["nombre"]; echo " "; echo $datos['apellido'];"</td>";          
-           echo "<td>"; echo $datos["email"];"</td>";
-           echo "<td>"; echo $datos["cedula"];"</td>";
-           echo "<td>"; echo $datos["Telefono"];"</td>";
-           echo "<td>"; echo $datos["Fecha_registro"];"</td>";
+           echo "<td>"; echo $datos["id_producto"];"</td>";
+           echo "<td>"; echo $datos["nombre_producto"]; "</td>";          
+           echo "<td>"; echo $datos["precio_producto"];"</td>";
+           echo "<td>"; echo $datos["Inicio_oferta"];"</td>";
+           echo "<td>"; echo $datos["fin_oferta"];"</td>";
+           echo "<td>"; echo $datos["precio_descuento"];"</td>";
            echo "<td>"; 
               //Botones de acciones
-           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminarusuario(' . $datos['id'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminarusuario(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
 
-            echo '<div class="modal fade" id="modalProducto_' . $datos['id'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id'] . '" aria-hidden="true">';
+            echo '<div class="modal fade" id="modalProducto_' . $datos['id_producto'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id_producto'] . '" aria-hidden="true">';
             echo '  <div class="modal-dialog modal-lg" role="document">';
             echo '      <div class="modal-content">';
             echo '          <div class="modal-header bg-primary text-white">';
-            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id'] . '">Detalles del Producto</h5>';
+            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id_producto'] . '">Detalles del Producto</h5>';
             echo '              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">';
             echo '                  <span aria-hidden="true">&times;</span>';
             echo '              </button>';
             echo '          </div>';
             echo '          <div class="modal-body">';
-            echo '              <h5 class="text-primary">' . $datos['nombre'] .' '. $datos['apellido']. '</h5>';           
-            echo '              <p><strong>Email:</strong> ' . $datos['email'] . '</p>';
-            echo '              <p><strong>Cedula: </strong> ' . $datos['cedula'] . '</p>';
-            echo '              <p><strong>Telefono:</strong> ' . $datos['Telefono'] . '</p>';
-            echo '              <p><strong>Direccion:</strong> ' . $datos['direccion'] . '</p>';
-            echo '              <p><strong>Barrio:</strong> ' . $datos['nombre_barrio'] . '</p>';
-            echo '              <p><strong>Ciudad: </strong> ' . $datos['nombre_ciudad'] . '</p>';
-            echo '              <p><strong>Genero:</strong> ' . $datos['nombre_genero'] . '</p>';
-            echo '              <p><strong>Fecha de registro: </strong> ' . $datos['Fecha_registro'] . '</p>';            
+            echo '              <h5 class="text-primary">' . $datos['id_producto'] . '</h5>';           
+            echo '              <p><strong>Email:</strong> ' . $datos['nombre_producto'] . '</p>';
+            echo '              <p><strong>Cedula: </strong> ' . $datos['precio_producto'] . '</p>';
+            echo '              <p><strong>Telefono:</strong> ' . $datos['Inicio_oferta'] . '</p>';
+            echo '              <p><strong>Direccion:</strong> ' . $datos['fin_oferta'] . '</p>';
+            echo '              <p><strong>Barrio:</strong> ' . $datos['precio_descuento'] . '</p>';
+            echo '              <p><strong>Ciudad: </strong> ' . $datos['cantidad'] . '</p>';
+            echo '              <p><strong>Genero:</strong> ' . $datos['descuento'] . '</p>';
+            echo '              <p><strong>Fecha de registro: </strong> ' . $datos['cantidad'] . '</p>';            
             echo '          </div>';
             echo '          <div class="modal-footer">';
             echo '              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';

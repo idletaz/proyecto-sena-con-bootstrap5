@@ -192,6 +192,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="ofertas_admin.php" class="nav-link">
+                  <i class="fas fa-chart-bar nav-icon"></i>
+                  <p>Ofertas activas</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="panel.php" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
@@ -227,6 +233,8 @@
         <div class="text-right">
             <!-- Botón a la Derecha -->
             <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a>
+            <a href="agrega_oferta.php" class="btn btn-primary btn-circle">Crear Oferta</a>
+
         </div>
     </div>
     <!-- Barra de buscar -->
@@ -283,9 +291,10 @@
            echo "<td>"; echo $datos["cantidad"];"</td>";
            echo "<td>"; 
               //Botones de acciones
-           echo "<a href='mod_producto.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-warning btn-circle'><i class='fas fa-pencil-alt'>Modificar</i></button></a> ";
+           echo "<a href='mod_producto.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-warning btn-circle'><i class='fas fa-pencil-alt'> Modificar</i></button></a> ";
            echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminarProducto(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminarProducto(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i> Eliminar</button>';
+           echo "<a href='agrega_oferta.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-success btn-circle'><i class='fas fa-tag'> Crear oferta</i></button></a> ";
            echo "<td>";
            echo "</tr>"; 
 
