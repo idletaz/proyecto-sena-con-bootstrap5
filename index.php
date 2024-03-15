@@ -1,28 +1,28 @@
 <?php
-include_once("../modelo/conexion.php");
-session_start();
+// include_once("./modelo/conexion.php");
+// session_start();
 
-// Verificar si el usuario no ha iniciado sesión
-if (!isset($_SESSION['user_id'])) {
-    // Redirigir al usuario al formulario de inicio de sesión
-    header('Location: login.php');
-    exit(); 
-}
-//obtenemos el id del usuario logeado
-$user_id = $_SESSION['user_id'];
-$stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
+// // Verificar si el usuario no ha iniciado sesión
+// if (!isset($_SESSION['user_id'])) {
+//     // Redirigir al usuario al formulario de inicio de sesión
+//     header('Location:./index.php');
+//     exit(); 
+// }
+// //obtenemos el id del usuario logeado
+// $user_id = $_SESSION['user_id'];
+// $stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
+// $stmt->bind_param("i", $user_id);
+// $stmt->execute();
+// $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {  
-    $row = $result->fetch_assoc();
-    $nombre_usuario = $row['nombre'];
-} else {
-    $nombre_usuario = "Nombre de Usuario Desconocido";
-}
-$stmt->close();
-$conexion->close();
+// if ($result->num_rows > 0) {  
+//     $row = $result->fetch_assoc();
+//     $nombre_usuario = $row['nombre'];
+// } else {
+//     $nombre_usuario = "Nombre de Usuario Desconocido";
+// }
+// $stmt->close();
+// $conexion->close();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $conexion->close();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="./index.css">
     </head>
     <body>
       <header>
@@ -67,7 +67,7 @@ $conexion->close();
                           <a class="nav-link nav-text ms-2" href="contacto.php">Servicio al cliente</a>
                         </li>
                         <li class="nav-item">
-                          <a href="perfil.php"><p class="ms-5 mb-0"><span class="img-perfil"></span><?php echo $nombre_usuario?></p></a>
+                          <a href="perfil.php"><p class="ms-5 mb-0"><span class="img-perfil"></span>hola</p></a>
                         </li>
                         
                         <li class="nav-item d-flex align-items-center">
@@ -75,11 +75,8 @@ $conexion->close();
                             <span class="carrito-compra-circulo">0</span>
                         </li>   
                         <li class="nav-item">
-                        <a href="../controlador/controlador_cerrarsesion.php" class="btn btn-danger">
-                            <i class="fa fa-power-off"></i>
-                            Cerrar sesión
-                         </a>                     
-                         </li>                     
+                          <a href="../controlador/controlador_cerrarsesion.php" class="btn btn-light">Cerrar sesión</a>                     
+                        </li>                     
                     </ul>
                 </div>
               </div>          
@@ -88,8 +85,8 @@ $conexion->close();
       </header>
       <main>
         <section class="container-expand-lg">     
-          <article class="container-expand-lg d-flex m-0 p-0" style="height: 95vh;">
-            <div class="contenedor-mensaje-principal" style="height: 100%;">
+          <article class="container-expand-lg d-flex m-0 p-0 articulo-principal">
+            <div class="contenedor-mensaje-principal">
               <div class="contenedor-mensaje-principal__texto">
                 <h2>Un lugar fantastico para ponerte a la moda, ¡mujer!</h2>
                 <p>"Descubre las últimas tendencias y encuentra tu estilo único. Sumérgete en nuestra colección y déjate inspirar."</p>
@@ -109,7 +106,7 @@ $conexion->close();
           </article>
           <!-- Apertura php para productos -->
           <?php
-          include "../modelo/conexion.php";                      
+          include "./modelo/conexion.php";                      
           ?>          
           <article class="main-secciones-articulos primero container-expand-lg">
             <h2 class="display-5 mb-4 mt-4 text-center">Nueva coleccion</h2>
@@ -124,7 +121,7 @@ $conexion->close();
                       while($row = $result->fetch_assoc()){
                         echo '
                         <div class="card">
-                          <img src="../admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
+                          <img src="./admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
                             <ul>
@@ -150,7 +147,7 @@ $conexion->close();
                       while($row = $result->fetch_assoc()){
                         echo '
                           <div class="card">
-                            <img src="../admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
+                            <img src="./admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
                               <ul>
@@ -161,7 +158,8 @@ $conexion->close();
                               <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                             </div>
                           </div>
-                          ';                     }                      
+                          '; 
+                        }                      
                       ?>
                     </div>
                   </div>               
@@ -643,14 +641,7 @@ $conexion->close();
       <footer class="mt-5">
         <div class="container-lg pt-5">
             <div class="row">
-                <div class="col-3">
-                    <p class="footer__p">Nuestro equipo de desarrollo</p>
-                    <div>
-                        <p><span></span> Equipo de desarrollo</p>
-                        <p><span></span> Equipo de ventas</p>
-                    </div>
-                </div>
-                <div class="col-3">
+                <div class="col-4">
                     <p class="footer__p">Contacto</p> 
                     <div>
                         <p>Correo: inside@inside.com.co</p>
@@ -658,14 +649,14 @@ $conexion->close();
                         <p>Escribenos</p>
                     </div>   
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <p class="footer__p">Terminos y condiciones</p>
                     <div>
                         <p>Politica de garantia</p>
                         <p>Politica de devoluciones</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <p class="d-flex justify-content-center footer__p">Redes sociales</p>
                     <div class="d-flex flex-row justify-content-center">
                         <span class="footer__img-redes facebook"></span>

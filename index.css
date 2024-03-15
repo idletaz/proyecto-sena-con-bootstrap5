@@ -12,6 +12,10 @@ body {
 
 
 /* HEADER */
+header {
+    height: 7vh;
+}
+
 nav {
     background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
 }
@@ -36,7 +40,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("../img/iconos/user.png");
+    background-image: url("./vistas/img/iconos/user.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -48,7 +52,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("../img/iconos/cart.png");
+    background-image: url("./vistas/img/iconos/cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -72,22 +76,22 @@ nav {
 
 /* MAIN */
 
-main {
-    margin-top: 70px;
-}
-
 .main-secciones-articulos-mensaje-principal {
     display: flex;
+}
+
+.articulo-principal {
+    height: 93vh;
 }
 
 .contenedor-mensaje-principal {
     display: flex;
     width: 100%;
-    height: 700px;
+    height: 100%;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background-image: url("../img/ropas/banners/anchos/banner\ principal.jpeg");
+    background-image: url("./vistas/img/ropas/banners/anchos/banner\ principal.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
@@ -179,7 +183,7 @@ main {
     display: inline-block;
     width: 25px;
     height: 25px;
-    background-image: url("../img/iconos/cart4.svg");
+    background-image: url("./vistas/img/iconos/cart4.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -188,7 +192,6 @@ main {
 
 
 /* ------------------ */
-
 /* FOOTER */
 .footer__p {
     font-size: 1.6rem;
@@ -209,13 +212,13 @@ footer {
 }
 
 .facebook {
-    background-image: url("../img/iconos/facebook\ \(1\).png");
+    background-image: url("./vistas/img/iconos/icon-facebook.png");
 }
 
 .instagram {
-    background-image: url("../img/iconos/instagram\ \(1\).png");
+    background-image: url("./vistas/img/iconos/icon-instagram.png");
 }
 
 .tiktok {
-    background-image: url("../img/iconos/tik-tok.png");
+    background-image: url("./vistas/img/iconos/icon-tiktok.png");
 }
