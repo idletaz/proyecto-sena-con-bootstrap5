@@ -260,11 +260,7 @@
         <?php
         require "db_proyecto.php";
         $conn=mysqli_connect($host,$user,$password,$db);
-        $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
-        FROM tusuarios
-        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
-        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
-        $result=mysqli_query($conn,$sql);              
+                  
 
         ?>
 
@@ -293,7 +289,7 @@
            echo "<td>"; 
               //Botones de acciones
            echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminarusuario(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminaroferta(' . $datos['id_oferta'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
@@ -309,14 +305,15 @@
             echo '          </div>';
             echo '          <div class="modal-body">';
             echo '              <h5 class="text-primary">' . $datos['id_producto'] . '</h5>';           
-            echo '              <p><strong>Email:</strong> ' . $datos['nombre_producto'] . '</p>';
-            echo '              <p><strong>Cedula: </strong> ' . $datos['precio_producto'] . '</p>';
-            echo '              <p><strong>Telefono:</strong> ' . $datos['Inicio_oferta'] . '</p>';
-            echo '              <p><strong>Direccion:</strong> ' . $datos['fin_oferta'] . '</p>';
-            echo '              <p><strong>Barrio:</strong> ' . $datos['precio_descuento'] . '</p>';
-            echo '              <p><strong>Ciudad: </strong> ' . $datos['cantidad'] . '</p>';
-            echo '              <p><strong>Genero:</strong> ' . $datos['descuento'] . '</p>';
-            echo '              <p><strong>Fecha de registro: </strong> ' . $datos['cantidad'] . '</p>';            
+            echo '<img src="' . $datos["ruta_img"] . '" alt="Imagen del producto" class="img-fluid" style="max-height: 200px;">';
+            echo '              <p><strong>Nombre producto:</strong> ' . $datos['nombre_producto'] . '</p>';
+            echo '              <p><strong>Precio: $ </strong> ' . $datos['precio_producto'] . '</p>';
+            echo '              <p><strong>Inicio de oferta:</strong> ' . $datos['Inicio_oferta'] . '</p>';
+            echo '              <p><strong>Fin de oferta:</strong> ' . $datos['fin_oferta'] . '</p>';
+            echo '              <p><strong>Precio con descuento:</strong> ' . $datos['precio_descuento'] . '</p>';
+            echo '              <p><strong>Cantidad: </strong> ' . $datos['cantidad'] . '</p>';
+            echo '              <p><strong> Descuento del :</strong> ' . $datos['descuento'] *100 . '%</p>';
+            echo '              <p><strong>En oferta: </strong> ' . ($datos['oferta'] ? 'Sí' : 'No') . '</p>';            
             echo '          </div>';
             echo '          <div class="modal-footer">';
             echo '              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
@@ -372,11 +369,11 @@
 
 <!-- Script para Eliminar -->
 <script>
-    function eliminarusuario(id) {
+    function eliminaroferta(id) {
         // Mostrar un mensaje de confirmación con SweetAlert2
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Esta acción eliminará el usuario de forma permanente.',
+            text: 'Esta acción eliminará la oferta de forma permanente.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -387,11 +384,11 @@
             // Si el usuario confirma la eliminación
             if (result.isConfirmed) {
                 // Envía una solicitud POST al servidor para eliminar el producto
-                $.post("procesar_eliminaruser.php", {id: id}, function(data, status) {
+                $.post("procesar_eliminaroferta.php", {id: id}, function(data, status) {
                     // Maneja la respuesta del servidor
                     if (status === "success") {
                         // Muestra un mensaje de éxito con SweetAlert2
-                        Swal.fire('Eliminado', 'El usuario ha sido eliminado exitosamente.', 'success').then((result) => {
+                        Swal.fire('Eliminado', 'La oferta ha sido eliminado exitosamente.', 'success').then((result) => {
                             // Recarga la página después de cerrar el mensaje
                             if (result.isConfirmed || result.isDismissed) {
                                 window.location.reload();
@@ -399,7 +396,7 @@
                         });
                     } else {
                         // Si hay un error al eliminar el producto, muestra un mensaje de error con SweetAlert2
-                        Swal.fire('Error', 'Ha ocurrido un error al eliminar el usuario.', 'error');
+                        Swal.fire('Error', 'Ha ocurrido un error al eliminar la oferta.', 'error');
                     }
                 });
             }

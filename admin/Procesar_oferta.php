@@ -28,8 +28,10 @@ if ($resultado_verificar_oferta->num_rows > 0) {
     // Si no se encuentra una oferta activa, proceder con la inserción de la nueva oferta
     $sql = "INSERT INTO tofertas (id_producto, inicio_oferta, fin_oferta, descuento, precio_descuento) 
             VALUES ('$id_producto', '$fecha_inicio', '$Fecha_fin', '$descuento', $precio_descuento)";
-
     if ($conn->query($sql) === TRUE) {
+    // Actualizar estado de oferta en la tabla de productos
+    $update_sql = "UPDATE tprodu SET oferta = TRUE WHERE id_producto = '$id_producto'";
+    if ($conn->query($update_sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
         echo 'Se ha creado la oferta correctamente.';
         echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
@@ -39,10 +41,13 @@ if ($resultado_verificar_oferta->num_rows > 0) {
         echo '<script>';
         echo 'setTimeout(function() { window.location.href = "CrudProductos.php"; }, 2500);'; // Redirecciona después de 3 segundos
         echo '</script>';
-    } else {
-        echo "Error al crear la oferta: " . $conn->error;
-    }
-}
+        } else {
+            echo "Error al actualizar el estado de oferta en el producto: " . $conn->error;
+        }
+        } else {
+            echo "Error al crear la oferta: " . $conn->error;
+        }
+        }
     
 
     

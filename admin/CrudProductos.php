@@ -27,7 +27,7 @@
   $campo = isset($_GET['campo']) ? $_GET['campo'] : 'categoria';
 
  
-  $sql = "SELECT id_producto, ruta_img, nombre_producto, precio_producto, cantidad, estado, talla, categoria, descripcion, color FROM tprodu";
+  $sql = "SELECT id_producto, ruta_img, nombre_producto, precio_producto, cantidad, estado, talla, categoria, descripcion, color, oferta FROM tprodu";
 
   if ($consulta_busqueda != '') {
     $consulta_busqueda = strtolower($consulta_busqueda);
@@ -232,8 +232,7 @@
     <div class="container">
         <div class="text-right">
             <!-- Botón a la Derecha -->
-            <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a>
-            <a href="agrega_oferta.php" class="btn btn-primary btn-circle">Crear Oferta</a>
+            <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a>            
 
         </div>
     </div>
@@ -294,7 +293,14 @@
            echo "<a href='mod_producto.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-warning btn-circle'><i class='fas fa-pencil-alt'> Modificar</i></button></a> ";
            echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
            echo '<button class="btn btn-danger btn-circle" onclick="eliminarProducto(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i> Eliminar</button>';
-           echo "<a href='agrega_oferta.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-success btn-circle'><i class='fas fa-tag'> Crear oferta</i></button></a> ";
+           if ($datos['oferta']) {
+            echo "<a href='ofertas_admin.php' class='btn btn-info btn-circle'><i class='fas fa-tag'></i> En oferta</a>";
+
+            } else {
+                echo "<a href='agrega_oferta.php?id_producto=". $datos['id_producto']. "'>
+                <button class='btn btn-success btn-circle'><i class='fas fa-tag'> Crear oferta</i></button></a> ";
+            }
+          //echo "<a href='agrega_oferta.php?id_producto=". $datos['id_producto']. "'> <button class='btn btn-success btn-circle'><i class='fas fa-tag'> Crear oferta</i></button></a> ";
            echo "<td>";
            echo "</tr>"; 
 

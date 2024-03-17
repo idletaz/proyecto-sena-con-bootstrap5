@@ -150,6 +150,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="ofertas_admin.php" class="nav-link">
+                  <i class="fas fa-shopping-bag nav-icon"></i>
+                  <p>Ofertas activas</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="./index.html" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
