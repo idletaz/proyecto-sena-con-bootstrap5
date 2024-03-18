@@ -12,6 +12,34 @@
   }
   
   ?>
+
+  <!-- Consulta para traer los datos del producto -->
+  <?php
+  $consulta= Consultarproducto($_GET["id_producto"]);
+
+  function Consultarproducto($id_produc){
+    include 'db_proyecto.php';
+    $conn=mysqli_connect($host,$user,$password,$db);
+    $query="SELECT id_producto, nombre_producto, precio_producto, cantidad, color, descripcion, estado, talla, categoria, ruta_img FROM tprodu where id_producto='$id_produc' ;";
+    $result=$conn->query($query);
+    $datos=$result->fetch_assoc();
+
+    return [
+        $datos["id_producto"],
+        $datos["nombre_producto"],
+        $datos["precio_producto"]
+    
+    ];
+
+
+
+  }
+
+
+  
+
+  
+  ?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,12 +178,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="ofertas_admin.php" class="nav-link">
-                  <i class="fas fa-shopping-bag nav-icon"></i>
-                  <p>Ofertas activas</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="./index.html" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
@@ -176,12 +198,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Seccion/Productos</h1>
+            <h1 class="m-0">Seccion/ofertas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="CrudProductos.php">Productos</a></li>
-              <li class="breadcrumb-item active">Panel de Productos</li>
+              <li class="breadcrumb-item"><a href="ofertas_admin.php">Ofertas</a></li>
+              <li class="breadcrumb-item active">Panel de ofertas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -192,83 +214,48 @@
     <!-- Main content -->
     <section class="content">
     <div class="container">
-        <h1 class="mt-5">Agregar Producto</h1>
+        <h1 class="mt-5">Agregar Oferta</h1>
         <?php
         include 'db_proyecto.php';
-        include 'Procesar_producto.php';
+        include 'Procesar_oferta.php';
         ?>
         
 
         <!-- Formulario para agregar un nuevo producto -->
-        <form id="formAgregarProducto" action="" method="post" enctype="multipart/form-data">
+        <form id="formAgregaroferta" action="" method="post" enctype="multipart/form-data">
+        <div class="form-group d-flex flex-column">
+                <label for="id_producto">ID producto:</label>
+                <input type="hidden" id="id_producto" name="id_producto" value="<?php echo $consulta[0]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[0]?></span>
+                <!-- <span style="font-size: 24px;" id="id_producto" name="id_producto" ><?php echo $consulta[0]?></span> -->
+                <!-- <input type="text" id="id_producto" name="id_producto" class="form-control"> -->
+            </div>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" class="form-control" required>
-            </div>
-
-            <div class="form-group">
-                <label for="talla">Talla:</label>
-                <select id="talla" name="talla" class="form-control" required>
-                    <option >Selecciona</option>
-                    <option value="Sin_talla">Sin talla(Bolso)</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="color">Color:</label>
-                <select id="color" name="color" class="form-control" required>
-                    <option >Selecciona</option>
-                    <option value="Rojo">Rojo</option>
-                    <option value="Azul">Azul</option>
-                    <option value="Verde">Verde</option>
-                    <option value="Negro">Negro</option>
-                    <option value="Blanco">Blanco</option>
-                </select>
+                <input type="hidden" id="nombre" name="nombre" value="<?php echo $consulta[1]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[1]?></span>
             </div>
             <div class="form-group">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" class="form-control" required>
-                    <option >Selecciona</option>
-                    <option value="Accesorio">Accesorio</option>
-                    <option value="Ropa">Ropa</option>                    
-                    <option value="Bolso">Bolso</option>                    
-                </select>
+                <label for="nombre">Precio:</label>
+                <input type="hidden" id="precio" name="precio" value="<?php echo $consulta[2]?>">
+                <span style="font-size: 24px;"><?php echo $consulta[2]?></span>
             </div>
-
             <div class="form-group">
-                <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" name="imagen" class="form-control-file" required>
+                <label for="descuento">Porcentaje de descuento:</label>
+                <input type="number" id="descuento" name="descuento" class="form-control" required>
             </div>
-
             <div class="form-group">
-                <label for="detalle">Descripcion:</label>
-                <input type="textarea" id="detalle" name="detalle" class="form-control" required>
+                <label for="inicio">Fecha de inicio: </label>
+                <input type="date" id="f_inicio" name="f_inicio" class="form-control" required>
             </div>
-
             <div class="form-group">
-                <label for="estado">Estado</label>
-                <select id="estado" name="estado" class="form-control" required>
-                    <option value="activo">Activo</option>
-                    <option value="no-activo">No Activo</option>                   
-                </select>
+                <label for="fin">Fecha de fin: </label>
+                <input type="date" id="f_fin" name="f_fin" class="form-control" required>
             </div>
 
-            <button type="submit" name="aggprod" id="aggprod" class="btn btn-primary" >Agregar Producto</button>
+            
+
+            <button type="submit" name="aggoferta" id="aggoferta" class="btn btn-primary" >Agregar oferta</button>
         </form>
     </div>
    
