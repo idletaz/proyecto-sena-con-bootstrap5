@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
                 $_SESSION['email'] = $usuario['email'];
                 $_SESSION['nombre'] = $usuario['nombre'];
                 // Redirigir a la página de inicio o a donde desees
-                header('Location:../vistas/home.php');
+                header('Location:../index.php');
                 exit();
 
             }else if ($usuario['id_rol']==2){

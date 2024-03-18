@@ -1,3 +1,22 @@
+<?php
+  // //obtenemos el id del usuario logeado
+  // $user_id = $_SESSION['user_id'];
+  // $stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
+  // $stmt->bind_param("i", $user_id);
+  // $stmt->execute();
+  // $result = $stmt->get_result();
+
+  // if ($result->num_rows > 0) {  
+  //     $row = $result->fetch_assoc();
+  //     $nombre_usuario = $row['nombre'];
+  // } else {
+  //     $nombre_usuario = "Nombre de Usuario Desconocido";
+  // }
+  // $stmt->close();
+  // $conexion->close();
+
+?>
+
 
 <html lang="es">
     <head>
@@ -13,7 +32,7 @@
         <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
             <div class="container-lg">
               <div>
-                <a class="navbar-brand" href="../index.html">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                <a class="navbar-brand" href="../index.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
               </div>
             </div>              
         </nav>
@@ -50,7 +69,7 @@
                       </div>
                       <div class="row">
                         <div class="col-12 d-flex flex-column">
-                           <p>¿Olvidó su contraseña? <a href="#" class="ancla">Recuperar</a></p>
+                           <p>¿Olvidó su contraseña? <a href="./recuperar_contraseña.php" class="ancla">Recuperar</a></p>
                            <p>Cree una cuenta <a href="registro.php" class="ancla">aquí</a></p>
                         </div>
                       </div>

@@ -1,28 +1,20 @@
 <?php
-// include_once("./modelo/conexion.php");
-// session_start();
+include_once("./modelo/conexion.php");
+session_start();
 
-// // Verificar si el usuario no ha iniciado sesión
-// if (!isset($_SESSION['user_id'])) {
-//     // Redirigir al usuario al formulario de inicio de sesión
-//     header('Location:./index.php');
-//     exit(); 
-// }
-// //obtenemos el id del usuario logeado
-// $user_id = $_SESSION['user_id'];
-// $stmt = $conexion->prepare("SELECT nombre FROM tusuarios WHERE id = ?");
-// $stmt->bind_param("i", $user_id);
-// $stmt->execute();
-// $result = $stmt->get_result();
+// Verificar si el usuario no ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    // Redirigir al usuario al formulario de inicio de sesión
+    $botonSesion = "Iniciar sesión";
+    $nombreUsuario = "Invitado";
+    $botonRutaSesion = "./vistas/login.php";
+    $botonRutaPerfil = "./vistas/login.php";
+}else{
+  $botonSesion = "Cerrar sesión";
+  $nombreUsuario = $_SESSION['user_nombre'];
+  $botonRutaPerfil = "./vistas/perfil.php";
+}
 
-// if ($result->num_rows > 0) {  
-//     $row = $result->fetch_assoc();
-//     $nombre_usuario = $row['nombre'];
-// } else {
-//     $nombre_usuario = "Nombre de Usuario Desconocido";
-// }
-// $stmt->close();
-// $conexion->close();
 ?>
 
 <!DOCTYPE html>
@@ -64,19 +56,29 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link nav-text ms-2" href="contacto.php">Servicio al cliente</a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="perfil.php"><p class="ms-5 mb-0"><span class="img-perfil"></span>hola</p></a>
-                        </li>
-                        
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
-                            <span class="carrito-compra-circulo">0</span>
-                        </li>   
-                        <li class="nav-item">
-                          <a href="../controlador/controlador_cerrarsesion.php" class="btn btn-light">Cerrar sesión</a>                     
-                        </li>                     
+                          <a class="nav-link nav-text ms-2" href="vistas/contacto.php">Contacto</a>
+                        </li>                        
+                        <li class="nav-item cajon-inicio-de-sesion">
+                          <ul class="d-flex align-items-cente cajon-inicio-de-sesion_ul">
+                            <li class="nav-item d-flex align-items-center">
+                              <a href=<?php echo $botonRutaPerfil; ?>>
+                                <p class="d-flex mb-0">
+                                  <span class="img-perfil"></span>
+                                  <span class="d-flex flex-column ms-1 p-1">
+                                    <span><?php echo $nombreUsuario; ?></span>
+                                  </span>
+                                </p>
+                              </a>
+                            </li>
+                              <li class="nav-item d-flex align-items-center">
+                                <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
+                                <span class="carrito-compra-circulo">0</span>
+                            </li>   
+                            <li class="nav-item me-1 d-flex align-items-center">
+                              <a href=<?php echo $botonRutaSesion; ?> class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
+                            </li>
+                          </ul>
+                        </li>                                            
                     </ul>
                 </div>
               </div>          
@@ -103,11 +105,7 @@
                 <span></span>
               </p>
             </div>            
-          </article>
-          <!-- Apertura php para productos -->
-          <?php
-          include "./modelo/conexion.php";                      
-          ?>          
+          </article>         
           <article class="main-secciones-articulos primero container-expand-lg">
             <h2 class="display-5 mb-4 mt-4 text-center">Nueva coleccion</h2>
             <div id="carouselNuevaColeccion" class="carousel slide" data-bs-ride="carousel">

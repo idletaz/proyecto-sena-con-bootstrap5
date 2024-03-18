@@ -7,7 +7,7 @@ a {
 
 /* BODY */
 body {
-    background-color: rgb(227, 245, 247);
+    background-color: rgb(255, 255, 255);
 }
 
 
@@ -36,7 +36,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("../img/iconos/user.png");
+    background-image: url("/vistas/img/iconos/user.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -48,7 +48,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("../img/iconos/cart.png");
+    background-image: url("/vistas/img/iconos/cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -206,6 +206,7 @@ iframe {
     padding: 15px;
     position: relative;
     z-index: 1;
+ 
 }
 
 .container-contact100::before {
@@ -217,11 +218,8 @@ iframe {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(13, 13, 14, 0.5);
-    background: -webkit-linear-gradient(left, rgba(13, 13, 14, 0.5), rgba(155, 147, 158, 0.5));
-    background: -o-linear-gradient(left, rgba(13, 13, 14, 0.5), rgba(155, 147, 158, 0.5));
-    background: -moz-linear-gradient(left, rgba(13, 13, 14, 0.5), rgba(155, 147, 158, 0.5));
-    background: linear-gradient(left, rgba(13, 13, 14, 0.5), rgba(155, 147, 158, 0.5    ));
+    background: rgb(255, 255, 255);
+  
     pointer-events: none;
 }
 
@@ -236,10 +234,11 @@ iframe {
 
 .wrap-contact100 {
     width: 800px;
-    background: #fff;
+   font-family: cursive;
     border-radius: 10px;
     overflow: hidden;
     padding: 72px 150px 25px 150px;
+    background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
 
     box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
@@ -256,7 +255,7 @@ iframe {
 
 .contact100-form-title {
     display: block;
-    font-family: SourceSansPro-Bold;
+    font-family: cursive;
     font-size: 30px;
     color: #333333;
     line-height: 1.2;
@@ -513,13 +512,13 @@ footer {
 }
 
 .facebook {
-    background-image: url("../img/iconos/facebook\ \(1\).png");
+    background-image: url("../img/iconos/icon-facebook.png");
 }
 
 .instagram {
-    background-image: url("../img/iconos/instagram\ \(1\).png");
+    background-image: url("../img/iconos/icon-instagram.png");
 }
 
 .tiktok {
-    background-image: url("../img/iconos/tik-tok.png");
+    background-image: url("../img/iconos/icon-tiktok.png");
 }

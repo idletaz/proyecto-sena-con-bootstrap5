@@ -5,6 +5,10 @@ a {
     font-size: 1.6rem;
 }
 
+li {
+    list-style: none;
+}
+
 /* BODY */
 body {
     background-color: rgb(227, 245, 247);
@@ -13,11 +17,15 @@ body {
 
 /* HEADER */
 header {
-    height: 7vh;
+    height: 8vh;
 }
 
 nav {
     background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+}
+
+.nav-item {
+    list-style: none;
 }
 
 /* TAMAÑO DEL TEXTO DEL LOGO */
@@ -35,6 +43,16 @@ nav {
     font-size: 1.5rem;
 }
 
+.cajon-inicio-de-sesion {
+    background-color: rgba(104, 85, 148, 0.2);
+    border-radius: 10px;
+    margin-left: 28px;
+}
+
+.cajon-inicio-de-sesion_ul {
+    padding: 2px;
+}
+
 /* ICONO DEL NAVBAR 'PERFIL' */
 .img-perfil {
     display: inline-block;
@@ -44,7 +62,7 @@ nav {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    vertical-align: text-bottom;
+    margin: auto 0;
 }
 
 /* ICONO CARRITO DE COMPRA */
@@ -74,6 +92,13 @@ nav {
     right: 28px;
 }
 
+.btn-sesion {
+    width: 124px;
+    height: 36px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 /* MAIN */
 
 .main-secciones-articulos-mensaje-principal {
@@ -81,7 +106,7 @@ nav {
 }
 
 .articulo-principal {
-    height: 93vh;
+    height: 92vh;
 }
 
 .contenedor-mensaje-principal {
