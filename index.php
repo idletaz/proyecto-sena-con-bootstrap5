@@ -1,5 +1,5 @@
 <?php
-include_once("./modelo/conexion.php");
+include_once("modelo/conexion.php");
 session_start();
 
 // Verificar si el usuario no ha iniciado sesión
@@ -7,12 +7,13 @@ if (!isset($_SESSION['user_id'])) {
     // Redirigir al usuario al formulario de inicio de sesión
     $botonSesion = "Iniciar sesión";
     $nombreUsuario = "Invitado";
-    $botonRutaSesion = "./vistas/login.php";
-    $botonRutaPerfil = "./vistas/login.php";
+    $botonRutaSesion = "vistas/login.php";
+    $botonRutaPerfil = "vistas/login.php";
 }else{
   $botonSesion = "Cerrar sesión";
   $nombreUsuario = $_SESSION['user_nombre'];
-  $botonRutaPerfil = "./vistas/perfil.php";
+  $botonRutaPerfil = "vistas/perfil.php";
+  $botonRutaSesion = "controlador/controlador_cerrarsesion.php";
 }
 
 ?>
@@ -45,13 +46,13 @@ if (!isset($_SESSION['user_id'])) {
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="catalogo-camisas.html">Camisas</a>
+                                    <a class="dropdown-item" href="vistas/catalogo-camisas.html">Camisas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="catalogo-bolsos.html">Bolsos</a>
+                                    <a class="dropdown-item" href="vistas/catalogo-bolsos.html">Bolsos</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="catalogo-zapatos.html">Zapatos</a>
+                                    <a class="dropdown-item" href="vistas/catalogo-zapatos.html">Zapatos</a>
                                 </li>
                             </ul>
                         </li>
@@ -75,7 +76,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <span class="carrito-compra-circulo">0</span>
                             </li>   
                             <li class="nav-item me-1 d-flex align-items-center">
-                              <a href=<?php echo $botonRutaSesion; ?> class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
+                              <a href="<?php echo $botonRutaSesion; ?>" class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
                             </li>
                           </ul>
                         </li>                                            

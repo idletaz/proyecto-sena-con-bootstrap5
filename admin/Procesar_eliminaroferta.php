@@ -9,6 +9,8 @@ if (isset($_POST["id"])) {
     $sql = "DELETE FROM tofertas WHERE id_oferta = $id";
 
     if ($conn->query($sql) === TRUE) {
+        $sql ="UPDATE tprodu SET oferta= 0";
+        $result = $conn->query($sql);
         
         echo "La oferta ha sido eliminado correctamente.";
     } else {
