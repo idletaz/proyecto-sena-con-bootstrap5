@@ -1,8 +1,12 @@
-* ESTILOS GENERALES */
+/* ESTILOS GENERALES */
 a {
     text-decoration: none;
     color: black;
     font-size: 1.6rem;
+}
+
+li {
+    list-style: none;
 }
 
 /* BODY */
@@ -12,8 +16,16 @@ body {
 
 
 /* HEADER */
+header {
+    height: 7vh;
+}
+
 nav {
     background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+}
+
+.nav-item {
+    list-style: none;
 }
 
 /* TAMAÑO DEL TEXTO DEL LOGO */
@@ -29,6 +41,62 @@ nav {
 /* TAMAÑO DEL TEXTO DE LAS OPCIONES DEL NAVBAR */
 .nav-text {
     font-size: 1.5rem;
+}
+
+.cajon-inicio-de-sesion {
+    background-color: rgba(104, 85, 148, 0.2);
+    border-radius: 10px;
+    margin-left: 28px;
+}
+
+.cajon-inicio-de-sesion_ul {
+    padding: 2px;
+}
+
+/* ICONO DEL NAVBAR 'PERFIL' */
+.img-perfil {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-image: url("../img/iconos/user.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto 0;
+}
+
+/* ICONO CARRITO DE COMPRA */
+.carrito-de-compra-nav {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-image: url("../img/iconos/cart.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+
+/* CIRCULO DEL CARRITO DEL CARRITO DE COMPRA */
+.carrito-compra-circulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgb(255, 254, 254);
+    position: relative;
+    top: -12px;
+    right: 28px;
+}
+
+.btn-sesion {
+    width: 124px;
+    height: 36px;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 /* MAIN */
@@ -53,7 +121,7 @@ nav {
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-image: url("../img/ropas/banners/cuadrados-alargados/BANNER-HOME-BELLE-IN-BLACK-SM.webp");
+    background-image: url("../img/ropas/banners/cuadrados-alargados/BANNER-HOME-ANO-CHINO-DRAGON-26012024-SM.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

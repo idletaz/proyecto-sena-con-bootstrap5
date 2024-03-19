@@ -17,7 +17,7 @@ body {
 
 /* HEADER */
 header {
-    height: 8vh;
+    height: 7vh;
 }
 
 nav {
@@ -58,7 +58,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("./vistas/img/iconos/user.png");
+    background-image: url("../img/iconos/user.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("./vistas/img/iconos/cart.png");
+    background-image: url("../img/iconos/cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -106,7 +106,7 @@ nav {
 }
 
 .articulo-principal {
-    height: 92vh;
+    height: 93vh;
 }
 
 .contenedor-mensaje-principal {
@@ -116,7 +116,7 @@ nav {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    background-image: url("./vistas/img/ropas/banners/anchos/banner\ principal.jpeg");
+    background-image: url("../img/ropas/banners/anchos/banner\ principal.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
@@ -204,12 +204,26 @@ nav {
     height: 275px;
 }
 
-.oferta {
+.icon-card-oferta-container {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 20px;
-    right: 20px;
+    display: flex;
+    right: 0;
+    background-color: red;
+    padding: 4px;
+    border-radius: 0 0 0 10px;
+}
+
+.icon-card-oferta-container__descuento {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    padding: 0;
+    margin: auto 0;
+}
+
+.icon-card-oferta-container__icon-descuento {
+    width: 40px;
+    height: 40px;
 }
 
 /* ESTILO CARRITO DE COMPRA TARJETA DE PRODUCTOS */
@@ -217,7 +231,7 @@ nav {
     display: inline-block;
     width: 25px;
     height: 25px;
-    background-image: url("./vistas/img/iconos/cart4.svg");
+    background-image: url("../img/iconos/cart4.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -246,13 +260,13 @@ footer {
 }
 
 .facebook {
-    background-image: url("./vistas/img/iconos/icon-facebook.png");
+    background-image: url("../img/iconos/icon-facebook.png");
 }
 
 .instagram {
-    background-image: url("./vistas/img/iconos/icon-instagram.png");
+    background-image: url("../img/iconos/icon-instagram.png");
 }
 
 .tiktok {
-    background-image: url("./vistas/img/iconos/icon-tiktok.png");
+    background-image: url("../img/iconos/icon-tiktok.png");
 }
