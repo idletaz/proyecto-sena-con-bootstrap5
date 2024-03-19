@@ -181,17 +181,6 @@ if (!isset($_SESSION['user_id'])) {
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <div class="card">
-                        <img src="vistas/img/ropas/bolsos/222787-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
@@ -275,17 +264,6 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                       </div>
                       <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330260-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
                         <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
@@ -324,17 +302,6 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
                       <div class="card">
                         <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -422,6 +389,17 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                       </div>
                       <div class="card">
+                        <img src="vistas/img/ropas/bolsos/222787-500-auto.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <ul>
+                            <li>Colores: <span>Rosado</span></li>
+                            <li>Tallas: <span>L, M, XL</span></li>
+                          </ul>
+                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                        </div>
+                      </div>
+                      <div class="card">
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
@@ -434,28 +412,6 @@ if (!isset($_SESSION['user_id'])) {
                       </div>
                       <div class="card">
                         <img src="vistas/img/ropas/bolsos/257935-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/258568-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/bolsos/258568-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
@@ -537,34 +493,12 @@ if (!isset($_SESSION['user_id'])) {
                           <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
-                      <div class="card">
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
                     </div>
                   </div>               
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
-                        <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
                       <div class="card">
                         <img src="vistas/img/ropas/zapatos/236450-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">

@@ -149,10 +149,10 @@ nav {
     padding: 6px 0;
   }
 
-  .contenedor-texto p {
+.contenedor-texto p {
     margin: 0;
     padding: 0;
-  }
+}
   
 .texto-animado {
     display: inline-block;
@@ -193,6 +193,7 @@ nav {
 
 /* TARJETA DE PRODUCTOS */
 .card {
+    position: relative;
     width: 239px;
     height: 480px;
 }
@@ -201,6 +202,14 @@ nav {
 .card-img-top {
     width: 237px;
     height: 275px;
+}
+
+.oferta {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
 }
 
 /* ESTILO CARRITO DE COMPRA TARJETA DE PRODUCTOS */
