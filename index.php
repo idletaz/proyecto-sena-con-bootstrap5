@@ -128,7 +128,7 @@ if (!isset($_SESSION['user_id'])) {
                               <li>Colores: <span>' . $row["color"] . '</span></li>
                               <li>Tallas: <span>' . $row["talla"] . '</span></li>
                             </ul>
-                            <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                            <a href="#" class="btn btn-primary"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
                           </div>
                         </div>
                         ';
@@ -154,7 +154,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <li>Colores: <span>' . $row["color"] . '</span></li>
                                 <li>Tallas: <span>' . $row["talla"] . '</span></li>
                               </ul>
-                              <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                              <a href="#" class="btn btn-primary"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
                             </div>
                           </div>
                           '; 
