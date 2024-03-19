@@ -7,12 +7,12 @@ if (!isset($_SESSION['user_id'])) {
     // Redirigir al usuario al formulario de inicio de sesión
     $botonSesion = "Iniciar sesión";
     $nombreUsuario = "Invitado";
-    $botonRutaSesion = "login.php";
-    $botonRutaPerfil = "login.php";
+    $botonRutaSesion = "./vistas/login.php";
+    $botonRutaPerfil = "./vistas/login.php";
 }else{
   $botonSesion = "Cerrar sesión";
   $nombreUsuario = $_SESSION['user_nombre'];
-  $botonRutaPerfil = "perfil.php";
+  $botonRutaPerfil = "./vistas/perfil.php";
   $botonRutaSesion = "../controlador/controlador_cerrarsesion.php";
 }
 
@@ -23,9 +23,9 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recuperar contraseña</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/recuperar-contraseña.css">
+    <link rel="stylesheet" href="css/recuperar-contraseña.css">
 
 </head>
 <body>
@@ -93,31 +93,24 @@ if (!isset($_SESSION['user_id'])) {
                   <form action="#" method="post" style="width: 60%;">
                       <div class="row title mb-3">
                         <div class="col-12">
-                          <h1 class="display-6 mt-lg-3 mt-sm-2 text-center">Cambiar contraseña</h1>
-                          <!-- Apertura php -->
+                          <h1 class="display-6 mt-lg-3 mt-sm-2 text-center">Digite su email</h1>
                           <?php
-                          require "../modelo/conexion.php";
-                          require "../controlador/Controlador_reset_pass.php";
-                          
-                          
-                          ?>
+                                include("../modelo/conexion.php");
+                                include("../controlador/Procesar_resetpass.php");
+                                
+                             ?>
                         </div>
                        </div>
                       <div class="row">
                          <div class="col-12">
                            <div class="form-floating mb-3">
-                             <input type="password" class="form-control" placeholder="Correo electrónico" name="password" id="contraseña" required>
-                             <label for="contraseña">Nueva contraseña</label>
+                             <input type="email" class="form-control" placeholder="Correo electrónico" name="email" id="email" required>
+                             <label for="email">Correo electrónico</label>
                            </div>
-                          <div class="form-floating mb-3">
-                             <input type="password" class="form-control" placeholder="Contraseña" name="re-password" id="re-pass" required>
-                            <label for="re-pass">Repetir contraseña</label>
-                          </div>
-                        </div>
-                      </div>
+                         
                       <div class="row">
                         <div class="col-12 mt-3 d-flex justify-content-center">
-                          <button name="reset_pass" id="reset_pass" type="submit" class="btn btn-primary btn-lg">Actualizar</button>
+                          <button name="reset" id="reset" type="submit" class="btn btn-primary btn-lg">Enviar</button>
                         </div>
                       </div>
                     </form>

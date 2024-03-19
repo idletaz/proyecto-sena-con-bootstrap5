@@ -69,7 +69,7 @@
                       </div>
                       <div class="row">
                         <div class="col-12 d-flex flex-column">
-                           <p>¿Olvidó su contraseña? <a href="./recuperar_contraseña.php" class="ancla">Recuperar</a></p>
+                           <p>¿Olvidó su contraseña? <a href="rec_contra.php" class="ancla">Recuperar</a></p>
                            <p>Cree una cuenta <a href="registro.php" class="ancla">aquí</a></p>
                         </div>
                       </div>
