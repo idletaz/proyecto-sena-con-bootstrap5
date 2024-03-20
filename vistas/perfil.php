@@ -21,6 +21,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
   
     $row = $result->fetch_assoc();
+    $id_usuario=$row['id'];
     $nombre_usuario = $row['nombre'];
     $apellido_usuario=$row['apellido'];
     $email_usuario=$row['email'];
@@ -98,7 +99,13 @@ $conexion->close();
         </header>
         <main>
             <section>
-                <div class="container py-5">             
+                <div class="container py-5"> 
+                    <!-- Apertura php -->
+            <?php
+                        include "../modelo/conexion.php";
+                        include "../controlador/controlador_mod_perfil.php";
+                        
+                        ?>            
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="card mb-4">
@@ -108,7 +115,7 @@ $conexion->close();
                                     <h5 class="my-3"><?php echo $nombre_usuario?></h5>
                                     <p class="text-muted mb-4"><?php echo $ciudad_usuario?>, Colombia</p>
                                     <div class="d-flex justify-content-center mb-2">
-                                        <button type="button" class="btn btn-primary">Editar</button>
+                                     <button class="btn btn-primary" data-toggle="modal" data-target="#modalEditar">Editar</button>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +152,7 @@ $conexion->close();
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0">Celular</p>
+                                            <p class="mb-0">Telefono</p>
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0"><?php echo $telefono_usuario?></p>
@@ -183,6 +190,139 @@ $conexion->close();
                         </div>
                     </div>
             </section>
+            
+
+            
+            <!-- Modal de Edición -->
+            <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarLabel">Editar Usuario</h5>
+                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre_usuario ?>">
+                        <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $apellido_usuario ?> ">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email_usuario ?>" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono_usuario ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="barrio">Barrio:</label>
+                        <input type="text" class="form-control" id="barrio" name="barrio" value="<?php echo $barrio_usuario ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">direccion:</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $direccion_usuario ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="genero">Género:</label>
+                        <select class="form-control" id="genero" name="genero">
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad:</label>
+                        <select class="form-control" id="ciudad" name="ciudad">
+                        
+                           
+                        </select>
+                    </div>
+                    <br>
+                    <!-- Agrega los demás campos aquí -->
+                    <button name="mod_perfil" id="mod_perfil" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Script Obtener Ciudad -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var ciudadSelect = document.getElementById("ciudad");
+
+    // Variable para almacenar la ciudad actual
+    var ciudadActual = <?php echo json_encode($ciudad_usuario); ?>;
+    console.log(ciudadActual);
+
+    // Función para cargar las ciudades desde el servidor
+    function cargarCiudades() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "../controlador/obtener_ciudad.php", true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var ciudades = JSON.parse(xhr.responseText);
+
+                // Limpiar el menú desplegable de ciudades
+                ciudadSelect.innerHTML = '';
+
+                // Agregar las ciudades al menú desplegable
+                ciudades.forEach(function(ciudad) {
+                    var option = document.createElement("option");
+                    option.value = ciudad.id;
+                    option.textContent = ciudad.nombre;
+                    if (ciudad.nombre == ciudadActual) {
+                        option.selected = true; // Establecer la ciudad actual como seleccionada
+                    }
+                    ciudadSelect.appendChild(option);
+                });
+            }
+        };
+        xhr.send();
+    }
+
+    // Llamar a la función para cargar las ciudades cuando la página se carga
+    cargarCiudades();
+});
+</script>
+<!-- /Ciudad -->
+
+<!-- Script obtener genero -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var generoDropdown = document.getElementById('genero');
+
+    // Variable para almacenar el género actual
+    var generoActual = <?php echo json_encode($genero_usuario); ?>;
+
+    // Hacer una solicitud al servidor para obtener los géneros desde la base de datos
+    fetch('../controlador/obtener_genero.php')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(genero => {
+                var option = document.createElement('option');
+                option.value = genero.id;
+                option.textContent = genero.nombre;
+                if (genero.nombre == generoActual) {
+                        option.selected = true; // Establecer la ciudad actual como seleccionada
+                    }
+                    generoDropdown.appendChild(option);
+            });
+
+            
+        });
+});
+</script>
+<!-- /Genero -->
+
+            
+
         </main>
         <footer class="mt-5">
             <div class="container-lg pt-5">
@@ -223,7 +363,39 @@ $conexion->close();
                 </div>
             </div>            
         </footer>
-
+            <!-- jQuery -->
+        <script src="../admin/plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="../admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../admin/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../admin/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../admin/plugins/moment/moment.min.js"></script>
+<script src="../admin/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../admin/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../admin/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../admin/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../admin/dist/js/pages/dashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>     
     </body>
 </html>
