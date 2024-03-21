@@ -132,11 +132,11 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="card-body">
                             <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
                             <ul>
-                              <li>Precio: <span>' . $row["precio_producto"] . '</span></li>
+                              <li>Precio: $<span>' . $row["precio_producto"] . '</span></li>
                               <li>Colores: <span>' . $row["color"] . '</span></li>
                               <li>Tallas: <span>' . $row["talla"] . '</span></li>
                             </ul>
-                            <a href="#" class="btn btn-primary"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
+                            <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
                           </div>
                         </div>
                         ';
@@ -161,11 +161,11 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="card-body">
                               <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
                               <ul>
-                                <li>Precio: <span>' . $row["precio_producto"] . '</span></li>
+                                <li>Precio: $<span>' . $row["precio_producto"] . '</span></li>
                                 <li>Colores: <span>' . $row["color"] . '</span></li>
                                 <li>Tallas: <span>' . $row["talla"] . '</span></li>
                               </ul>
-                              <a href="#" class="btn btn-primary"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
+                              <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
                             </div>
                           </div>
                           '; 
@@ -175,12 +175,12 @@ if (!isset($_SESSION['user_id'])) {
                   </div>               
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselNuevaColeccion" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="background-color: rgb(117, 115, 115); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-prev carousel-prev-icon" type="button" data-bs-target="#carouselNuevaColeccion" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselNuevaColeccion" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="background-color: rgb(139, 136, 136); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-next carousel-next-icon" type="button" data-bs-target="#carouselNuevaColeccion" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
@@ -195,76 +195,81 @@ if (!isset($_SESSION['user_id'])) {
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                            
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                     </div>
@@ -273,81 +278,86 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
-                      <div class="card">
+                    <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
-                      </div>                      
+                      </div>                    
                     </div>
                   </div>               
                 </div>
@@ -357,88 +367,93 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-oferta-container">
                           <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                                   
+                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
                         <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                     </div>                    
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertas" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="background-color: rgb(117, 115, 115); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-prev carousel-prev-icon" type="button" data-bs-target="#carouselOfertas" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertas" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="background-color: rgb(139, 136, 136); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-next carousel-next-icon" type="button" data-bs-target="#carouselOfertas" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
@@ -457,66 +472,71 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/zapatos/250290-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                     </div>
@@ -525,6 +545,21 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
+                    <div class="card">
+                        <div class="icon-card-best-seller-container">
+                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
+                        </div>                          
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <ul>
+                            <li>Precio: $<span>100.000</span></li>
+                            <li>Colores: <span>Rosado</span></li>
+                            <li>Tallas: <span>L, M, XL</span></li>
+                          </ul>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                        </div>
+                      </div> 
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
@@ -533,66 +568,56 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                        </div>
+                      </div> 
+                      <div class="card">
+                        <div class="icon-card-best-seller-container">
+                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
+                        </div>                          
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <ul>
+                            <li>Precio: $<span>100.000</span></li>
+                            <li>Colores: <span>Rosado</span></li>
+                            <li>Tallas: <span>L, M, XL</span></li>
+                          </ul>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-best-seller-container">
-                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
-                        </div>                          
-                        <img src="vistas/img/ropas/zapatos/250290-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-best-seller-container">
-                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                     </div>
@@ -601,6 +626,21 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
+                    <div class="card">
+                        <div class="icon-card-best-seller-container">
+                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
+                        </div>                          
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <ul>
+                            <li>Precio: $<span>100.000</span></li>
+                            <li>Colores: <span>Rosado</span></li>
+                            <li>Tallas: <span>L, M, XL</span></li>
+                          </ul>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                        </div>
+                      </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
@@ -609,78 +649,68 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <div class="card">
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/zapatos/250290-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Camisa formal para mujer</h5>
                           <ul>
+                            <li>Precio: $<span>100.000</span></li>
                             <li>Colores: <span>Rosado</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-best-seller-container">
-                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                     </div>                    
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselMasVendidos" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="background-color: rgb(117, 115, 115); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-prev carousel-prev-icon" type="button" data-bs-target="#carouselMasVendidos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselMasVendidos" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="background-color: rgb(139, 136, 136); border-radius: 50%;" aria-hidden="true"></span>
+              <button class="carousel-control-next carousel-next-icon" type="button" data-bs-target="#carouselMasVendidos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
