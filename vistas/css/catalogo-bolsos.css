@@ -1,8 +1,15 @@
+/* Estilos de letras */
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
 /* ESTILOS GENERALES */
 a {
     text-decoration: none;
     color: black;
     font-size: 1.6rem;
+}
+
+li {
+    list-style: none;
 }
 
 /* BODY */
@@ -12,13 +19,73 @@ body {
 
 
 /* HEADER */
-nav {
+header {
     background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+    width: 100%;
+    height: 10vh;
 }
 
-/* TAMAÑO DEL TEXTO DEL LOGO */
-.navbar-brand {
+nav {
+    background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+    border-radius: 180px;
+    opacity: 94%;
+    height: 10vh;
+}
+
+.nav-item {
+    list-style: none;
+}
+
+/* LOGO */
+.container-logo {
+    font-family: 'Roboto';
+    color: #e5e5e5;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-logo a p {
+    color: black;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 2rem;
+}
+
+.container-logo .first, .second, .third {
+    color: black;
+    font-size: 1.8rem;
+}
+
+.animation-logo {
+    height:50px;
+    overflow:hidden;
+    margin: auto 0;
+}
+
+.animation-logo > div > div {
+    height:2.81rem;
+    margin-bottom: 3rem;
+    display:inline-block;
+}
+
+.animation-logo div:first-child {
+    animation: text-animation 8s infinite;
+}
+
+@keyframes text-animation {
+    0% {margin-top: 0;}
+    10% {margin-top: 0;}
+    20% {margin-top: -5.62rem;}
+    30% {margin-top: -5.62rem;}
+    40% {margin-top: -11.24rem;}
+    60% {margin-top: -11.24rem;}
+    70% {margin-top: -5.62rem;}
+    80% {margin-top: -5.62rem;}
+    90% {margin-top: 0;}
+    100% {margin-top: 0;}
 }
 
 /* TAMAÑO DEL TEXTO DEL LOGO 'Store' */
@@ -31,16 +98,30 @@ nav {
     font-size: 1.5rem;
 }
 
+.cajon-inicio-de-sesion {
+    background-color: rgba(104, 85, 148, 0.2);
+    border-radius: 10px;
+    margin-left: 28px;
+}
+
+.cajon-inicio-de-sesion:hover {
+    transform: scale(1.1);
+}
+
+.cajon-inicio-de-sesion_ul {
+    padding: 2px;
+}
+
 /* ICONO DEL NAVBAR 'PERFIL' */
 .img-perfil {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("/vistas/img/iconos/user.png");
+    background-image: url("../img/iconos/user.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    vertical-align: text-bottom;
+    margin: auto 4px auto 10px ;
 }
 
 /* ICONO CARRITO DE COMPRA */
@@ -48,7 +129,7 @@ nav {
     display: inline-block;
     width: 35px;
     height: 35px;
-    background-image: url("/vistas/img/iconos/cart.png");
+    background-image: url("../img/iconos/cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -61,43 +142,101 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    background: rgb(255, 254, 254);
+    background: white;
     position: relative;
-    top: -12px;
-    right: 28px;
+    top: -14px;
+    right: 26px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(37, 37, 37);
+}
+
+.btn-sesion {
+    width: 124px;
+    height: 36px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 /* MAIN */
-main {
-    margin-top: 90px;
+
+.banner-movie-ropa {
+    height: 90vh;
+    width: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(13deg, rgba(2,0,36,1) 0%, rgba(243,129,255,1) 35%, rgba(0,212,255,1) 100%);
 }
 
-/* TARJETA DE PRODUCTOS */
+.banner-movie-ropa video {
+    width: 100%;
+    height: 90vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.title h2 {
+    text-align: center;
+    margin-top: 44px;
+    font-size: 3rem;
+    font-weight: 300;
+    font-family: 'Roboto';
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    place-content: center;
+    gap: 16px;
+}
+
+/* Tarjetas */
 .card {
-    width: 239px;
-    height: 480px;
+    position: relative;
+    width: 300px;
+    height: 520px;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-body ul {
+    padding: 0;
+    margin: 0 0 12px 0;
 }
 
 /* IMAGEN DE LAS TARJETAS */
 .card-img-top {
-    width: 237px;
-    height: 275px;
+    width: 100%;
+    height: 290px;
+}
+
+.btn-carrito {
+    height: 50px;
+    width: 220px;
+    font-size: 1.5rem;
+    position: absolute;
+    left: calc(50% - 110px);
+    bottom: 8px;
 }
 
 /* ESTILO CARRITO DE COMPRA TARJETA DE PRODUCTOS */
 .carrito-de-compra {
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-image: url("/vistas/img/iconos/cart4.svg");
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/iconos/add-to-cart.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     vertical-align: text-bottom;
 }
+
+
+
 
 /* FOOTER */
 .footer__p {
@@ -119,13 +258,15 @@ footer {
 }
 
 .facebook {
-    background-image: url("/vistas/img/iconos/facebook\ \(1\).png");
+    background-image: url("../img/iconos/icon-facebook.png");
 }
 
 .instagram {
-    background-image: url("/vistas/img/iconos/instagram\ \(1\).png");
+    background-image: url("../img/iconos/icon-instagram.png");
 }
 
 .tiktok {
-    background-image: url("/vistas/img/iconos/tik-tok.png");
+    background-image: url("../img/iconos/icon-tiktok.png");
 }
+
+    

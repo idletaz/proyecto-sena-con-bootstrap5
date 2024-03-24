@@ -51,10 +51,10 @@ if (!isset($_SESSION['user_id'])) {
                           </a>
                           <ul class="dropdown-menu">
                               <li>
-                                  <a class="dropdown-item" href="catalogo-bolsos.html">Bolsos</a>
+                                  <a class="dropdown-item" href="catalogo-bolsos.php">Bolsos</a>
                               </li>
                               <li>
-                                  <a class="dropdown-item" href="catalogo-zapatos.html">Zapatos</a>
+                                  <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
                               </li>
                             </ul>
                       </li>
@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_id'])) {
                             </a>
                           </li>
                           <li class="nav-item d-flex align-items-center">
-                              <a class="nav-link nav-text ms-3" href="perfil.php"><span class="carrito-de-compra-nav"></span></a>
+                              <a class="nav-link nav-text ms-3" href="carrito.php"><span class="carrito-de-compra-nav"></span></a>
                               <span class="carrito-compra-circulo">10</span>
                           </li>   
                           <li class="nav-item me-1 d-flex align-items-center">
@@ -93,7 +93,7 @@ if (!isset($_SESSION['user_id'])) {
             <video src="movies/movie-banner-1.mp4" autoplay muted loop></video>              
           </section>
           <section class="title">
-            <h2>Camisas de mujer</h2>
+            <h2>Camisas</h2>
           </section>
           <section class="ofertas">            
             <div class="cards-container">
