@@ -726,7 +726,8 @@ if (!isset($_SESSION['user_id'])) {
                     <div>
                         <p>Correo: inside@inside.com.co</p>
                         <p>Telefono: xxx xxx xxxx</p>
-                        <p>Escribenos</p>
+                        <p><a href="vistas/contacto.php" class="footer-link">Escribenos</a></p>
+                        <p><a href="vistas/equipo-de-desarrollo.php" class="footer-link">Conoce nuestro equipo de desarrollo</a></p>                       
                     </div>   
                 </div>
                 <div class="col-4">
@@ -745,7 +746,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>                           
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-2">
                 <h1 class="display-1 text-center mb-5">INSIDE |<span class="display-3">Store</span></h1>    
             </div>
         </div>            

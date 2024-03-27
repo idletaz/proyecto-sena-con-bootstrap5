@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+span {
+    font-size: 1.8rem;
+}
+
+.header {
+    display: flex;
+    margin: 0 54px;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    padding-bottom: 34px;
+}
+
+.link img {
+    width: 55px;
+    height: 50px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 34px;
+    width: 100%;
+    height: 20vh;
+    font-size: 5rem;
+    color: white;
+}
+
+.cards-container {
+    width: 100%;
+    height: 80vh;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    place-content: center;
+    gap: 24px;
+}
+
+.card {
+    width: 290px;
+    height: 500px;
+    position: relative;
+    background: rgb(2,0,36);
+    background: linear-gradient(43deg, rgba(2,0,36,1) 0%, rgba(43,246,234,1) 31%, rgba(0,212,255,1) 63%, rgba(0,98,117,1) 88%);
+    border-radius: 16px;
+    transform-style: preserve-3d;
+}
+
+.card-uno:hover {
+    transform: rotateY(180deg) translateX(-500px) translateY(-60px) scale(1.3);
+    transition: 1s;
+    z-index: 5;
+}
+
+.card-dos:hover {
+    transform: rotateY(180deg) translateX(-150px) translateY(-60px) scale(1.3);
+    transition: 1s;
+    z-index: 5;
+}
+
+.card-tres:hover {
+    transform: rotateY(180deg) translateX(150px) translateY(-60px) scale(1.3);
+    transition: 1s;
+    z-index: 5;
+}
+
+.card-cuatro:hover {
+    transform: rotateY(180deg) translateX(500px) translateY(-60px) scale(1.3);
+    transition: 1s;
+    z-index: 5;
+}
+
+.frontal {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.frontal img {
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+}
+
+.frontal h3 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.peq {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+}
+
+.frontal .title-backend {
+    margin-top: 0;
+}
+
+.frontal p {
+    font-size: 2.5rem;
+}
+
+.imagenes {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    place-content: center;
+    gap: 12px;
+    padding: 18px;
+}
+
+.imagenes img {
+    width: 46px;
+    height: 46px;
+}
+
+.reverso {
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 12px;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.title-reverso {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 24px;
+    padding: 8px 0 0 0;
+    border-top: 1px solid grey;
+}
+
+.title-reverso.enfoque {
+    display: flex;
+    flex-direction: column;
+}
+
+.rol {
+    text-align: end;
+}
+
+.title-reverso.carrera {
+    text-align: center;
+    font-weight: bold;
+}
+
+.title-reverso.correo {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-reverso.correo span{
+    margin-top: 4px;
+    text-align: center;
+}
+
+.Tecnologias {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    place-content: center;
+    gap: 12px;
+}
