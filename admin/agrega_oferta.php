@@ -82,7 +82,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="panel.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">PQRS</a>
@@ -93,9 +93,11 @@
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
+      <button class="btn btn-danger">
+      <a href="../controlador/controlador_cerrarsesion.php">
+        <i class="fas fa-power-off">Cerrar Sesión</i> 
+      </a>
+    </button>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
@@ -175,6 +177,12 @@
                 <a href="CrudProductos.php" class="nav-link">
                   <i class="fas fa-shopping-bag nav-icon"></i>
                   <p>Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+              <a href="ofertas_admin.php" class="nav-link">
+                  <i class="fas fa-tag nav-icon"></i>
+                  <p>Ofertas activas</p>
                 </a>
               </li>
               <li class="nav-item">
