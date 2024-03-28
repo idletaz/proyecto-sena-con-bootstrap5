@@ -47,7 +47,7 @@
                             </li>
                             <li class="nav-item d-flex align-items-center">
                                 <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
-                                <span class="carrito-compra-circulo">0</span>
+                                <span class="carrito-compra-circulo"  id="numeroArticulos">0</span>
                             </li>                        
                         </ul>
                     </div>
@@ -70,79 +70,8 @@
                                             <th scope="col" class="text-right d-none d-md-block" width="130">
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="contenedor-imagen-y-descripcion-del-producto">
-                                                <figure class="itemside align-items-start">
-                                                    <div class="aside"><img src="img/ropas/camisas/1330256-500-auto.webp" class="aside-img__imagen-del-producto"></div>
-                                                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                        <p class="text-muted small">Talla: L <br> Color: Blanco</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </td>
-                                            <td> 
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select> 
-                                            </td>
-                                            <td>
-                                                <div class="price-wrap"> <var class="price">$50.000</var> </div>
-                                            </td>
-                                            <td class="text-right d-none d-md-block">
-                                                <a href="" class="btn btn-light" data-abc="true">Remove</a> 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="contenedor-imagen-y-descripcion-del-producto">
-                                                <figure class="itemside align-items-start">
-                                                    <div class="aside"><img src="img/ropas/camisas/1330260-500-auto.webp" class="aside-img__imagen-del-producto"></div>
-                                                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                        <p class="text-muted small">Talla: L <br> Color: Blanco</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </td>
-                                            <td class="cantidad-de-productos"> 
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <div class="price-wrap"> <var class="price">$50.000</var> </div>
-                                            </td>
-                                            <td class="text-right d-none d-md-block">
-                                                <a href="" class="btn btn-light" data-abc="true">Remove</a> 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="contenedor-imagen-y-descripcion-del-producto">
-                                                <figure class="itemside align-items-start">
-                                                    <div class="aside"><img src="img/ropas/camisas/1330256-500-auto.webp" class="aside-img__imagen-del-producto"></div>
-                                                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                        <p class="text-muted small">Talla: L <br> Color: Blanco</p>
-                                                    </figcaption>
-                                                </figure>
-                                            </td>
-                                            <td> 
-                                                <select class="form-control">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                </select> 
-                                            </td>
-                                            <td>
-                                                <div class="price-wrap"> <var class="price">$50.000</var> </div>
-                                            </td>
-                                            <td class="text-right d-none d-md-block">
-                                                <a href="" class="btn btn-light" data-abc="true">Remove</a> 
-                                            </td>
-                                        </tr>
+                                    <tbody id="tblListadoProductos">
+																		</tbody>
                                 </table>
                             </div>
                         </div>
@@ -219,6 +148,7 @@
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>      
+        <script src="/vistas/js/carrito.js"></script>
 
     </body>
 </html>
