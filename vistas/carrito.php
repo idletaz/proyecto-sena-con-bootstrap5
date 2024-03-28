@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
                 <div class="container-lg">
                   <div>
-                    <a class="navbar-brand" href="../index.html">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                    <a class="navbar-brand" href="../index.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
                   </div>
                   <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,7 +148,7 @@
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>      
-        <script src="/vistas/js/carrito.js"></script>
+        <script src="js/carrito.js"></script>
 
     </body>
 </html>

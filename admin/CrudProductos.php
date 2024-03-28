@@ -31,7 +31,7 @@
 
   if ($consulta_busqueda != '') {
     $consulta_busqueda = strtolower($consulta_busqueda);
-    $sql .= " WHERE LOWER(nombre_producto) LIKE '%$consulta_busqueda%'";
+    $sql .= " WHERE LOWER(categoria) LIKE '%$consulta_busqueda%'";
   }
 
   // Agregar LIMIT y OFFSET para la paginación

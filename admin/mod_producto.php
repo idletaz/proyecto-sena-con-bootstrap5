@@ -262,35 +262,55 @@
             </div>
 
             <div class="form-group">
+              <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria" class="form-control" onchange="mostrarTallas()">
+                   <option value="Ropa"<?php if ($consulta[6] == 'Ropa') echo ' selected="selected"'; ?>>Ropa</option>
+                   <option value="Zapato"<?php if ($consulta[6] == 'Zapato') echo ' selected="selected"'; ?>>Zapato</option>
+                    <option value="Bolso"<?php if ($consulta[6] == 'Bolso') echo ' selected="selected"'; ?>>Bolso</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="tallaFormulario">
              <label for="talla">Talla:</label>
                 <select id="talla" name="talla" class="form-control">
-                    <option value="Sin_talla"<?php if ($consulta[4] == 'Sin_talla') echo ' selected="selected"'; ?>>Sin talla (Bolso)</option>
-                    <option value="XS"<?php if ($consulta[4] == 'XS') echo ' selected="selected"'; ?>>XS</option>
-                    <option value="S"<?php if ($consulta[4] == 'S') echo ' selected="selected"'; ?>>S</option>
-                    <option value="M"<?php if ($consulta[4] == 'M') echo ' selected="selected"'; ?>>M</option>
-                    <option value="L"<?php if ($consulta[4] == 'L') echo ' selected="selected"'; ?>>L</option>
-                    <option value="XL"<?php if ($consulta[4] == 'XL') echo ' selected="selected"'; ?>>XL</option>
+                <?php
+                  $tallas = array(
+                      "Selecciona", "XS", "S", "M", "L", "XL", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44"
+                  );
+
+                  foreach ($tallas as $talla) {
+                      echo '<option value="' . $talla . '"';
+                      if ($consulta[4] == $talla) {
+                          echo ' selected="selected"';
+                      }
+                      echo '>' . $talla . '</option>';
+                  }
+                  ?>
                 </select>
             </div>
 
             <div class="form-group">
              <label for="color">Color:</label>
                 <select id="color" name="color" class="form-control">
-                    <option value="Rojo"<?php if ($consulta[5] == 'Rojo') echo ' selected="selected"'; ?>>Rojo</option>
-                    <option value="Azul"<?php if ($consulta[5] == 'Azul') echo ' selected="selected"'; ?>>Azul</option>
-                    <option value="Verde"<?php if ($consulta[5] == 'Verde') echo ' selected="selected"'; ?>>Verde</option>
-                    <option value="Negro"<?php if ($consulta[5] == 'Negro') echo ' selected="selected"'; ?>>Negro</option>
-                    <option value="Blanco"<?php if ($consulta[5] == 'Blanco') echo ' selected="selected"'; ?>>Blanco</option>
+                <?php
+                  $colores = array(
+                      "Rojo", "Azul", "Verde", "Negro", "Blanco", "Gris", "Amarillo", "Rosado", "Morado", "Naranja",
+                      "Café", "Beige", "Celeste", "Turquesa", "Marrón", "Crema", "Lila", "Violeta", "Coral", "Plateado",
+                      "Dorado", "Bronce", "Púrpura", "Índigo", "Ocre", "Verde oliva", "Cian", "Carmesí", "Granate", 
+                      "Turmalina", "Rubí", "Esmeralda", "Topacio", "Zafiro", "Amatista", "Perla", "Ámbar"
+                  );
+
+                  foreach ($colores as $color) {
+                      echo '<option value="' . $color . '"';
+                      if ($consulta[5] == $color) {
+                          echo ' selected="selected"';
+                      }
+                      echo '>' . $color . '</option>';
+                  }
+                  ?>
                </select>
             </div>
-            <div class="form-group">
-              <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" class="form-control">
-                   <option value="Blusa"<?php if ($consulta[6] == 'Blusa') echo ' selected="selected"'; ?>>Blusa</option>
-                   <option value="Jean"<?php if ($consulta[6] == 'Jean') echo ' selected="selected"'; ?>>Jean</option>
-                    <option value="Bolso"<?php if ($consulta[6] == 'Bolso') echo ' selected="selected"'; ?>>Bolso</option>
-                </select>
-            </div>
+            
 
             <div class="form-group">
                 <label for="imagen">Imagen:</label>
@@ -319,6 +339,50 @@
         return confirm("¿Estás seguro de que deseas guardar los cambios?");
     }
     </script>
+    <script>
+    function mostrarTallas() {
+        var categoriaSeleccionada = document.getElementById("categoria").value;
+        var tallaFormulario = document.getElementById("tallaFormulario");
+
+        // Borra las opciones actuales
+        tallaFormulario.innerHTML = '';
+
+        // Añade las nuevas opciones según la categoría seleccionada
+        if (categoriaSeleccionada === 'Zapato') {
+            // Agrega las opciones de tallas de zapatos
+            var selectTalla = document.createElement("select");
+            selectTalla.id = "talla";
+            selectTalla.name = "talla";
+            selectTalla.className = "form-control";
+            selectTalla.innerHTML += '<option value="">Selecciona</option>';
+            selectTalla.innerHTML += '<option value="36">36</option>';
+            selectTalla.innerHTML += '<option value="37">37</option>';
+            selectTalla.innerHTML += '<option value="38">38</option>';
+            selectTalla.innerHTML += '<option value="39">39</option>';
+            selectTalla.innerHTML += '<option value="40">40</option>';
+            tallaFormulario.appendChild(selectTalla);
+        } else if (categoriaSeleccionada === 'Bolso') {
+            // No se necesita mostrar la opción de talla para bolsos, así que puedes dejar el contenedor vacío
+        } else {
+            // Opciones de tallas para otras categorías
+            var selectTalla = document.createElement("select");
+            selectTalla.id = "talla";
+            selectTalla.name = "talla";
+            selectTalla.className = "form-control";
+            selectTalla.innerHTML += '<option value="">Selecciona</option>';
+            selectTalla.innerHTML += '<option value="XS">XS</option>';
+            selectTalla.innerHTML += '<option value="S">S</option>';
+            selectTalla.innerHTML += '<option value="M">M</option>';
+            selectTalla.innerHTML += '<option value="L">L</option>';
+            selectTalla.innerHTML += '<option value="XL">XL</option>';
+            tallaFormulario.appendChild(selectTalla);
+        }
+    }
+
+    // Llamar a la función al cargar la página para establecer el estado inicial
+    //mostrarTallas();
+</script>
+
    
 
      

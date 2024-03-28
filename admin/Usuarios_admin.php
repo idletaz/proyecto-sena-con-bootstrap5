@@ -20,22 +20,27 @@
   require_once 'Paginar_user.php';
 
   // Configuración
-  $users_por_pagina = 5;
+  $users_por_pagina = 10;
   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
   $offset = ($pagina - 1) * $users_por_pagina;
 
- 
+  $consulta_busqueda = isset($_GET['q']) ? $_GET['q'] : '';
+$campo = isset($_GET['campo']) ? $_GET['campo'] : 'cedula';
 
- 
-  $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
+$sql = "SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
         FROM tusuarios
         INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
-        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
+        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero
+        WHERE tusuarios.id_rol = 1";
 
+if ($consulta_busqueda != '') {
+    $consulta_busqueda = mysqli_real_escape_string($conn, $consulta_busqueda);
+    $sql .= " AND $campo LIKE '%$consulta_busqueda%'";
+}
 
-  // Agregar LIMIT y OFFSET para la paginación
-  $sql .= " LIMIT $offset, $users_por_pagina";
-  $resultado = mysqli_query($conn, $sql);
+$sql .= " ORDER BY tusuarios.id DESC LIMIT $offset, $users_por_pagina";
+
+$resultado = mysqli_query($conn, $sql);
 
 
     // Obtener el total de registros

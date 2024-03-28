@@ -154,27 +154,29 @@ if (!isset($_SESSION['user_id'])) {
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <?php
-                      $query = "SELECT nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5, 5";
+                      $query = "SELECT id_producto,nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5, 5";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){
-                        echo '
-                          <div class="card">
-                          <div class="card-icon-container"> 
-                          <img src="./vistas/img/iconos/new.png" class="card-icon-top" alt="...">
+                        echo "
+                        <div class='card'>
+                          <div class='card-icon-container'>
+                          <img src='./vistas/img/iconos/new.png' class='card-icon-top' alt='...'>
                           </div>
-                            <img src="./admin/' . $row["ruta_img"] . '" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <h5 class="card-title">' . $row["nombre_producto"] . '</h5>
-                              <ul>
-                                <li>Precio: $<span>' . $row["precio_producto"] . '</span></li>
-                                <li>Colores: <span>' . $row["color"] . '</span></li>
-                                <li>Tallas: <span>' . $row["talla"] . '</span></li>
-                              </ul>
-                              <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0"> Comprar <span class="carrito-de-compra"></span></p></a>
-                            </div>
+                          <img src='./admin/{$row["ruta_img"]}' class='card-img-top'>
+                          <div class='card-body'>
+                            <h5 class='card-title'>{$row["nombre_producto"]}</h5>
+                            <ul>
+                              <li>Precio: $<span> {$row["precio_producto"]}</span></li>
+                              <li>Colores: <span>{$row["color"]}</span></li>
+                              <li>Tallas: <span>{$row["talla"]}</span></li>
+                            </ul>
+                            <a class='btn btn-primary btn-carrito' onclick='addCarrito(". json_encode($row) .")'>
+                              <p class='m-0 p-0'> Comprar <span class='carrito-de-compra'></span></p>
+                            </a>
                           </div>
-                          '; 
-                        }                      
+                        </div>
+                        ";
+                      }
                       ?>
                     </div>
                   </div>               
@@ -758,6 +760,6 @@ if (!isset($_SESSION['user_id'])) {
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-      <script src="/vistas/js/carrito.js"></script>
+      <script src="vistas/js/carrito.js"></script>
     </body>
 </html>

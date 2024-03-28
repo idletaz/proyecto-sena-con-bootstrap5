@@ -97,198 +97,31 @@ if (!isset($_SESSION['user_id'])) {
           </section>
           <section class="ofertas">            
             <div class="cards-container">
+                <!-- Apertura php -->
+            <?php
+                      $query = "SELECT id_producto, nombre_producto, precio_producto,
+                        color, talla, descripcion, ruta_img, categoria
+                        FROM tprodu WHERE categoria='Zapato' ";
+                      $result=$conexion->query($query);
+                      while($row = $result->fetch_assoc()){                                          
+                      ?>              
               <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
-              <div class="card">                         
-                <img src="img/ropas/zapatos/250290-500-auto.webp" class=" card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Zapato</h5>
-                  <ul>
-                    <li>Precio: $<span>100.000</span></li>
-                    <li>Colores: <span>Rosado</span></li>
-                    <li>Tallas: <span>N/A</span></li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                </div>
-              </div>
+               <img src="../admin/<?php echo $row['ruta_img']; ?>" class="card-img-top" alt="...">
+               <div class="card-body">
+                <h5 class="card-title"><?php echo $row['nombre_producto']; ?></h5>
+                <ul>
+                <li>Precio: $<span><?php echo number_format($row['precio_producto'], 2, ',', '.'); ?></span></li>
+                 <li>Color: <span><?php echo $row['color']; ?></span></li>
+                 <li>Talla: <span><?php echo $row['talla']; ?></span></li>
+               </ul>
+                   <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+               </div>
+            </div>
+            <!-- Fin de PHP -->
+            <?php }
+            
+            ?>
+                         <!--Container fin-->            
             </div>            
           </section>
         </div>            
@@ -328,5 +161,6 @@ if (!isset($_SESSION['user_id'])) {
         </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>           
+    <script src="js/carrito.js"></script>
   </body>
 </html>

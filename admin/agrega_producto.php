@@ -219,38 +219,67 @@
             </div>
 
             <div class="form-group">
-                <label for="talla">Talla:</label>
-                <select id="talla" name="talla" class="form-control" required>
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria" class="form-control" required onchange="mostrarOpciones()">
                     <option >Selecciona</option>
-                    <option value="Sin_talla">Sin talla(Bolso)</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option value="Zapato">Zapato</option>
+                    <option value="Ropa">Ropa</option>                    
+                    <option value="Bolso">Bolso</option>                    
+                </select>
+            </div>
+
+            <div id="opcionesTalla" class="form-group">
+                <label for="talla">Talla:</label>
+                <select id="talla" name="talla" class="form-control">
+                    <option >Selecciona</option>                    
+                    
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="color">Color:</label>
-                <select id="color" name="color" class="form-control" required>
-                    <option >Selecciona</option>
-                    <option value="Rojo">Rojo</option>
-                    <option value="Azul">Azul</option>
-                    <option value="Verde">Verde</option>
-                    <option value="Negro">Negro</option>
-                    <option value="Blanco">Blanco</option>
+                <select id="color" name="color" class="form-control" required>                    
+                    <option value="">Selecciona</option>
+                      <option value="Rojo">Rojo</option>
+                      <option value="Azul">Azul</option>
+                      <option value="Verde">Verde</option>
+                      <option value="Negro">Negro</option>
+                      <option value="Blanco">Blanco</option>
+                      <option value="Gris">Gris</option>
+                      <option value="Amarillo">Amarillo</option>
+                      <option value="Rosado">Rosado</option>
+                      <option value="Morado">Morado</option>
+                      <option value="Naranja">Naranja</option>
+                      <option value="Café">Café</option>
+                      <option value="Beige">Beige</option>
+                      <option value="Celeste">Celeste</option>
+                      <option value="Turquesa">Turquesa</option>
+                      <option value="Marrón">Marrón</option>
+                      <option value="Crema">Crema</option>
+                      <option value="Lila">Lila</option>
+                      <option value="Violeta">Violeta</option>
+                      <option value="Coral">Coral</option>
+                      <option value="Plateado">Plateado</option>
+                      <option value="Dorado">Dorado</option>
+                      <option value="Bronce">Bronce</option>
+                      <option value="Púrpura">Púrpura</option>
+                      <option value="Índigo">Índigo</option>
+                      <option value="Ocre">Ocre</option>
+                      <option value="Verde oliva">Verde oliva</option>
+                      <option value="Cian">Cian</option>
+                      <option value="Carmesí">Carmesí</option>
+                      <option value="Granate">Granate</option>
+                      <option value="Turmalina">Turmalina</option>
+                      <option value="Rubí">Rubí</option>
+                      <option value="Esmeralda">Esmeralda</option>
+                      <option value="Topacio">Topacio</option>
+                      <option value="Zafiro">Zafiro</option>
+                      <option value="Amatista">Amatista</option>
+                      <option value="Perla">Perla</option>
+                      <option value="Ámbar">Ámbar</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" class="form-control" required>
-                    <option >Selecciona</option>
-                    <option value="Accesorio">Accesorio</option>
-                    <option value="Ropa">Ropa</option>                    
-                    <option value="Bolso">Bolso</option>                    
-                </select>
-            </div>
+           
 
             <div class="form-group">
                 <label for="imagen">Imagen:</label>
@@ -273,6 +302,43 @@
             <button type="submit" name="aggprod" id="aggprod" class="btn btn-primary" >Agregar Producto</button>
         </form>
     </div>
+    <!-- Script de opciones -->
+   
+          <script>
+              function mostrarOpciones() {
+                  var categoria = document.getElementById("categoria").value;
+                  var opcionesTalla = document.getElementById("talla");
+
+                  // Limpiar las opciones de talla antes de agregar nuevas
+                  opcionesTalla.innerHTML = '<option value="">Selecciona</option>';
+
+                  
+                  if (categoria === "Bolso") {
+                    opcionesTalla.style.display = "none";
+                  } else if (categoria === "Zapato") {
+
+                    opcionesTalla.style.display = "block";
+
+                      opcionesTalla.innerHTML += '<option value="35">35</option>';
+                      opcionesTalla.innerHTML += '<option value="36">36</option>';
+                      opcionesTalla.innerHTML += '<option value="37">37</option>';
+                      opcionesTalla.innerHTML += '<option value="38">38</option>';
+                      opcionesTalla.innerHTML += '<option value="39">39</option>';
+                      opcionesTalla.innerHTML += '<option value="40">40</option>';
+                    
+                  } else {
+
+                    opcionesTalla.style.display = "block";                      
+                      
+                      opcionesTalla.innerHTML += '<option value="XS">XS</option>';
+                      opcionesTalla.innerHTML += '<option value="S">S</option>';
+                      opcionesTalla.innerHTML += '<option value="M">M</option>';
+                      opcionesTalla.innerHTML += '<option value="L">L</option>';
+                      opcionesTalla.innerHTML += '<option value="XL">XL</option>';
+                      
+                  }
+              }
+          </script>
    
 
      
