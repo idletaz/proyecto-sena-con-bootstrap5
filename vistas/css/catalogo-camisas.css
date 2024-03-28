@@ -239,12 +239,21 @@ nav {
 
 
 /* FOOTER */
+footer {
+    background: linear-gradient(164deg, rgba(255,255,255,1) 5%, rgba(34,87,94,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%) !important;
+}
+
 .footer__p {
     font-size: 1.6rem;
 }
 
-footer {
-    background: linear-gradient(164deg, rgba(255,255,255,1) 5%, rgba(34,87,94,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%) !important;
+.footer-link {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.footer-link:hover {
+    color: white;
 }
 
 .footer__img-redes {
@@ -261,12 +270,24 @@ footer {
     background-image: url("../img/iconos/icon-facebook.png");
 }
 
+.facebook:hover {
+    transform: scale(1.2);
+}
+
 .instagram {
     background-image: url("../img/iconos/icon-instagram.png");
 }
 
+.instagram:hover {
+    transform: scale(1.2);
+}
+
 .tiktok {
     background-image: url("../img/iconos/icon-tiktok.png");
+}
+
+.tiktok:hover {
+    transform: scale(1.2);
 }
 
     
