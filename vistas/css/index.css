@@ -58,6 +58,10 @@ nav {
     font-size: 1.8rem;
 }
 
+.first {
+    padding-top: 4px;
+}
+
 .animation-logo {
     height:50px;
     overflow:hidden;
@@ -66,7 +70,7 @@ nav {
 
 .animation-logo > div > div {
     height:2.81rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.8rem;
     display:inline-block;
 }
 

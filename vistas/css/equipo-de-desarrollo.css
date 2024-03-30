@@ -68,28 +68,40 @@ span {
     transform-style: preserve-3d;
 }
 
+.card-uno {
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
+    z-index: 5;
+}
+
 .card-uno:hover {
     transform: rotateY(180deg) translateX(-500px) translateY(-60px) scale(1.3);
-    transition: 1s;
-    z-index: 5;
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
+    transition-delay: 0.2s;
 }
 
 .card-dos:hover {
     transform: rotateY(180deg) translateX(-150px) translateY(-60px) scale(1.3);
-    transition: 1s;
-    z-index: 5;
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
+    transition-delay: 0.2s;
+    z-index: 4;
 }
 
 .card-tres:hover {
     transform: rotateY(180deg) translateX(150px) translateY(-60px) scale(1.3);
-    transition: 1s;
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
+    transition-delay: 0.2s;
+    z-index: 4;
+}
+
+.card-cuatro {
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
     z-index: 5;
 }
 
 .card-cuatro:hover {
     transform: rotateY(180deg) translateX(500px) translateY(-60px) scale(1.3);
-    transition: 1s;
-    z-index: 5;
+    transition: transform 1.5s cubic-bezier(.73,.17,.08,.94);
+    transition-delay: 0.2s;
 }
 
 .frontal {
