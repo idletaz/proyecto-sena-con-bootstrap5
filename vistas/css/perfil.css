@@ -116,6 +116,10 @@ nav {
     padding: 2px;
 }
 
+.nombre-usuario {
+    color: black;
+}
+
 /* ICONO DEL NAVBAR 'PERFIL' */
 .img-perfil {
     display: inline-block;
@@ -173,7 +177,7 @@ nav {
     grid-template-columns: 1fr;
     place-content: center;
     width: 100%;
-    height: 85vh;
+    height: 90vh;
 }
 
 /* FOOTER */
