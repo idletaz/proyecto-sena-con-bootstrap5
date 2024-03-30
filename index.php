@@ -123,7 +123,7 @@ if (!isset($_SESSION['user_id'])) {
                       <?php
                       $query = "SELECT id_producto, nombre_producto, precio_producto,
                         color, talla, descripcion, ruta_img
-                        FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5";
+                        FROM tprodu WHERE oferta=0 ORDER BY Ingreso_producto DESC LIMIT 5";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){
                         echo "
@@ -154,7 +154,7 @@ if (!isset($_SESSION['user_id'])) {
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <?php
-                      $query = "SELECT id_producto,nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5, 5";
+                      $query = "SELECT id_producto,nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu WHERE oferta=0 ORDER BY Ingreso_producto DESC LIMIT 5, 5";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){
                         echo "
@@ -199,86 +199,30 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="carousel-item active">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
                     <div class="d-flex justify-content-center contenedor-tarjetas">
+                      <!-- Apertura php -->
+                      <?php 
+                       $query = "SELECT * FROM tprodu INNER JOIN tofertas ON tprodu.id_producto=tofertas.id_producto WHERE tprodu.oferta=1 LIMIT 5";
+                       $result=$conexion->query($query);
+                       while($row = $result->fetch_assoc()){                                            
+                      ?>
                       <div class="card">
                         <div class="icon-card-oferta-container">
-                          <p class="icon-card-oferta-container__descuento">50%</p> 
+                          <p class="icon-card-oferta-container__descuento"><?php echo $row['descuento']*100; echo "%" ?></p> 
                           <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
                         </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="admin/<?php echo $row['ruta_img'] ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title"><?php echo $row['nombre_producto'] ?></h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span><?php echo number_format($row['precio_descuento'] ,2, '.' , ',') ?></span></li>
+                            <li>Color: <span><?php echo $row['color'] ?></span></li>
+                            <li>Talla: <span><?php echo $row['talla'] ?></span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
-                      <div class="card">
-                        <div class="icon-card-oferta-container">
-                          <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-oferta-container">
-                          <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-oferta-container">
-                          <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-oferta-container">
-                          <p class="icon-card-oferta-container__descuento">50%</p> 
-                          <img src="./vistas/img/iconos/oferta-fuego.png" class="icon-card-oferta-container__icon-descuento" alt="">                                    
-                        </div>                          
-                        <img src="vistas/img/ropas/bolsos/252389-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
+                      <?php }
+                      ?>                      
                     </div>
                   </div>
                 </div>                    

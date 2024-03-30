@@ -90,17 +90,21 @@
                             <div class="card-body">
                                 <dl class="dlist-align">
                                     <dt>Subtotal</dt>
-                                    <dd class="text-right text-izq">$ 700.000</dd>
+                                    <dd class="text-right text-izq" id="subTotalProductos">$ 700.000</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Descuento</dt>
                                     <dd class="text-right text-danger text-izq">-$ 50.000</dd>
                                 </dl>
                                 <dl class="dlist-align">
-                                    <dt>Total</dt>
-                                    <dd class="text-right text-dark b text-izq"><strong>$ 650.000</strong></dd>
+                                    <dt>Total con IVA</dt>
+                                    <strong class="text-right text-green b text-izq">
+                                    <span id="totalPrecioProductos">0</span>
+                                    </strong>
+
                                 </dl>
-                                <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Finzalizar la compra</a>
+                                <hr> <a href="../index.php" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a>
+                                 <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Finzalizar la compra</a>
                             </div>
                         </div>
                     </aside>

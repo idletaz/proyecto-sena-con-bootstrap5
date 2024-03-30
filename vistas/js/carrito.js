@@ -1,6 +1,8 @@
 document.body.onload = () => {
   objCarrito.getNumItemProductos();
   objCarrito.getItemListPorductos();
+  objCarrito.contPrecioProducto();
+  objCarrito.contSubtotal();
 }
 
 function addCarrito(data) {
@@ -30,6 +32,7 @@ let objCarrito = {
     console.log(newDataStorage);
 
     this.setLocalStorage('listCarrito', newDataStorage)
+    location.reload();
   },
 
   deleteItemObject(dataStorage,id_producto){
@@ -70,7 +73,7 @@ let objCarrito = {
             <td class="contenedor-imagen-y-descripcion-del-producto">
                 <figure class="itemside align-items-start">
                     <div class="aside"><img src="../admin/${articulo.ruta_img}" class="aside-img__imagen-del-producto"></div>
-                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">${articulo.descripcion}</a>
+                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">${articulo.nombre_producto}</a>
                         <p class="text-muted small">Talla: ${articulo.talla} <br> Color:  ${articulo.color}</p>
                     </figcaption>
                 </figure>
@@ -96,5 +99,31 @@ let objCarrito = {
       tblListadoProductos.innerHTML = trItems;
     }
   },
+
+  contPrecioProducto() {
+    let dataStorage = this.getLocalStorage('listCarrito');
+    let Total = document.querySelector('#totalPrecioProductos');  
+    let totalPrecio = 0;     
+      for (const articulo in dataStorage) {
+        if (dataStorage.hasOwnProperty(articulo)) {
+          totalPrecio += parseFloat(dataStorage[articulo].precio_producto)*1.19;
+        }
+      }      
+      Total.innerHTML =`$ ${totalPrecio.toFixed(2)}`;
+
+  },
+  contSubtotal(){
+    let dataStorage = this.getLocalStorage('listCarrito');
+    let subTotal = document.querySelector('#subTotalProductos');  
+    let totalPrecio = 0;     
+      for (const articulo in dataStorage) {
+        if (dataStorage.hasOwnProperty(articulo)) {
+          totalPrecio += parseFloat(dataStorage[articulo].precio_producto);
+        }
+      }      
+      subTotal.innerHTML =`$ ${totalPrecio.toFixed(2)}`;
+
+  }
+  
 
 }
