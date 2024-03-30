@@ -32,7 +32,7 @@ if (!isset($_SESSION['user_id'])) {
             <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
                 <div class="container-lg">
                 <div>
-                    <a class="navbar-brand" href="#">INSIDE |<span class="navbar-brand__span">Store</span></a>
+                    <a class="navbar-brand" href="../index.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
                 </div>
                 <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,18 +46,18 @@ if (!isset($_SESSION['user_id'])) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-camisas.html">Camisas</a>
+                                        <a class="dropdown-item" href="catalogo-camisas.php">Camisas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-bolsos.html">Bolsos</a>
+                                        <a class="dropdown-item" href="catalogo-bolsos.php">Bolsos</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-zapatos.html">Zapatos</a>
+                                        <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link nav-text ms-2" href="vistas/contacto.php">Contacto</a>
+                            <a class="nav-link nav-text ms-2" href="contacto.php">Contacto</a>
                             </li>                        
                             <li class="nav-item cajon-inicio-de-sesion">
                             <ul class="d-flex align-items-cente cajon-inicio-de-sesion_ul">

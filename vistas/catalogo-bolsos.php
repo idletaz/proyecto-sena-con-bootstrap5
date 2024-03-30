@@ -75,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
                           </li>
                           <li class="nav-item d-flex align-items-center">
                               <a class="nav-link nav-text ms-3" href="carrito.php"><span class="carrito-de-compra-nav"></span></a>
-                              <span class="carrito-compra-circulo">10</span>
+                              <span class="carrito-compra-circulo" id="numeroArticulos">0</span>
                           </li>   
                           <li class="nav-item me-1 d-flex align-items-center">
                             <a href="<?php echo $botonRutaSesion; ?>" class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
@@ -114,7 +114,7 @@ if (!isset($_SESSION['user_id'])) {
                 <li>Precio: $<span><?php echo number_format($row['precio_producto'], 2, ',', '.'); ?></span></li>
                  <li>Color: <span><?php echo $row['color']; ?></span></li>                 
                </ul>
-                   <a href="#" class="btn btn-primary btn-carrito"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                   <a class="btn btn-primary btn-carrito" onclick="addCarrito('<?php json_encode($row)?>')"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                </div>
             </div>
             <!-- Fin de PHP -->

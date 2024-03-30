@@ -218,7 +218,7 @@ if (!isset($_SESSION['user_id'])) {
                             <li>Color: <span><?php echo $row['color'] ?></span></li>
                             <li>Talla: <span><?php echo $row['talla'] ?></span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a href="#" class="btn btn-primary btn-carrito" onclick="addCarrito(<?php json_encode($row)?>)"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <?php }
