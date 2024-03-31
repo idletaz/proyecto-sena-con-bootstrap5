@@ -102,7 +102,7 @@ if (!isset($_SESSION['user_id'])) {
             <?php
                       $query = "SELECT id_producto, nombre_producto, precio_producto,
                         color, talla, descripcion, ruta_img, categoria
-                        FROM tprodu WHERE categoria='Ropa' ";
+                        FROM tprodu WHERE categoria='Ropa'";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){                                          
                       ?>              

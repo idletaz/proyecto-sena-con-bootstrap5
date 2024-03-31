@@ -139,7 +139,21 @@ if (!isset($_SESSION['user_id'])) {
 
                                 </dl>
                                 <hr> <a href="../index.php" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a>
-                                 <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Finzalizar la compra</a>
+                                 <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" id="finalizarCompraBtn" data-abc="true">Finzalizar la compra</a>
+                                 <!-- Formulario de pago -->
+                                 <div id="formularioPago" style="display: none;">
+                                 <form id="formularioPago">
+                                    <label for="nombreTarjeta">Nombre en la tarjeta:</label>
+                                    <input type="text" id="nombreTarjeta" name="nombreTarjeta" required><br><br>
+                                    <label for="numeroTarjeta">Número de tarjeta:</label>
+                                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
+                                    
+                                    <button type="submit">Pagar</button>
+                                </form>
+
+                                
+                                
+                                </div>
                             </div>
                         </div>
                     </aside>
@@ -179,6 +193,16 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>            
         </footer>
+        <!-- Script -->
+        <!-- Script formulario de compra -->
+                                <script>                           
+                            const finalizarCompraBtn = document.getElementById('finalizarCompraBtn');                          
+                            const formularioPago = document.getElementById('formularioPago');                          
+                            finalizarCompraBtn.addEventListener('click', function(event) {                                
+                                event.preventDefault();                                
+                                formularioPago.style.display = 'block';
+                            });
+                                </script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>      
         <script src="js/carrito.js"></script>
