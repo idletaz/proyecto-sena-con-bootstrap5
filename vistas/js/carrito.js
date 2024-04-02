@@ -110,6 +110,8 @@ let objCarrito = {
     }
   },
   pagarPedido() {
+// alert("se metio en funcion");
+
     let nombreTarjeta = document.querySelector("#nombreTarjeta").value
     let numeroTarjeta = document.querySelector("#numeroTarjeta").value
     let detalleFactura = []

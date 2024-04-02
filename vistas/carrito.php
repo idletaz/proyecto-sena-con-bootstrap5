@@ -149,6 +149,7 @@ if (!isset($_SESSION['user_id'])) {
                                     
                                     <a class="btn btn-success" onclick="pagarPedido()">Pagar</a>
                                 </form>
+                                
 
                                 
                                 
