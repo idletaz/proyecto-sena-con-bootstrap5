@@ -93,20 +93,26 @@ if (!isset($_SESSION['user_id'])) {
         </header>
         <main>
             <section class="contenedor-principal">
-                <form>
-                    <span class="display-6 mb-3">
+                <form method="POST">
+                    <span class="display-6 mb-2">
                         Contactenos
+                        <!-- Apertura php -->
+                        <?php
+                        require "../modelo/conexion.php";
+                        require "../controlador/controlador_contacto.php";
+                        
+                        ?>
                     </span>            
-                    <div class="form-floating mt-3 w-100">
-                        <input type="text" class="form-control" id="floatingEmail" placeholder="Nombre" required>
+                    <div class="form-floating mt-2 w-100">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="mombre" required>
                         <label for="floatingEmail">Nombre</label>
                     </div>            
                     <div class="form-floating mt-3 w-100">
-                        <input type="email" class="form-control" id="floatingEmail" placeholder="Correo electrónico" required>
+                        <input type="email" class="form-control" placeholder="Correo electrónico" name="email" id="email" required>
                         <label for="floatingEmail">Correo electrónico</label>
                     </div>
                     <div class="mt-3">
-                        <select class="form-select h-100" aria-label="Default select example">
+                        <select class="form-select h-100" aria-label="Default select example" name="asunto" id="asunto">
                             <option selected>Selecciona</option>
                             <option value="peticiones">Peticiones</option>
                             <option value="quejas">Quejas</option>
@@ -115,11 +121,11 @@ if (!isset($_SESSION['user_id'])) {
                         </select>
                     </div>        
                     <div class="wrap-input100 validate-input mt-3 text-area" data-validate="Please enter your message">
-                        <textarea class="input100" name="message" placeholder="Comentario..." required></textarea>
+                        <textarea class="input100" placeholder="Comentario..." name="mensaje" id="mensaje" required></textarea>
                         <span class="focus-input100"></span>
                     </div>            
                     <div class="container-contact100-form-btn mt-3">
-                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                        <button type="submit" name="contacto" id="contacto" class="btn btn-primary btn-lg">Enviar</button>
                     </div>
                 </form>
             </section>

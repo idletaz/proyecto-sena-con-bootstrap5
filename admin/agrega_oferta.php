@@ -85,7 +85,7 @@
         <a href="panel.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">PQRS</a>
+        <a href="pqrs_admin.php" class="nav-link">PQRS</a>
       </li>
     </ul>
 
@@ -251,15 +251,7 @@
             <div class="form-group">
                 <label for="descuento">Porcentaje de descuento:</label>
                 <input type="number" id="descuento" name="descuento" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="inicio">Fecha de inicio: </label>
-                <input type="date" id="f_inicio" name="f_inicio" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="fin">Fecha de fin: </label>
-                <input type="date" id="f_fin" name="f_fin" class="form-control" required>
-            </div>
+            </div>            
 
             
 

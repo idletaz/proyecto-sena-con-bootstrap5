@@ -8,12 +8,10 @@ if (isset($_POST["aggoferta"])) {
     $id_producto= $_POST['id_producto'];
     $nombre_producto = $_POST['nombre'];
     $precio_producto = $_POST['precio'];
-    $descuento = $_POST['descuento'] / 100;    
-    $fecha_inicio = $_POST['f_inicio'];
-    $Fecha_fin= $_POST['f_fin'];
+    $descuento = $_POST['descuento'] / 100;        
     $precio_descuento = $precio_producto - ($precio_producto * $descuento);
 
-    $sql_verificar_oferta = "SELECT id_oferta FROM tofertas WHERE id_producto = '$id_producto' AND fin_oferta >= CURDATE()";
+    $sql_verificar_oferta = "SELECT id_producto,oferta FROM tprodu WHERE oferta = 1 and id_producto='$id_producto'";
     $resultado_verificar_oferta = $conn->query($sql_verificar_oferta);
 
 if ($resultado_verificar_oferta->num_rows > 0) {
@@ -26,8 +24,7 @@ if ($resultado_verificar_oferta->num_rows > 0) {
     echo '</div>';
 } else {
     // Si no se encuentra una oferta activa, proceder con la inserción de la nueva oferta
-    $sql = "INSERT INTO tofertas (id_producto, inicio_oferta, fin_oferta, descuento, precio_descuento) 
-            VALUES ('$id_producto', '$fecha_inicio', '$Fecha_fin', '$descuento', $precio_descuento)";
+    $sql = "UPDATE tprodu set descuento='$descuento'";
     if ($conn->query($sql) === TRUE) {
     // Actualizar estado de oferta en la tabla de productos
     $update_sql = "UPDATE tprodu SET oferta = TRUE WHERE id_producto = '$id_producto'";

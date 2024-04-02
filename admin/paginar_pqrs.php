@@ -1,19 +1,19 @@
 <?php
-function obtener_productos_paginados($conn, $ofertas_por_pagina, $pagina) {
-    $offset = ($pagina - 1) * $ofertas_por_pagina;
-    $consulta = $conn->prepare("SELECT * FROM tprodu where oferta=1 LIMIT ?, ?");
-    $consulta->bind_param('ii', $offset, $ofertas_por_pagina);
+function obtener_users_paginados($conn, $pqrs_por_pagina, $pagina) {
+    $offset = ($pagina - 1) * $pqrs_por_pagina;
+    $consulta = $conn->prepare("SELECT * FROM tpqrs LIMIT ?, ?");
+    $consulta->bind_param('ii', $offset, $pqrs_por_pagina);
     $consulta->execute();
     return $consulta->get_result();
 }
 
-function obtener_total_productos($conn) {
-    $resultado = $conn->query("SELECT COUNT(*) as total FROM tprodu where oferta=1");
+function obtener_total_user($conn) {
+    $resultado = $conn->query("SELECT COUNT(*) as total FROM tpqrs");
     return $resultado->fetch_assoc()['total'];
 }
 
-function generar_enlaces_paginacion($total_registros, $ofertas_por_pagina, $pagina_actual) {
-    $total_paginas = ceil($total_registros / $ofertas_por_pagina);
+function generar_enlaces_paginacion($total_registros, $pqrs_por_pagina, $pagina_actual) {
+    $total_paginas = ceil($total_registros / $pqrs_por_pagina);
     $enlaces = '';
 
     // Botón para la página anterior

@@ -17,7 +17,7 @@
    <?php
   include_once "db_proyecto.php";
   $conn=mysqli_connect($host,$user,$password,$db);
-  require_once 'Paginar_user.php';
+  require_once 'paginacion_ofertas.php';
 
   // Configuración
   $ofertas_por_pagina = 5;
@@ -27,9 +27,7 @@
  
 
  
-  $sql = "SELECT tofertas.*, tprodu.*
-  FROM tofertas
-  INNER JOIN tprodu ON tofertas.id_producto = tprodu.id_producto";
+  $sql = "SELECT * from tprodu where oferta=1";
 
 
   // Agregar LIMIT y OFFSET para la paginación
@@ -38,7 +36,7 @@
 
 
     // Obtener el total de registros
-    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_oferta FROM tofertas"));
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_producto FROM tprodu"));
     // Calcular el total de páginas
     $total_paginas = ceil($total_registros / $ofertas_por_pagina);
     // Generar enlaces de paginación
@@ -98,7 +96,7 @@
         <a href="panel.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">PQRS</a>
+        <a href="pqrs_admin.php" class="nav-link">PQRS</a>
       </li>
     </ul>
 
@@ -271,8 +269,8 @@
                 <th>ID_producto</th>
                 <th>Nombre producto</th>
                 <th>Precio</th>
-                <th>Inicio oferta</th>
-                <th>Fin de la oferta</th>
+                <th>Talla</th>
+                <th>Color</th>
                 <th>Precio con descuento</th>
                 <th>Acciones</th>
             </tr>
@@ -281,17 +279,18 @@
           <!-- Trae los datos de los productos al crud -->
           <?php
           while($datos=mysqli_fetch_assoc($resultado)){
+            $preciocondescuento=$datos["precio_producto"]-($datos["precio_producto"]*$datos["descuento"]);
            echo "<tr>";
            echo "<td>"; echo $datos["id_producto"];"</td>";
            echo "<td>"; echo $datos["nombre_producto"]; "</td>";          
            echo "<td>"; echo $datos["precio_producto"];"</td>";
-           echo "<td>"; echo $datos["Inicio_oferta"];"</td>";
-           echo "<td>"; echo $datos["fin_oferta"];"</td>";
-           echo "<td>"; echo $datos["precio_descuento"];"</td>";
+           echo "<td>"; echo $datos["talla"];"</td>";
+           echo "<td>"; echo $datos["descuento"]*100;"</td>";
+           echo "<td>"; echo $preciocondescuento;"</td>";
            echo "<td>"; 
               //Botones de acciones
            echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminaroferta(' . $datos['id_oferta'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminaroferta(' . $datos['id_producto'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
@@ -310,9 +309,9 @@
             echo '<img src="' . $datos["ruta_img"] . '" alt="Imagen del producto" class="img-fluid" style="max-height: 200px;">';
             echo '              <p><strong>Nombre producto:</strong> ' . $datos['nombre_producto'] . '</p>';
             echo '              <p><strong>Precio: $ </strong> ' . $datos['precio_producto'] . '</p>';
-            echo '              <p><strong>Inicio de oferta:</strong> ' . $datos['Inicio_oferta'] . '</p>';
-            echo '              <p><strong>Fin de oferta:</strong> ' . $datos['fin_oferta'] . '</p>';
-            echo '              <p><strong>Precio con descuento:</strong> ' . $datos['precio_descuento'] . '</p>';
+            echo '              <p><strong>Talla:</strong> ' . $datos['talla'] . '</p>';
+            echo '              <p><strong>color:</strong> ' . $datos['color'] . '</p>';
+            echo '              <p><strong>Precio con descuento:</strong> ' . $preciocondescuento . '</p>';
             echo '              <p><strong>Cantidad: </strong> ' . $datos['cantidad'] . '</p>';
             echo '              <p><strong> Descuento del :</strong> ' . $datos['descuento'] *100 . '%</p>';
             echo '              <p><strong>En oferta: </strong> ' . ($datos['oferta'] ? 'Sí' : 'No') . '</p>';            

@@ -105,8 +105,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <th scope="col" class="text-right d-none d-md-block" width="130">
                                         </tr>
                                     </thead>
-                                    <tbody id="tblListadoProductos">
-																		</tbody>
+                                    <tbody id="tblListadoProductos"> </tbody>
                                 </table>
                             </div>
                         </div>
@@ -148,8 +147,9 @@ if (!isset($_SESSION['user_id'])) {
                                     <label for="numeroTarjeta">Número de tarjeta:</label>
                                     <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
                                     
-                                    <button type="submit">Pagar</button>
+                                    <a class="btn btn-success" onclick="pagarPedido()">Pagar</a>
                                 </form>
+                                
 
                                 
                                 

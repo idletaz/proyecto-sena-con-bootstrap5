@@ -17,38 +17,34 @@
    <?php
   include_once "db_proyecto.php";
   $conn=mysqli_connect($host,$user,$password,$db);
-  require_once 'Paginar_user.php';
+  require_once 'paginar_pqrs.php';
 
   // Configuración
-  $users_por_pagina = 10;
+  $pqrs_por_pagina = 10;
   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
-  $offset = ($pagina - 1) * $users_por_pagina;
+  $offset = ($pagina - 1) * $pqrs_por_pagina;
 
   $consulta_busqueda = isset($_GET['q']) ? $_GET['q'] : '';
-$campo = isset($_GET['campo']) ? $_GET['campo'] : 'cedula';
+$campo = isset($_GET['campo']) ? $_GET['campo'] : 'asunto';
 
-$sql = "SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
-        FROM tusuarios
-        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
-        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero
-        WHERE tusuarios.id_rol = 1";
+$sql = "SELECT * from tpqrs";
 
 if ($consulta_busqueda != '') {
-    $consulta_busqueda = mysqli_real_escape_string($conn, $consulta_busqueda);
-    $sql .= " AND $campo LIKE '%$consulta_busqueda%'";
-}
+    $consulta_busqueda = strtolower($consulta_busqueda);
+    $sql .= " WHERE LOWER(asunto) LIKE '%$consulta_busqueda%'";
+  }
 
-$sql .= " ORDER BY tusuarios.id DESC LIMIT $offset, $users_por_pagina";
-
-$resultado = mysqli_query($conn, $sql);
+  // Agregar LIMIT y OFFSET para la paginación
+  $sql .= " LIMIT $offset, $pqrs_por_pagina";
+  $resultado = mysqli_query($conn, $sql);
 
 
     // Obtener el total de registros
-    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM tusuarios"));
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_pqrs FROM tpqrs"));
     // Calcular el total de páginas
-    $total_paginas = ceil($total_registros / $users_por_pagina);
+    $total_paginas = ceil($total_registros / $pqrs_por_pagina);
     // Generar enlaces de paginación
-    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $users_por_pagina, $pagina);
+    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $pqrs_por_pagina, $pagina);
 
 
 
@@ -225,12 +221,12 @@ $resultado = mysqli_query($conn, $sql);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Usuarios</h1>
+            <h1 class="m-0">PQRS</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Usuarios</a></li>
-              <li class="breadcrumb-item active">Panel de Usuarios</li>
+              <li class="breadcrumb-item"><a href="#">PQRS</a></li>
+              <li class="breadcrumb-item active">Panel de PQRS</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -246,7 +242,7 @@ $resultado = mysqli_query($conn, $sql);
      <div class="container">
         <div class="text-center">
           <form class="form-inline mb-3">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar cedula" aria-label="Buscar" name="q">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar por asunto" aria-label="Buscar" name="q">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
       </form>
         </div>
@@ -262,27 +258,24 @@ $resultado = mysqli_query($conn, $sql);
 
     <!-- Tabla de productos -->
     <div class="container">
-    <h2 class="bg-ligth text-black p-2">Lista de Productos</h2>
+    <h2 class="bg-ligth text-black p-2">Lista de PQRS</h2>
     <table class="table table-ligth table-striped">
 <!-- Apertura de php -->
         <?php
         require "db_proyecto.php";
         $conn=mysqli_connect($host,$user,$password,$db);
-        $sql="SELECT tusuarios.*, tciudades.nombre_ciudad, tgeneros.nombre_genero
-        FROM tusuarios
-        INNER JOIN tciudades ON tusuarios.id_ciudad = tciudades.id_ciudad
-        INNER JOIN tgeneros ON tusuarios.id_gen = tgeneros.id_genero where tusuarios.id_rol=1 ORDER BY tusuarios.id DESC";
+        $sql="SELECT * from tpqrs";
         $result=mysqli_query($conn,$sql);              
 
         ?>
 
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre y apellido</th>
+                <th>ID pqrs</th>
+                <th>Nombre</th>
                 <th>Email</th>
-                <th>Cedula</th>
-                <th>Telefono</th>
+                <th>Asunto</th>
+                <th>Detalle</th>
                 <th>Fecha de registro</th>
                 <th>Acciones</th>
             </tr>
@@ -292,39 +285,35 @@ $resultado = mysqli_query($conn, $sql);
           <?php
           while($datos=mysqli_fetch_assoc($resultado)){
            echo "<tr>";
-           echo "<td>"; echo $datos["id"];"</td>";
-           echo "<td>"; echo $datos["nombre"]; echo " "; echo $datos['apellido'];"</td>";          
+           echo "<td>"; echo $datos["id_pqrs"];"</td>";
+           echo "<td>"; echo $datos["nombre"];"</td>";          
            echo "<td>"; echo $datos["email"];"</td>";
-           echo "<td>"; echo $datos["cedula"];"</td>";
-           echo "<td>"; echo $datos["Telefono"];"</td>";
-           echo "<td>"; echo $datos["Fecha_registro"];"</td>";
+           echo "<td>"; echo $datos["asunto"];"</td>";
+           echo "<td>"; echo $datos["detalle"];"</td>";
+           echo "<td>"; echo $datos["fecha_registro"];"</td>";
            echo "<td>"; 
               //Botones de acciones
-           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminarusuario(' . $datos['id'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_pqrs'] . '"><i class="fas fa-book"></i> Ver más</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminarpqrs(' . $datos['id_pqrs'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
 
-            echo '<div class="modal fade" id="modalProducto_' . $datos['id'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id'] . '" aria-hidden="true">';
+            echo '<div class="modal fade" id="modalProducto_' . $datos['id_pqrs'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id_pqrs'] . '" aria-hidden="true">';
             echo '  <div class="modal-dialog modal-lg" role="document">';
             echo '      <div class="modal-content">';
             echo '          <div class="modal-header bg-primary text-white">';
-            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id'] . '">Detalles del Producto</h5>';
+            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id_pqrs'] . '">Detalles del Producto</h5>';
             echo '              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">';
             echo '                  <span aria-hidden="true">&times;</span>';
             echo '              </button>';
             echo '          </div>';
             echo '          <div class="modal-body">';
-            echo '              <h5 class="text-primary">' . $datos['nombre'] .' '. $datos['apellido']. '</h5>';           
+            echo '              <h5 class="text-primary">' . $datos['asunto'] .'</h5>';           
             echo '              <p><strong>Email:</strong> ' . $datos['email'] . '</p>';
-            echo '              <p><strong>Cedula: </strong> ' . $datos['cedula'] . '</p>';
-            echo '              <p><strong>Telefono:</strong> ' . $datos['Telefono'] . '</p>';
-            echo '              <p><strong>Direccion:</strong> ' . $datos['direccion'] . '</p>';
-            echo '              <p><strong>Barrio:</strong> ' . $datos['nombre_barrio'] . '</p>';
-            echo '              <p><strong>Ciudad: </strong> ' . $datos['nombre_ciudad'] . '</p>';
-            echo '              <p><strong>Genero:</strong> ' . $datos['nombre_genero'] . '</p>';
-            echo '              <p><strong>Fecha de registro: </strong> ' . $datos['Fecha_registro'] . '</p>';            
+            echo '              <p><strong>Asunto: </strong> ' . $datos['nombre'] . '</p>';
+            echo '              <p><strong>Detalles:</strong> ' . $datos['detalle'] . '</p>';
+            echo '              <p><strong>Fecha de registro:</strong> ' . $datos['fecha_registro'] . '</p>';                       
             echo '          </div>';
             echo '          <div class="modal-footer">';
             echo '              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
@@ -380,11 +369,11 @@ $resultado = mysqli_query($conn, $sql);
 
 <!-- Script para Eliminar -->
 <script>
-    function eliminarusuario(id) {
+    function eliminarpqrs(id) {
         // Mostrar un mensaje de confirmación con SweetAlert2
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Esta acción eliminará el usuario de forma permanente.',
+            text: 'Esta acción eliminará la PQRS de forma permanente.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -395,11 +384,11 @@ $resultado = mysqli_query($conn, $sql);
             // Si el usuario confirma la eliminación
             if (result.isConfirmed) {
                 // Envía una solicitud POST al servidor para eliminar el producto
-                $.post("procesar_eliminaruser.php", {id: id}, function(data, status) {
+                $.post("procesar_eliminarpqrs.php", {id: id}, function(data, status) {
                     // Maneja la respuesta del servidor
                     if (status === "success") {
                         // Muestra un mensaje de éxito con SweetAlert2
-                        Swal.fire('Eliminado', 'El usuario ha sido eliminado exitosamente.', 'success').then((result) => {
+                        Swal.fire('Eliminado', 'La PQRS ha sido eliminado exitosamente.', 'success').then((result) => {
                             // Recarga la página después de cerrar el mensaje
                             if (result.isConfirmed || result.isDismissed) {
                                 window.location.reload();

@@ -201,9 +201,10 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <!-- Apertura php -->
                       <?php 
-                       $query = "SELECT * FROM tprodu INNER JOIN tofertas ON tprodu.id_producto=tofertas.id_producto WHERE tprodu.oferta=1 LIMIT 5";
+                       $query = "SELECT * FROM tprodu WHERE oferta=1 LIMIT 5";
                        $result=$conexion->query($query);
-                       while($row = $result->fetch_assoc()){                                            
+                       while($row = $result->fetch_assoc()){   
+                        $preciocondescuento=$row["precio_producto"]-($row["precio_producto"]*$row["descuento"]);                                         
                       ?>
                       <div class="card">
                         <div class="icon-card-oferta-container">
@@ -214,11 +215,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="card-body">
                           <h5 class="card-title"><?php echo $row['nombre_producto'] ?></h5>
                           <ul>
-                            <li>Precio: $<span><?php echo number_format($row['precio_descuento'] ,2, '.' , ',') ?></span></li>
+                            <li>Precio anterior: $<del><span style="color:red"><?php echo number_format($row['precio_producto'] ,2, '.' , ',') ?></span></del></li>
+                            <li>Precio con descuento: $<span style="color:green"><?php echo number_format($preciocondescuento ,2, '.' , ',') ?></span></li>
                             <li>Color: <span><?php echo $row['color'] ?></span></li>
                             <li>Talla: <span><?php echo $row['talla'] ?></span></li>
                           </ul>
-                          <a href="#" class="btn btn-primary btn-carrito" onclick="addCarrito(<?php json_encode($row)?>)"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a class="btn btn-primary btn-carrito" onclick="addCarrito('<?php json_encode($row)?>')"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
                       </div>
                       <?php }

@@ -10,8 +10,13 @@ if (isset($_POST['contacto'])) {
         echo '<div class="alert alert-danger" role="alert"> Porfavor Proporcionar un Email valido. </div>';
         exit;
     }else{
-        echo'<div class="alert alert-success" role="alert"> Se ha enviado el asunto correctamente! </div>';
-        contactoexitoso($nombre,$email,$asunto,$mensaje);
+        $sql="INSERT INTO `tpqrs` (`id_pqrs`, `email`, `nombre`, `asunto`, `detalle`) VALUES (NULL, '$email', '$nombre', '$asunto', '$mensaje');";
+        if ($conexion->query($sql) === TRUE) {
+            echo '<div class="alert alert-success" role="alert"> Se ha enviado el asunto correctamente! </div>';
+        }else {
+            echo "Error al ejecutar la consulta: " . $conexion->error;
+        }
+        
     }?>
     
     <script>history.replaceState(null,null,location.pathname)</script>
