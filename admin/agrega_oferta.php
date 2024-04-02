@@ -251,15 +251,7 @@
             <div class="form-group">
                 <label for="descuento">Porcentaje de descuento:</label>
                 <input type="number" id="descuento" name="descuento" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="inicio">Fecha de inicio: </label>
-                <input type="date" id="f_inicio" name="f_inicio" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="fin">Fecha de fin: </label>
-                <input type="date" id="f_fin" name="f_fin" class="form-control" required>
-            </div>
+            </div>            
 
             
 

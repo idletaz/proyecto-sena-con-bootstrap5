@@ -1,14 +1,14 @@
 <?php
 function obtener_productos_paginados($conn, $ofertas_por_pagina, $pagina) {
     $offset = ($pagina - 1) * $ofertas_por_pagina;
-    $consulta = $conn->prepare("SELECT * FROM tofertas LIMIT ?, ?");
+    $consulta = $conn->prepare("SELECT * FROM tprodu where oferta=1 LIMIT ?, ?");
     $consulta->bind_param('ii', $offset, $ofertas_por_pagina);
     $consulta->execute();
     return $consulta->get_result();
 }
 
 function obtener_total_productos($conn) {
-    $resultado = $conn->query("SELECT COUNT(*) as total FROM tofertas");
+    $resultado = $conn->query("SELECT COUNT(*) as total FROM tprodu where oferta=1");
     return $resultado->fetch_assoc()['total'];
 }
 
