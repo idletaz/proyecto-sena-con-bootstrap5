@@ -86,7 +86,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </nav>
         </header>
-        <main class="container">
+        <main>
             <div class="container contenedor-formulario">
                 <form class="row" action="#" method="POST">
                     <div class="col-lg-4 p-0 d-lg-block d-none formulario">
@@ -167,7 +167,7 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="col-12 mt-3">
                                 <div class="mt-2 py-sm-3">
                                     <button name="registrar" id="registrar" type="submit" class="btn btn-primary btn-lg">Hecho</button>
-                                    <a href="catalogo-camisas.html"><button type="button" class="btn btn-primary btn-lg ms-3">Pagina inicial</button></a>
+                                    <a href="../index.php"><button type="button" class="btn btn-primary btn-lg ms-3">Pagina inicial</button></a>
                                 </div>                            
                             </div>                        
                         </div>
