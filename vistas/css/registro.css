@@ -100,13 +100,18 @@ nav {
 }
 
 /* MAIN */
-.container {
-    margin-top: 120px;
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100vh;
 }
 
 /* CONTENEDOR FORMULARIO */
             
 .contenedor-formulario {
+    margin-top: 24px;
     background: linear-gradient(164deg, rgba(255,255,255,1) 5%, rgba(34,87,94,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
     border-radius: 1rem;
     border: 2px solid white;
