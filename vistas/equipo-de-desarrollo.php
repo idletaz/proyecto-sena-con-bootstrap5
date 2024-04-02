@@ -14,7 +14,7 @@
         <div class="cards-container">
             <div class="card card-uno">
                 <div class="frontal">
-                <img src="img/imgs-equipo-de-desarrollo/IMG_5725.jpg" alt="">
+                <img src="img/imgs-equipo-de-desarrollo/kevin.jpg" alt="">
                     <h3 class="peq">Front end</h3>
                     <div class="imagenes">
                         <img src="img/imgs-equipo-de-desarrollo/java.png" alt="">
@@ -87,7 +87,7 @@
             </div>            
             <div class="card card-tres">
                 <div class="frontal">
-                <img src="img/imgs-equipo-de-desarrollo/IMG_5725.jpg" alt="">
+                <img src="img/imgs-equipo-de-desarrollo/moises.jpg" alt="">
                     <h3 class="peq">Project manager</h3>
                     <div class="imagenes">
                         <img src="img/imgs-equipo-de-desarrollo/java.png" alt="">
@@ -103,9 +103,9 @@
                 </div>
                 <div class="reverso">
                     <p class="title-reverso carrera">Tecnologo en Analisis y Desarrollo de Software</p>
-                    <p class="title-reverso">Nombre: <span>Kevin Salazar M.</span></p>
-                    <p class="title-reverso">Desarrollador: <span>Front end</span></p>
-                    <p class="title-reverso">Edad: <span>33 años</span></p>                                        
+                    <p class="title-reverso">Nombre: <span>Moises Martinez</span></p>
+                    <p class="title-reverso">Desarrollador: <span>Bases de datos</span></p>
+                    <p class="title-reverso">Edad: <span>24 años</span></p>                                        
                     <p class="title-reverso">Tecnologias:</p>
                     <p class="Tecnologias">
                         <span>Java</span> 
@@ -118,7 +118,7 @@
                         <span>GitHub</span>
                         <span>PHP</span>
                     <p>
-                    <p class="title-reverso correo">Correo: <span>kevinsalazarmo@gmail.com</span></p>
+                    <p class="title-reverso correo">Correo: <span>mmartinez1310@hotmail.com</span></p>
                 </div>
             </div>
             <div class="card card-cuatro">

@@ -23,69 +23,70 @@ if (!isset($_SESSION['user_id'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Inside - Bolsos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" href="./css/registro.css">
+        <link rel="stylesheet" href="css/registro.css">
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-lg">
-                <div>
-                    <a class="navbar-brand" href="../index.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
-                </div>
-                <div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav d-flex align-items-center">                                                 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Productos
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-camisas.html">Camisas</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-bolsos.html">Bolsos</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-zapatos.html">Zapatos</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link nav-text ms-2" href="vistas/contacto.php">Contacto</a>
-                            </li>                        
-                            <li class="nav-item cajon-inicio-de-sesion">
-                            <ul class="d-flex align-items-cente cajon-inicio-de-sesion_ul">
-                                <li class="nav-item d-flex align-items-center">
-                                <a href=<?php echo $botonRutaPerfil; ?>>
-                                    <p class="d-flex mb-0">
-                                    <span class="img-perfil"></span>
-                                    <span class="d-flex flex-column ms-1 p-1">
-                                        <span><?php echo $nombreUsuario; ?></span>
-                                    </span>
-                                    </p>
-                                </a>
-                                </li>
-                                <li class="nav-item d-flex align-items-center">
-                                    <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
-                                    <span class="carrito-compra-circulo">0</span>
-                                </li>   
-                                <li class="nav-item me-1 d-flex align-items-center">
-                                <a href="<?php echo $botonRutaSesion; ?>" class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
-                                </li>
+      <header>
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+          <div class="container-lg">
+            <div class="container-logo">
+              <a href="../index.php"><p>INSIDE |</p></a>
+              <section class="animation-logo">
+                <div class="first"><div>Store</div></div>
+                <div class="second"><div>Ropa</div></div>
+                <div class="third"><div>Accesorios</div></div>
+              </section>              
+            </div>
+            <div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav d-flex align-items-center">                                                 
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Productos
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <a class="dropdown-item" href="catalogo-camisas.php">Camisas</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
+                              </li>
                             </ul>
-                            </li>                                            
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link nav-text ms-2" href="contacto.php">Contacto</a>
+                      </li>                        
+                      <li class="nav-item cajon-inicio-de-sesion">
+                        <ul class="d-flex align-items-cente cajon-inicio-de-sesion_ul">
+                          <li class="nav-item d-flex align-items-center">
+                            <a href=<?php echo $botonRutaPerfil; ?>>
+                              <p class="d-flex mb-0">
+                                <span class="img-perfil"></span>
+                                <span class="d-flex flex-column">
+                                  <span><?php echo $nombreUsuario; ?></span>
+                                </span>
+                              </p>
+                            </a>
+                          </li>
+                          <li class="nav-item d-flex align-items-center">
+                              <a class="nav-link nav-text ms-3" href="carrito.php"><span class="carrito-de-compra-nav"></span></a>
+                              <span class="carrito-compra-circulo" id="numeroArticulos">0</span>
+                          </li>   
+                          <li class="nav-item me-1 d-flex align-items-center">
+                            <a href="<?php echo $botonRutaSesion; ?>" class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
+                          </li>
                         </ul>
-                    </div>
-                </div>          
-                </div>
-            </nav>
-        </header>
+                      </li>                                            
+                  </ul>                
+              </div>          
+            </div>
+        </nav>
+      </header>
         <main>
             <div class="container contenedor-formulario">
                 <form class="row" action="#" method="POST">

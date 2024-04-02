@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
 /* ESTILOS GENERALES */
 a {
     text-decoration: none;
@@ -17,20 +19,76 @@ body {
 
 /* HEADER */
 header {
-    height: 7vh;
+    background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+    width: 100%;
+    height: 10vh;
 }
 
 nav {
     background: linear-gradient(9deg, rgba(255,255,255,1) 5%, rgba(31,156,173,1) 100%, rgba(159,58,58,0.5565819861431871) 100%, rgba(71,70,70,1) 100%, rgba(52,51,51,1) 100%);
+    border-radius: 180px;
+    opacity: 94%;
+    height: 10vh;
 }
 
 .nav-item {
     list-style: none;
 }
 
-/* TAMAÑO DEL TEXTO DEL LOGO */
-.navbar-brand {
+/* LOGO */
+.container-logo {
+    font-family: 'Roboto';
+    color: #e5e5e5;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-logo p {
+    color: black;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 2rem;
+}
+
+.container-logo .first, .second, .third {
+    color: black;
+    font-size: 1.8rem;
+}
+
+.first {
+    padding-top: 4px;
+}
+
+.animation-logo {
+    height:50px;
+    overflow:hidden;
+    margin: auto 0;
+}
+
+.animation-logo > div > div {
+    height:2.81rem;
+    margin-bottom: 2.8rem;
+    display:inline-block;
+}
+
+.animation-logo div:first-child {
+    animation: text-animation 8s infinite;
+}
+
+@keyframes text-animation {
+    0% {margin-top: 0;}
+    10% {margin-top: 0;}
+    20% {margin-top: -5.62rem;}
+    30% {margin-top: -5.62rem;}
+    40% {margin-top: -11.24rem;}
+    60% {margin-top: -11.24rem;}
+    70% {margin-top: -5.62rem;}
+    80% {margin-top: -5.62rem;}
+    90% {margin-top: 0;}
+    100% {margin-top: 0;}
 }
 
 /* TAMAÑO DEL TEXTO DEL LOGO 'Store' */
@@ -49,6 +107,10 @@ nav {
     margin-left: 28px;
 }
 
+.cajon-inicio-de-sesion:hover {
+    transform: scale(1.1);
+}
+
 .cajon-inicio-de-sesion_ul {
     padding: 2px;
 }
@@ -62,7 +124,7 @@ nav {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    margin: auto 0;
+    margin: auto 4px auto 10px ;
 }
 
 /* ICONO CARRITO DE COMPRA */
@@ -83,13 +145,16 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    background: rgb(255, 254, 254);
+    background: white;
     position: relative;
-    top: -12px;
-    right: 28px;
+    top: -14px;
+    right: 26px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(37, 37, 37);
 }
 
 .btn-sesion {
@@ -97,6 +162,7 @@ nav {
     height: 36px;
     font-size: 1rem;
     font-weight: bold;
+    margin-right: 10px;
 }
 
 /* MAIN */
