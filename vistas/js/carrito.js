@@ -15,6 +15,10 @@ function deleteCarrito(id_producto) {
   objCarrito.getItemListPorductos();
 }
 
+function pagarPedido() {
+  objCarrito.pagarPedido()
+}
+
 
 let objCarrito = {
   addItenProducto(articulo) {
@@ -70,6 +74,12 @@ let objCarrito = {
       for (const articulo of dataStorage) {
         trItems.push(`
           <tr>
+            <input type="hidden" id="id_producto" value="${articulo.id_producto}">
+            <input type="hidden" id="nombre_producto" value="${articulo.nombre_producto}">
+            <input type="hidden" id="talla" value="${articulo.talla}">
+            <input type="hidden" id="color" value="${articulo.color}">
+            <input type="hidden" id="precio_producto" value="${articulo.precio_producto}">
+
             <td class="contenedor-imagen-y-descripcion-del-producto">
                 <figure class="itemside align-items-start">
                     <div class="aside"><img src="../admin/${articulo.ruta_img}" class="aside-img__imagen-del-producto"></div>
@@ -79,7 +89,7 @@ let objCarrito = {
                 </figure>
             </td>
             <td> 
-                <select class="form-control">
+                <select class="form-control" id="cantidad">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -99,7 +109,31 @@ let objCarrito = {
       tblListadoProductos.innerHTML = trItems;
     }
   },
+  pagarPedido() {
+    let nombreTarjeta = document.querySelector("#nombreTarjeta").value
+    let numeroTarjeta = document.querySelector("#numeroTarjeta").value
+    let detalleFactura = []
+    let tblListadoProductos = document.querySelectorAll("#tblListadoProductos tr")
 
+    for (let tr of tblListadoProductos) {
+      detalleFactura.push({
+        id_producto: tr.children.id_producto.value,
+        nombre_producto: tr.children.nombre_producto.value,
+        talla: tr.children.talla.value,
+        color: tr.children.color.value,
+        precio_producto: tr.children.precio_producto.value,
+        cantidad: tr.querySelector('#cantidad').value,
+      })
+    }
+
+    let objCarrito = {
+      nombreTarjeta,
+      numeroTarjeta,
+      detalleFactura
+    }
+
+    console.log(objCarrito);// esto es lo que debes mandar
+  },
   contPrecioProducto() {
     let dataStorage = this.getLocalStorage('listCarrito');
     let Total = document.querySelector('#totalPrecioProductos');  
