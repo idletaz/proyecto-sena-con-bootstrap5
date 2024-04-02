@@ -11,7 +11,11 @@ if (isset($_POST['contacto'])) {
         exit;
     }else{
         $sql="INSERT INTO `tpqrs` (`id_pqrs`, `email`, `nombre`, `asunto`, `detalle`) VALUES (NULL, '$email', '$nombre', '$asunto', '$mensaje');";
-        echo'<div class="alert alert-success" role="alert"> Se ha enviado el asunto correctamente! </div>';
+        if ($conexion->query($sql) === TRUE) {
+            echo '<div class="alert alert-success" role="alert"> Se ha enviado el asunto correctamente! </div>';
+        }else {
+            echo "Error al ejecutar la consulta: " . $conexion->error;
+        }
         
     }?>
     

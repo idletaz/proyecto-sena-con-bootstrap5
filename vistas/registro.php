@@ -46,13 +46,13 @@ if (!isset($_SESSION['user_id'])) {
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-camisas.html">Camisas</a>
+                                        <a class="dropdown-item" href="catalogo-camisas.php">Camisas</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-bolsos.html">Bolsos</a>
+                                        <a class="dropdown-item" href="catalogo-bolsos.php">Bolsos</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="vistas/catalogo-zapatos.html">Zapatos</a>
+                                        <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
                                 </a>
                                 </li>
                                 <li class="nav-item d-flex align-items-center">
-                                    <a class="nav-link nav-text ms-3" href="carrito.html"><span class="carrito-de-compra-nav"></span></a>
+                                    <a class="nav-link nav-text ms-3" href="carrito.php"><span class="carrito-de-compra-nav"></span></a>
                                     <span class="carrito-compra-circulo">0</span>
                                 </li>   
                                 <li class="nav-item me-1 d-flex align-items-center">
