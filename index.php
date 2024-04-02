@@ -214,7 +214,8 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="card-body">
                           <h5 class="card-title"><?php echo $row['nombre_producto'] ?></h5>
                           <ul>
-                            <li>Precio: $<span><?php echo number_format($row['precio_descuento'] ,2, '.' , ',') ?></span></li>
+                            <li>Precio anterior: $<del><span style="color:red"><?php echo number_format($row['precio_producto'] ,2, '.' , ',') ?></span></del></li>
+                            <li>Precio: $<span style="color:green"><?php echo number_format($row['precio_descuento'] ,2, '.' , ',') ?></span></li>
                             <li>Color: <span><?php echo $row['color'] ?></span></li>
                             <li>Talla: <span><?php echo $row['talla'] ?></span></li>
                           </ul>

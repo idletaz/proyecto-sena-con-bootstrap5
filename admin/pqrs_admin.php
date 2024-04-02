@@ -17,32 +17,34 @@
    <?php
   include_once "db_proyecto.php";
   $conn=mysqli_connect($host,$user,$password,$db);
-  require_once 'Paginar_user.php';
+  require_once 'paginar_pqrs.php';
 
   // Configuración
-  $ofertas_por_pagina = 5;
+  $pqrs_por_pagina = 10;
   $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
-  $offset = ($pagina - 1) * $ofertas_por_pagina;
+  $offset = ($pagina - 1) * $pqrs_por_pagina;
 
- 
+  $consulta_busqueda = isset($_GET['q']) ? $_GET['q'] : '';
+$campo = isset($_GET['campo']) ? $_GET['campo'] : 'asunto';
 
- 
-  $sql = "SELECT tofertas.*, tprodu.*
-  FROM tofertas
-  INNER JOIN tprodu ON tofertas.id_producto = tprodu.id_producto";
+$sql = "SELECT * from tpqrs";
 
+if ($consulta_busqueda != '') {
+    $consulta_busqueda = strtolower($consulta_busqueda);
+    $sql .= " WHERE LOWER(asunto) LIKE '%$consulta_busqueda%'";
+  }
 
   // Agregar LIMIT y OFFSET para la paginación
-  $sql .= " LIMIT $offset, $ofertas_por_pagina";
+  $sql .= " LIMIT $offset, $pqrs_por_pagina";
   $resultado = mysqli_query($conn, $sql);
 
 
     // Obtener el total de registros
-    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_oferta FROM tofertas"));
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_pqrs FROM tpqrs"));
     // Calcular el total de páginas
-    $total_paginas = ceil($total_registros / $ofertas_por_pagina);
+    $total_paginas = ceil($total_registros / $pqrs_por_pagina);
     // Generar enlaces de paginación
-    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $ofertas_por_pagina, $pagina);
+    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $pqrs_por_pagina, $pagina);
 
 
 
@@ -219,12 +221,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Ofertas</h1>
+            <h1 class="m-0">PQRS</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Ofertas</a></li>
-              <li class="breadcrumb-item active">Panel de Ofertas</li>
+              <li class="breadcrumb-item"><a href="#">PQRS</a></li>
+              <li class="breadcrumb-item active">Panel de PQRS</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -240,7 +242,7 @@
      <div class="container">
         <div class="text-center">
           <form class="form-inline mb-3">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar oferta" aria-label="Buscar" name="q">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar por asunto" aria-label="Buscar" name="q">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
       </form>
         </div>
@@ -256,24 +258,25 @@
 
     <!-- Tabla de productos -->
     <div class="container">
-    <h2 class="bg-ligth text-black p-2">Lista de Productos</h2>
+    <h2 class="bg-ligth text-black p-2">Lista de PQRS</h2>
     <table class="table table-ligth table-striped">
 <!-- Apertura de php -->
         <?php
         require "db_proyecto.php";
         $conn=mysqli_connect($host,$user,$password,$db);
-                  
+        $sql="SELECT * from tpqrs";
+        $result=mysqli_query($conn,$sql);              
 
         ?>
 
         <thead>
             <tr>
-                <th>ID_producto</th>
-                <th>Nombre producto</th>
-                <th>Precio</th>
-                <th>Inicio oferta</th>
-                <th>Fin de la oferta</th>
-                <th>Precio con descuento</th>
+                <th>ID pqrs</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Asunto</th>
+                <th>Detalle</th>
+                <th>Fecha de registro</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -282,40 +285,35 @@
           <?php
           while($datos=mysqli_fetch_assoc($resultado)){
            echo "<tr>";
-           echo "<td>"; echo $datos["id_producto"];"</td>";
-           echo "<td>"; echo $datos["nombre_producto"]; "</td>";          
-           echo "<td>"; echo $datos["precio_producto"];"</td>";
-           echo "<td>"; echo $datos["Inicio_oferta"];"</td>";
-           echo "<td>"; echo $datos["fin_oferta"];"</td>";
-           echo "<td>"; echo $datos["precio_descuento"];"</td>";
+           echo "<td>"; echo $datos["id_pqrs"];"</td>";
+           echo "<td>"; echo $datos["nombre"];"</td>";          
+           echo "<td>"; echo $datos["email"];"</td>";
+           echo "<td>"; echo $datos["asunto"];"</td>";
+           echo "<td>"; echo $datos["detalle"];"</td>";
+           echo "<td>"; echo $datos["fecha_registro"];"</td>";
            echo "<td>"; 
               //Botones de acciones
-           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_producto'] . '"><i class="fas fa-book"></i> Ver más</button>';
-           echo '<button class="btn btn-danger btn-circle" onclick="eliminaroferta(' . $datos['id_oferta'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
+           echo '<button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#modalProducto_' . $datos['id_pqrs'] . '"><i class="fas fa-book"></i> Ver más</button>';
+           echo '<button class="btn btn-danger btn-circle" onclick="eliminarpqrs(' . $datos['id_pqrs'] . ')"><i class="fas fa-trash"></i>Eliminar</button>';
            echo "<td>";
            echo "</tr>"; 
 
 
-            echo '<div class="modal fade" id="modalProducto_' . $datos['id_producto'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id_producto'] . '" aria-hidden="true">';
+            echo '<div class="modal fade" id="modalProducto_' . $datos['id_pqrs'] . '" tabindex="-1" role="dialog" aria-labelledby="modalProductoLabel_' . $datos['id_pqrs'] . '" aria-hidden="true">';
             echo '  <div class="modal-dialog modal-lg" role="document">';
             echo '      <div class="modal-content">';
             echo '          <div class="modal-header bg-primary text-white">';
-            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id_producto'] . '">Detalles del Producto</h5>';
+            echo '              <h5 class="modal-title" id="modalProductoLabel_' . $datos['id_pqrs'] . '">Detalles del Producto</h5>';
             echo '              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">';
             echo '                  <span aria-hidden="true">&times;</span>';
             echo '              </button>';
             echo '          </div>';
             echo '          <div class="modal-body">';
-            echo '              <h5 class="text-primary">' . $datos['id_producto'] . '</h5>';           
-            echo '<img src="' . $datos["ruta_img"] . '" alt="Imagen del producto" class="img-fluid" style="max-height: 200px;">';
-            echo '              <p><strong>Nombre producto:</strong> ' . $datos['nombre_producto'] . '</p>';
-            echo '              <p><strong>Precio: $ </strong> ' . $datos['precio_producto'] . '</p>';
-            echo '              <p><strong>Inicio de oferta:</strong> ' . $datos['Inicio_oferta'] . '</p>';
-            echo '              <p><strong>Fin de oferta:</strong> ' . $datos['fin_oferta'] . '</p>';
-            echo '              <p><strong>Precio con descuento:</strong> ' . $datos['precio_descuento'] . '</p>';
-            echo '              <p><strong>Cantidad: </strong> ' . $datos['cantidad'] . '</p>';
-            echo '              <p><strong> Descuento del :</strong> ' . $datos['descuento'] *100 . '%</p>';
-            echo '              <p><strong>En oferta: </strong> ' . ($datos['oferta'] ? 'Sí' : 'No') . '</p>';            
+            echo '              <h5 class="text-primary">' . $datos['asunto'] .'</h5>';           
+            echo '              <p><strong>Email:</strong> ' . $datos['email'] . '</p>';
+            echo '              <p><strong>Asunto: </strong> ' . $datos['nombre'] . '</p>';
+            echo '              <p><strong>Detalles:</strong> ' . $datos['detalle'] . '</p>';
+            echo '              <p><strong>Fecha de registro:</strong> ' . $datos['fecha_registro'] . '</p>';                       
             echo '          </div>';
             echo '          <div class="modal-footer">';
             echo '              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>';
@@ -371,11 +369,11 @@
 
 <!-- Script para Eliminar -->
 <script>
-    function eliminaroferta(id) {
+    function eliminarpqrs(id) {
         // Mostrar un mensaje de confirmación con SweetAlert2
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Esta acción eliminará la oferta de forma permanente.',
+            text: 'Esta acción eliminará la PQRS de forma permanente.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -386,11 +384,11 @@
             // Si el usuario confirma la eliminación
             if (result.isConfirmed) {
                 // Envía una solicitud POST al servidor para eliminar el producto
-                $.post("procesar_eliminaroferta.php", {id: id}, function(data, status) {
+                $.post("procesar_eliminarpqrs.php", {id: id}, function(data, status) {
                     // Maneja la respuesta del servidor
                     if (status === "success") {
                         // Muestra un mensaje de éxito con SweetAlert2
-                        Swal.fire('Eliminado', 'La oferta ha sido eliminado exitosamente.', 'success').then((result) => {
+                        Swal.fire('Eliminado', 'La PQRS ha sido eliminado exitosamente.', 'success').then((result) => {
                             // Recarga la página después de cerrar el mensaje
                             if (result.isConfirmed || result.isDismissed) {
                                 window.location.reload();
@@ -398,7 +396,7 @@
                         });
                     } else {
                         // Si hay un error al eliminar el producto, muestra un mensaje de error con SweetAlert2
-                        Swal.fire('Error', 'Ha ocurrido un error al eliminar la oferta.', 'error');
+                        Swal.fire('Error', 'Ha ocurrido un error al eliminar el usuario.', 'error');
                     }
                 });
             }

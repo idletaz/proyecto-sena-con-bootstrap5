@@ -10,8 +10,9 @@ if (isset($_POST['contacto'])) {
         echo '<div class="alert alert-danger" role="alert"> Porfavor Proporcionar un Email valido. </div>';
         exit;
     }else{
+        $sql="INSERT INTO `tpqrs` (`id_pqrs`, `email`, `nombre`, `asunto`, `detalle`) VALUES (NULL, '$email', '$nombre', '$asunto', '$mensaje');";
         echo'<div class="alert alert-success" role="alert"> Se ha enviado el asunto correctamente! </div>';
-        contactoexitoso($nombre,$email,$asunto,$mensaje);
+        
     }?>
     
     <script>history.replaceState(null,null,location.pathname)</script>
