@@ -28,7 +28,6 @@ if (!isset($_SESSION['user_id'])) {
         <link rel="stylesheet" href="css/registro.css">
     </head>
     <body>
-<<<<<<< HEAD
       <header>
         <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
           <div class="container-lg">
@@ -57,58 +56,6 @@ if (!isset($_SESSION['user_id'])) {
                               <li>
                                   <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
                               </li>
-=======
-        <header>
-            <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
-                <div class="container-lg">
-                <div>
-                    <a class="navbar-brand" href="../index.php">INSIDE |<span class="navbar-brand__span">Store</span></a>
-                </div>
-                <div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav d-flex align-items-center">                                                 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle nav-text" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Productos
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="catalogo-camisas.php">Camisas</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="catalogo-bolsos.php">Bolsos</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="catalogo-zapatos.php">Zapatos</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link nav-text ms-2" href="vistas/contacto.php">Contacto</a>
-                            </li>                        
-                            <li class="nav-item cajon-inicio-de-sesion">
-                            <ul class="d-flex align-items-cente cajon-inicio-de-sesion_ul">
-                                <li class="nav-item d-flex align-items-center">
-                                <a href=<?php echo $botonRutaPerfil; ?>>
-                                    <p class="d-flex mb-0">
-                                    <span class="img-perfil"></span>
-                                    <span class="d-flex flex-column ms-1 p-1">
-                                        <span><?php echo $nombreUsuario; ?></span>
-                                    </span>
-                                    </p>
-                                </a>
-                                </li>
-                                <li class="nav-item d-flex align-items-center">
-                                    <a class="nav-link nav-text ms-3" href="carrito.php"><span class="carrito-de-compra-nav"></span></a>
-                                    <span class="carrito-compra-circulo">0</span>
-                                </li>   
-                                <li class="nav-item me-1 d-flex align-items-center">
-                                <a href="<?php echo $botonRutaSesion; ?>" class="btn btn-light btn-sesion"><?php echo $botonSesion; ?></a>                     
-                                </li>
->>>>>>> 75d0053b46c88a2366f39dddfe242844457f3465
                             </ul>
                       </li>
                       <li class="nav-item">
