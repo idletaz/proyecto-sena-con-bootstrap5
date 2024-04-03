@@ -114,7 +114,9 @@ if (!isset($_SESSION['user_id'])) {
                 <li>Precio: $<span><?php echo number_format($row['precio_producto'], 2, ',', '.'); ?></span></li>
                  <li>Color: <span><?php echo $row['color']; ?></span></li>                 
                </ul>
-                   <a class="btn btn-primary btn-carrito" onclick="addCarrito('<?php json_encode($row)?>')"><p class="p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+               <a class='btn btn-primary btn-carrito' onclick='addCarrito(<?php echo htmlspecialchars(json_encode($row)); ?>)'>
+                          <p class='m-0 p-0'>Comprar <span class='carrito-de-compra'></span></p>
+                         </a>
                </div>
             </div>
             <!-- Fin de PHP -->

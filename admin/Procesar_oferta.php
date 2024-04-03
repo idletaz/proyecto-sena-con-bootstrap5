@@ -23,11 +23,9 @@ if ($resultado_verificar_oferta->num_rows > 0) {
     echo '</button>';
     echo '</div>';
 } else {
-    // Si no se encuentra una oferta activa, proceder con la inserción de la nueva oferta
-    $sql = "UPDATE tprodu set descuento='$descuento'";
-    if ($conn->query($sql) === TRUE) {
+    // Si no se encuentra una oferta activa, proceder con la inserción de la nueva oferta    
     // Actualizar estado de oferta en la tabla de productos
-    $update_sql = "UPDATE tprodu SET oferta = TRUE WHERE id_producto = '$id_producto'";
+    $update_sql = "UPDATE tprodu SET oferta = TRUE descuento='$descuento' WHERE id_producto = '$id_producto'";
     if ($conn->query($update_sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
         echo 'Se ha creado la oferta correctamente.';
@@ -41,9 +39,7 @@ if ($resultado_verificar_oferta->num_rows > 0) {
         } else {
             echo "Error al actualizar el estado de oferta en el producto: " . $conn->error;
         }
-        } else {
-            echo "Error al crear la oferta: " . $conn->error;
-        }
+        
         }
     
 

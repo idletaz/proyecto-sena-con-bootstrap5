@@ -2,7 +2,7 @@ document.body.onload = () => {
   objCarrito.getNumItemProductos();
   objCarrito.getItemListPorductos();
   objCarrito.contPrecioProducto();
-  objCarrito.contSubtotal();
+  
 }
 
 function addCarrito(data) {
@@ -79,6 +79,7 @@ let objCarrito = {
             <input type="hidden" id="talla" value="${articulo.talla}">
             <input type="hidden" id="color" value="${articulo.color}">
             <input type="hidden" id="precio_producto" value="${articulo.precio_producto}">
+            <input type="hidden" id="descuento" value="${articulo.descuento}">
 
             <td class="contenedor-imagen-y-descripcion-del-producto">
                 <figure class="itemside align-items-start">
@@ -124,6 +125,7 @@ let objCarrito = {
         talla: tr.children.talla.value,
         color: tr.children.color.value,
         precio_producto: tr.children.precio_producto.value,
+        descuento: tr.children.descuento.value,
         cantidad: tr.querySelector('#cantidad').value,
       })
     }
@@ -139,27 +141,27 @@ let objCarrito = {
   contPrecioProducto() {
     let dataStorage = this.getLocalStorage('listCarrito');
     let Total = document.querySelector('#totalPrecioProductos');  
-    let totalPrecio = 0;     
+    let subTotal = document.querySelector('#subTotalProductos');
+    let desc = document.querySelector('#descuento');
+    let descuentoPrecio = 0;
+    let totalPrecio = 0; 
+    let subPrecio=0;    
       for (const articulo in dataStorage) {
         if (dataStorage.hasOwnProperty(articulo)) {
           totalPrecio += parseFloat(dataStorage[articulo].precio_producto)*1.19;
+          subPrecio += parseFloat(dataStorage[articulo].precio_producto);
+
+           let precioArticulo = parseFloat(dataStorage[articulo].precio_producto);
+            let descuento = parseFloat(dataStorage[articulo].descuento);
+            let precioConDescuento = precioArticulo - (precioArticulo * (descuento / 100));
+            descuentoPrecio += precioConDescuento;
         }
       }      
+      subTotal.innerHTML =`$ ${subPrecio.toFixed(2)}`;
+      desc.innerHTML =`$ ${descuentoPrecio.toFixed(2)}`;
       Total.innerHTML =`$ ${totalPrecio.toFixed(2)}`;
 
   },
-  contSubtotal(){
-    let dataStorage = this.getLocalStorage('listCarrito');
-    let subTotal = document.querySelector('#subTotalProductos');  
-    let totalPrecio = 0;     
-      for (const articulo in dataStorage) {
-        if (dataStorage.hasOwnProperty(articulo)) {
-          totalPrecio += parseFloat(dataStorage[articulo].precio_producto);
-        }
-      }      
-      subTotal.innerHTML =`$ ${totalPrecio.toFixed(2)}`;
-
-  }
   
 
 }

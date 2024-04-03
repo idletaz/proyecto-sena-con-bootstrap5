@@ -201,7 +201,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="d-flex justify-content-center contenedor-tarjetas">
                       <!-- Apertura php -->
                       <?php 
-                       $query = "SELECT * FROM tprodu WHERE oferta=1 LIMIT 5";
+                       $query = "SELECT id_producto,nombre_producto, precio_producto, color, talla, descripcion, ruta_img,descuento FROM tprodu WHERE oferta=1 LIMIT 5";
                        $result=$conexion->query($query);
                        while($row = $result->fetch_assoc()){   
                         $preciocondescuento=$row["precio_producto"]-($row["precio_producto"]*$row["descuento"]);                                         
@@ -220,7 +220,10 @@ if (!isset($_SESSION['user_id'])) {
                             <li>Color: <span><?php echo $row['color'] ?></span></li>
                             <li>Talla: <span><?php echo $row['talla'] ?></span></li>
                           </ul>
-                          <a class="btn btn-primary btn-carrito" onclick="addCarrito('<?php json_encode($row)?>')"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                          <a class='btn btn-primary btn-carrito' onclick='addCarrito(<?php echo htmlspecialchars(json_encode($row)); ?>)'>
+                          <p class='m-0 p-0'>Comprar <span class='carrito-de-compra'></span></p>
+                         </a>
+
                         </div>
                       </div>
                       <?php }
