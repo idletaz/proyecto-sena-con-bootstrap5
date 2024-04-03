@@ -130,6 +130,7 @@ $conexion->close();
                         <?php
                         include "../modelo/conexion.php";
                         include "../controlador/controlador_mod_perfil.php";
+                        include "../controlador/cambio_de_contrasena.php"
                         
                         ?>            
                     <div class="row">
@@ -142,7 +143,7 @@ $conexion->close();
                                     <p class="text-muted mb-4"><?php echo $ciudad_usuario?>, Colombia</p>
                                     <div class="d-flex justify-content-center mb-2 gap-2">
                                         <button class="btn btn-primary btn-perfil" data-toggle="modal" data-target="#modalEditar">Editar información</button>
-                                        <button class="btn btn-primary btn-perfil" data-toggle="modal" data-target="#modalEditar">Cambiar contraseña</button>
+                                        <button type="button" class="btn btn-primary btn-perfil" data-bs-toggle="modal" data-bs-target="#cambioContraseña">Cambiar contraseña</button>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +174,7 @@ $conexion->close();
                                             <p class="mb-0">Email</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"><?php echo $email_usuario?></p>
+                                            <p class="text-muted mb-0" name="email"><?php echo $email_usuario?></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -326,7 +327,33 @@ $conexion->close();
                         </div>
                     </div>
                 </div>
+            </div>            
+            <div class="modal fade" id="cambioContraseña" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="cambioContraseña">Cambio de contraseña</h1>
+                        <?php include "../controlador/cambio_de_contraseña.php" ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST">
+                        <input type="hidden" class="form-control" id="email" name="email" value="<?php echo $email_usuario ?>" readonly>
+                            <div class="form-group">
+                                <label for="password">Nueva contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="password-repeat">Repetir contraseña:</label>
+                                <input type="password" class="form-control" id="password-repeat" name="password-repeat" required>
+                            </div>
+                            <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" name="guardar-nueva-contra" id="guardar-nueva-contra" class="btn btn-primary mt-3">Guardar</button>
+                        </form>                    
+                    </div>
+                </div>
             </div>
+
         </main>
         
         <footer>
