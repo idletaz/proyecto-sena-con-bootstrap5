@@ -181,8 +181,11 @@ nav {
 }
 
 .btn-perfil {
-    min-width: 120px;
-    max-width: 150px;
+    min-width: 100px;
+    max-width: 130px;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    margin: 0;
 }
 
 /* FOOTER */
