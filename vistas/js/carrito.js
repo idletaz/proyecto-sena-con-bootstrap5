@@ -72,6 +72,15 @@ let objCarrito = {
     let trItems = [];
     if (tblListadoProductos) {
       for (const articulo of dataStorage) {
+        let descuentoPorcentaje = articulo.descuento * 100;
+        let precioDescuento;
+        if (articulo.descuento > 0) {
+            precioDescuento = articulo.precio_producto - (articulo.precio_producto * articulo.descuento);
+        } else {
+            precioDescuento = articulo.precio_producto;
+        }
+        let descuentoMsg = (descuentoPorcentaje > 0) ? `${descuentoPorcentaje}%` : '<strong style=color:red>No hay descuento</strong>';
+
         trItems.push(`
           <tr>
             <input type="hidden" id="id_producto" value="${articulo.id_producto}">
@@ -85,20 +94,21 @@ let objCarrito = {
                 <figure class="itemside align-items-start">
                     <div class="aside"><img src="../admin/${articulo.ruta_img}" class="aside-img__imagen-del-producto"></div>
                     <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">${articulo.nombre_producto}</a>
-                        <p class="text-muted small">Talla: ${articulo.talla} <br> Color:  ${articulo.color}</p>
+                        <p class="text-muted small">Talla: ${articulo.talla} <br> Color:  ${articulo.color}
+                        <br> <strong style=color:green>Descuento:${descuentoMsg}</strong> </p>
                     </figcaption>
                 </figure>
             </td>
             <td> 
                 <select class="form-control" id="cantidad">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
                 </select> 
             </td>
             <td>
-                <div class="price-wrap"> <var class="price">$${articulo.precio_producto}</var> </div>
+                <div class="price-wrap"> <var class="price">$${precioDescuento}</var> </div>
             </td>
             <td class="text-right d-none d-md-block">
                 <a class="btn btn-light" data-abc="true" onclick="deleteCarrito(${articulo.id_producto}) " >Remove</a> 
@@ -142,24 +152,33 @@ let objCarrito = {
     let dataStorage = this.getLocalStorage('listCarrito');
     let Total = document.querySelector('#totalPrecioProductos');  
     let subTotal = document.querySelector('#subTotalProductos');
-    let desc = document.querySelector('#descuento');
+    let desc = document.querySelector('#descuentos');
     let descuentoPrecio = 0;
     let totalPrecio = 0; 
     let subPrecio=0;    
       for (const articulo in dataStorage) {
         if (dataStorage.hasOwnProperty(articulo)) {
-          totalPrecio += parseFloat(dataStorage[articulo].precio_producto)*1.19;
-          subPrecio += parseFloat(dataStorage[articulo].precio_producto);
+          let precioProducto = parseFloat(dataStorage[articulo].precio_producto);
+          let descuento = parseFloat(dataStorage[articulo].descuento);
 
-           let precioArticulo = parseFloat(dataStorage[articulo].precio_producto);
-            let descuento = parseFloat(dataStorage[articulo].descuento);
-            let precioConDescuento = precioArticulo - (precioArticulo * (descuento / 100));
-            descuentoPrecio += precioConDescuento;
-        }
-      }      
-      subTotal.innerHTML =`$ ${subPrecio.toFixed(2)}`;
-      desc.innerHTML =`$ ${descuentoPrecio.toFixed(2)}`;
-      Total.innerHTML =`$ ${totalPrecio.toFixed(2)}`;
+          if (descuento > 0) {
+              let montoDescuento = precioProducto * descuento; 
+              let precioConDescuento = precioProducto - montoDescuento; 
+              totalPrecio += precioConDescuento * 1.19; 
+              descuentoPrecio += montoDescuento;
+          } else {
+              totalPrecio += precioProducto * 1.19;
+          }
+
+          subPrecio += precioProducto;
+      }
+  }
+
+  subTotal.innerHTML = `$ ${subPrecio.toFixed(2)}`;
+  desc.innerHTML = `$- ${descuentoPrecio.toFixed(2)}`; // Muestra el total del descuento
+  Total.innerHTML = `$ ${totalPrecio.toFixed(2)}`;
+  //console.log(desc);
+  //console.log(Total);
 
   },
   
