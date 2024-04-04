@@ -102,6 +102,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <th scope="col">Productos</th>
                                             <th scope="col" width="200">Cantidad</th>
                                             <th scope="col" width="200">Precio</th>
+                                            <th scope="col">Descuento</th>
                                             <th scope="col" class="text-right d-none d-md-block" width="130">
                                         </tr>
                                     </thead>
@@ -128,7 +129,7 @@ if (!isset($_SESSION['user_id'])) {
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Descuento</dt>
-                                    <dd class="text-right text-danger text-izq" id="descuento">-$ 50.000</dd>
+                                    <dd class="text-right text-danger text-izq" id="descuentos">-$ 50.000</dd>
                                 </dl>
                                 <dl class="dlist-align">
                                     <dt>Total con IVA</dt>

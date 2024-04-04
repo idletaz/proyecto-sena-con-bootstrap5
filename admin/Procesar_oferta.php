@@ -11,7 +11,7 @@ if (isset($_POST["aggoferta"])) {
     $descuento = $_POST['descuento'] / 100;        
     $precio_descuento = $precio_producto - ($precio_producto * $descuento);
 
-    $sql_verificar_oferta = "SELECT id_producto,oferta FROM tprodu WHERE oferta = 1 and id_producto='$id_producto'";
+    $sql_verificar_oferta = "SELECT id_producto,oferta,descuento FROM tprodu WHERE oferta = 1 and id_producto='$id_producto'";
     $resultado_verificar_oferta = $conn->query($sql_verificar_oferta);
 
 if ($resultado_verificar_oferta->num_rows > 0) {
@@ -25,7 +25,7 @@ if ($resultado_verificar_oferta->num_rows > 0) {
 } else {
     // Si no se encuentra una oferta activa, proceder con la inserción de la nueva oferta    
     // Actualizar estado de oferta en la tabla de productos
-    $update_sql = "UPDATE tprodu SET oferta = TRUE descuento='$descuento' WHERE id_producto = '$id_producto'";
+    $update_sql = "UPDATE tprodu SET oferta = TRUE, descuento='$descuento' WHERE id_producto='$id_producto'";
     if ($conn->query($update_sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
         echo 'Se ha creado la oferta correctamente.';
