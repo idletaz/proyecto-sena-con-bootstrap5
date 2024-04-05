@@ -200,7 +200,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="panel.php" class="nav-link">
+                <a href="ventas_admin.php" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
                 </a>

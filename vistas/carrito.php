@@ -15,6 +15,18 @@ if (!isset($_SESSION['user_id'])) {
   $botonRutaPerfil = "perfil.php";
   $botonRutaSesion = "../controlador/controlador_cerrarsesion.php";
 }
+$user_id = $_SESSION['user_id'];
+$stmt = $conexion->prepare("SELECT id FROM tusuarios WHERE id= ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+  
+    $row = $result->fetch_assoc();
+    $id_usuario=$row['id'];
+}
+$stmt->close();
+$conexion->close();
 
 ?>
 
@@ -134,7 +146,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <dl class="dlist-align">
                                     <dt>Total con IVA</dt>
                                     <strong class="text-right text-green b text-izq">
-                                    <span id="totalPrecioProductos">0</span>
+                                    <span id="totalPrecioProductos" name="totalPrecioProductos">0</span>
                                     </strong>
 
                                 </dl>

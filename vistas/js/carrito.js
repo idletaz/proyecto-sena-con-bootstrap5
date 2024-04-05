@@ -123,30 +123,24 @@ let objCarrito = {
   pagarPedido() {
 // alert("se metio en funcion");
 
-    let nombreTarjeta = document.querySelector("#nombreTarjeta").value
-    let numeroTarjeta = document.querySelector("#numeroTarjeta").value
+    
     let detalleFactura = []
     let tblListadoProductos = document.querySelectorAll("#tblListadoProductos tr")
 
     for (let tr of tblListadoProductos) {
       detalleFactura.push({
-        id_producto: tr.children.id_producto.value,
-        nombre_producto: tr.children.nombre_producto.value,
-        talla: tr.children.talla.value,
-        color: tr.children.color.value,
+        id_producto: tr.children.id_producto.value,        
         precio_producto: tr.children.precio_producto.value,
         descuento: tr.children.descuento.value,
         cantidad: tr.querySelector('#cantidad').value,
       })
     }
 
-    let objCarrito = {
-      nombreTarjeta,
-      numeroTarjeta,
-      detalleFactura
-    }
+      let objCarrito = {
+        detalleFactura: detalleFactura
+    };       
 
-    console.log(objCarrito);// esto es lo que debes mandar
+    
   },
   contPrecioProducto() {
     let dataStorage = this.getLocalStorage('listCarrito');

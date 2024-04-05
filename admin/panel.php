@@ -158,7 +158,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="ventas_admin.php" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
                 </a>
@@ -200,14 +200,33 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+              <?php
+                include_once "db_proyecto.php";
+                $conn=mysqli_connect($host,$user,$password,$db);
+                $sql = "SELECT total_venta FROM tventas";
+                $result = $conn->query($sql);
 
-                <p>Pedidos</p>
+                if ($result->num_rows > 0) {                    
+                    $total_ventas = 0;                    
+                    while($row = $result->fetch_assoc()) {                        
+                        $total_ventas += $row["total_venta"];
+                    }
+                    $total_ventas_formateado = number_format($total_ventas, 2, ',', '.');
+                    
+                    echo "<h3>" . $total_ventas_formateado . "</h3>";
+                    echo "<p>Ventas totales</p>";
+                } else {
+                    echo "No se encontraron ventas registradas";
+                }
+
+                // Cerrar conexión
+                $conn->close();               
+                ?>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-ios-cart"></i>
               </div>
-              <a href="#" class="small-box-footer">Ver más  <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="ventas_admin.php" class="small-box-footer">Ver más  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
