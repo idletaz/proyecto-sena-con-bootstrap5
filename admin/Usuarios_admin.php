@@ -205,7 +205,7 @@ $resultado = mysqli_query($conn, $sql);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="panel.php" class="nav-link">
+                <a href="ventas_admin.php" class="nav-link">
                   <i class="fas fa-chart-bar nav-icon"></i>
                   <p>Ventas</p>
                 </a>
@@ -262,7 +262,7 @@ $resultado = mysqli_query($conn, $sql);
 
     <!-- Tabla de productos -->
     <div class="container">
-    <h2 class="bg-ligth text-black p-2">Lista de Productos</h2>
+    <h2 class="bg-ligth text-black p-2">Lista de Usuarios</h2>
     <table class="table table-ligth table-striped">
 <!-- Apertura de php -->
         <?php
