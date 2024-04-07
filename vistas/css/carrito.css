@@ -294,18 +294,19 @@ main {
     height: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .datos-tc img {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
+    margin-left: 8px;
 }
 
 .fecha-expedicion {
     display: flex;
     align-items: center;
-    width: 270px;
+    width: 230px;
 }
 
 .fecha-expedicion label {
@@ -315,14 +316,14 @@ main {
 }
 
 .fecha-expedicion input {
-    width: 163px;
+    width: 150px;
     height: 48px;
 }
 
 .cvv {
     display: flex;
     align-items: center;
-    width: 150px;
+    width: 170px;
 }
 
 .cvv label {
@@ -332,7 +333,7 @@ main {
 
 .cvv input {
     width: 60px;
-    height: 36px;
+    height: 48px;
     margin-left: 12px;
 }
 
