@@ -268,61 +268,7 @@ $conexion->close();
                                 <br>
                                 <!-- Agrega los demás campos aquí -->
                                 <button name="mod_perfil" id="mod_perfil" type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                <!-- Modal de Edición -->
-                                <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalEditarLabel">Editar Usuario</h5>                        
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="" method="POST">
-                                                    <div class="form-group">
-                                                        <label for="nombre">Nombre:</label>
-                                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre_usuario ?>">
-                                                        <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="apellido">Apellido:</label>
-                                                        <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $apellido_usuario ?> ">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="email">Email:</label>
-                                                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $email_usuario ?>" readonly>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="telefono">Teléfono:</label>
-                                                        <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $telefono_usuario ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="barrio">Barrio:</label>
-                                                        <input type="text" class="form-control" id="barrio" name="barrio" value="<?php echo $barrio_usuario ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="direccion">direccion:</label>
-                                                        <input type="text" class="form-control" id="direccion" name="direccion" value="<?php echo $direccion_usuario ?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="genero">Género:</label>
-                                                        <select class="form-control" id="genero" name="genero">                                                           
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="ciudad">Ciudad:</label>
-                                                        <select class="form-control" id="ciudad" name="ciudad">                                                       
-                                                        </select>
-                                                    </div>
-                                                    <br>
-                                                    <!-- Agrega los demás campos aquí -->
-                                                    <button name="mod_perfil" id="mod_perfil" type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- Modal de Edición -->                                
                             </form>
                         </div>
                     </div>
