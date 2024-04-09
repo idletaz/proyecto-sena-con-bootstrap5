@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Sesion iniciada -->
   <?php
   session_start();
   if (  isset ($_SESSION['user_id'])  == false){
@@ -11,11 +12,52 @@
   }
   
   ?>
+  <!-- Llamar para la paginacion -->
+  <?php
+  include_once "db_proyecto.php";
+  $conn=mysqli_connect($host,$user,$password,$db);
+  require_once 'paginar_ventas.php';
+
+  // Configuración
+  $ventas_por_pagina = 5;
+  $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+  $offset = ($pagina - 1) * $ventas_por_pagina;
+
+  $consulta_busqueda = isset($_GET['q']) ? $_GET['q'] : '';
+  $campo = isset($_GET['campo']) ? $_GET['campo'] : 'email';
+
+ 
+  $sql = "SELECT tv.* , tu.* FROM tventas tv INNER JOIN tusuarios tu ON tv.id_cliente = tu.id";
+  if ($consulta_busqueda != '') {
+    $consulta_busqueda = strtolower($consulta_busqueda);
+    $sql .= " WHERE LOWER(email) LIKE '%$consulta_busqueda%'";
+  }
+
+  // Agregar LIMIT y OFFSET para la paginación
+  $sql .= " LIMIT $offset, $ventas_por_pagina";
+  $resultado = mysqli_query($conn, $sql);
+
+
+    // Obtener el total de registros
+    $total_registros = mysqli_num_rows(mysqli_query($conn, "SELECT id_venta FROM tventas"));
+    // Calcular el total de páginas
+    $total_paginas = ceil($total_registros / $ventas_por_pagina);
+    // Generar enlaces de paginación
+    $enlaces_paginacion = generar_enlaces_paginacion($total_registros, $ventas_por_pagina, $pagina);
+
+
+
+  
+  ?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Administrador InsideStore</title>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <!-- Incluye SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -41,9 +83,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="Logo.png" alt="Logo" height="100" width=100">
-  </div>
+  </div> -->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -69,22 +111,7 @@
         <i class="fas fa-power-off"></i> Cerrar Sesión
       </a>
     </button>
-
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+        
       </li>
 
       <!-- Messages Dropdown Menu -->
@@ -96,7 +123,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="panel.php" class="brand-link">
+    <a href="index.php" class="brand-link">
       <img src="Logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">InsideStore</span>
     </a>
@@ -152,7 +179,7 @@
                 </a>
               </li>
               <li class="nav-item">
-              <a href="ofertas_admin.php" class="nav-link">
+                <a href="ofertas_admin.php" class="nav-link">
                   <i class="fas fa-tag nav-icon"></i>
                   <p>Ofertas activas</p>
                 </a>
@@ -178,118 +205,50 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Ventas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="panel.php">Home</a></li>
-              <li class="breadcrumb-item active">Panel de administrador</li>
+              <li class="breadcrumb-item"><a href="#">Ventas</a></li>
+              <li class="breadcrumb-item active">Panel de Ventas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
-    <!-- /.content-header -->
+    <div class="container">
+        <div class="text-right">
+            <!-- Botón a la Derecha -->
+            <!-- <a href="agrega_producto.php" class="btn btn-primary btn-circle">Agregar Producto</a>             -->
+
+        </div>
+    </div>
+    
+    
+
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-              <?php
-                include_once "db_proyecto.php";
-                $conn=mysqli_connect($host,$user,$password,$db);
-                $sql = "SELECT total_venta FROM tventas";
-                $result = $conn->query($sql);
+    
 
-                if ($result->num_rows > 0) {                    
-                    $total_ventas = 0;                    
-                    while($row = $result->fetch_assoc()) {                        
-                        $total_ventas += $row["total_venta"];
-                    }
-                    $total_ventas_formateado = number_format($total_ventas, 2, ',', '.');
-                    
-                    echo "<h3>" . $total_ventas_formateado . "</h3>";
-                    echo "<p>Ventas totales</p>";
-                } else {
-                    echo "No se encontraron ventas registradas";
-                }
+    <br>
 
-                // Cerrar conexión
-                $conn->close();               
-                ?>
-              </div>
-              <div class="icon">
-                <i class="ion ion-ios-cart"></i>
-              </div>
-              <a href="ventas_admin.php" class="small-box-footer">Ver más  <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <!-- Mostrar Usuarios registrados en la pagina -->
-                <?php
-                include_once "db_proyecto.php";
-                $conn=mysqli_connect($host,$user,$password,$db);
-                $sql = "SELECT COUNT(*) as total_usuarios FROM tusuarios";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {                    
-                    $row = $result->fetch_assoc();
-                    echo "<h3>" . $row["total_usuarios"] . "</h3>";
-                    echo "<p>Usuarios registrados</p>";
-                } else {
-                    echo "No se encontraron usuarios registrados";
-                }
-
-                // Cerrar conexión
-                $conn->close();               
-                ?>
-                
-                <!-- <h3>44</h3>
-
-                <p>Usuarios registrados</p> -->
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="Usuarios_admin.php" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- Apertura de php -->
+    <!-- Tabla de productos -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+<!-- Apertura de php -->
         <?php
         require "db_proyecto.php";
         $conn=mysqli_connect($host,$user,$password,$db);
-        $sql = "SELECT 
-            CASE WEEKDAY(fecha_venta)
-                WHEN 0 THEN 'Lunes'
-                WHEN 1 THEN 'Martes'
-                WHEN 2 THEN 'Miércoles'
-                WHEN 3 THEN 'Jueves'
-                WHEN 4 THEN 'Viernes'
-                WHEN 5 THEN 'Sábado'
-                WHEN 6 THEN 'Domingo'
-            END AS dia_semana, 
-            SUM(total_venta) AS total 
-        FROM tventas 
-        GROUP BY dia_semana";
+        $sql = "SELECT DATE(fecha_venta) AS fecha, SUM(total_venta) AS total FROM tventas GROUP BY fecha";
         $resultado = mysqli_query($conn, $sql);
 
         // Preparar los datos para el gráfico
         $datosVentas = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
-            $dia_semana = $fila['dia_semana'];
+            $fecha = $fila['fecha'];
             $total = (float)$fila['total']; // Convertir a número flotante
-            $datosVentas[$dia_semana] = $total;
+            $datosVentas[$fecha] = $total;
         }
 
         // Cerrar conexión a la base de datos
@@ -297,16 +256,11 @@
                 
 
         ?>
-          <div class="col-lg-8 col-6">
-          <div class="container mt-4">
-          <h2 class="text-center">Ventas por Dia</h2>
-          <div id="graficoVentas"></div>
-          </div>
-
-          </div>
-
-          <!-- Script de ventas diarias -->
-          <script>
+    <div class="container mt-4">
+    <h2 class="text-center">Ventas por Dia</h2>
+    <div id="graficoVentas"></div>
+    </div>
+    <script>
         // Obtener los datos de PHP y convertirlos a JavaScript
         var datosVentas = <?php echo json_encode($datosVentas); ?>;
 
@@ -316,12 +270,12 @@
 
         function drawChart() {
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Dia de la semana');
+            data.addColumn('string', 'Dia');
             data.addColumn('number', 'Ventas');
 
             // Convertir datos de JavaScript a formato de Google Charts
-            var filas = Object.keys(datosVentas).map(function(dia) {
-                return [dia, datosVentas[dia]];
+            var filas = Object.keys(datosVentas).map(function(fecha) {
+                return [fecha, datosVentas[fecha]];
             });
 
             data.addRows(filas);
@@ -336,13 +290,29 @@
         }
 
     </script>
-          <!-- ./col -->
-          
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
+
+
+
+
+    
        
-      </div><!-- /.container-fluid -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Script para Eliminar -->
+
+
+     
     </section>
     <!-- /.content -->
   </div>
@@ -362,6 +332,9 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<!-- Incluye SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
