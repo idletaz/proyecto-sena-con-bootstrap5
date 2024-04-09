@@ -121,7 +121,8 @@ let objCarrito = {
     }
   },
   pagarPedido() {
-// alert("se metio en funcion");
+
+    //alert("se metio en funcion");
 
     
     let detalleFactura = []
@@ -130,15 +131,53 @@ let objCarrito = {
     for (let tr of tblListadoProductos) {
       detalleFactura.push({
         id_producto: tr.children.id_producto.value,        
-        precio_producto: tr.children.precio_producto.value,
+        precio_producto: tr.children.precio_producto.value,        
         descuento: tr.children.descuento.value,
         cantidad: tr.querySelector('#cantidad').value,
       })
     }
 
       let objCarrito = {
-        detalleFactura: detalleFactura
-    };       
+        detalleFactura
+    };
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "../controlador/procesar_venta.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var id_venta = xhr.responseText;
+          
+          Swal.fire({
+              title: '¡Gracias por su compra!',
+              text: 'Su compra ha sido realizada con éxito. ID de venta: ' + id_venta,
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+          }).then((result) => {            
+            if (result.isConfirmed) {
+                localStorage.clear();
+                window.location.href = "../index.php";
+            }
+        });
+        } else {
+          Swal.fire({
+            title:'Debe iniciar Sesion,',
+            text:' Para realizar compras primero debe loguearse',
+            icon: 'warning',
+            confirmButtonText: 'Aceptar'
+          }).then((result) =>{
+            if (result.isConfirmed){
+              window.location.href = "login.php";
+            }
+          });
+            
+            
+        }
+    }
+    };
+    xhr.send(JSON.stringify(objCarrito));       
+
+    
 
     
   },

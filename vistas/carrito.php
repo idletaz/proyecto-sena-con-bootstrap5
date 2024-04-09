@@ -14,19 +14,21 @@ if (!isset($_SESSION['user_id'])) {
   $nombreUsuario = $_SESSION['nombre'];
   $botonRutaPerfil = "perfil.php";
   $botonRutaSesion = "../controlador/controlador_cerrarsesion.php";
+  $user_id = $_SESSION['user_id'];
+    $stmt = $conexion->prepare("SELECT id FROM tusuarios WHERE id= ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+    
+        $row = $result->fetch_assoc();
+        $id_usuario=$row['id'];
+        $_SESSION['id_usuario'] = $id_usuario;
+    }
+    $stmt->close();
+    $conexion->close();
 }
-$user_id = $_SESSION['user_id'];
-$stmt = $conexion->prepare("SELECT id FROM tusuarios WHERE id= ?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->num_rows > 0) {
-  
-    $row = $result->fetch_assoc();
-    $id_usuario=$row['id'];
-}
-$stmt->close();
-$conexion->close();
+
 
 ?>
 
@@ -38,6 +40,7 @@ $conexion->close();
         <title>Inside - Bolsos</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="css/carrito.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
     </head>
     <body>
         <header>
@@ -110,6 +113,9 @@ $conexion->close();
                             <div class="table-responsive">
                                 <table class="table table-borderless table-shopping-cart">
                                     <thead class="text-muted">
+                                        <?php 
+                                        include "../modelo/conexion.php";
+                                        //include "../controlador/procesar_venta.php";?>
                                         <tr class="small text-uppercase">
                                             <th scope="col">Productos</th>
                                             <th scope="col" width="200">Cantidad</th>
@@ -152,21 +158,23 @@ $conexion->close();
                                 </dl>
                                 <hr> 
                                 <a href="../index.php" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a>
-                                <button type="button" class="btn btn-out btn-success btn-square btn-main mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar la compra</button>
+                                <button type="button" id="botonPagarPedido" class="btn btn-out btn-success btn-square btn-main mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">Finalizar la compra</button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Tarjeta de credito o debito</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel2">Tarjeta de credito o debito</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            <form method="POST" id="formularioPago" action="../controlador/procesar_venta.php">
                                             <img src="./img/iconos/contactless.png" alt="" class="img-body">
                                             <div class="contenedor-metodos-de-pago">
                                                 <div class="mb-3">
+                                                    <input type="hidden" id="id" name="id" value="<?php echo $id_usuario; ?>">
                                                     <label for="formGroupExampleInput" class="form-label">Nombre del titular</label>
-                                                    <input type="text" class="form-control"id="formGroupExampleInput" placeholder="escriba su nombre">
+                                                    <input type="text" class="form-control"id="formGroupExampleInput2" placeholder="escriba su nombre">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="formGroupExampleInput2"class="form-label">Numero de tarjeta</label>
@@ -187,9 +195,11 @@ $conexion->close();
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Realizar pago</button>
+                                            <!-- <button type="button" class="btn btn-primary"  onclick="pagarPedido()">Realizar pago</button> -->
+                                            <a class="btn btn-primary" onclick="pagarPedido()" >Realizar Pago</a>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -231,16 +241,20 @@ $conexion->close();
             </div>            
         </footer>
         <!-- Script -->
-        <!-- Script formulario de compra -->
-                                <script>                           
-                            const finalizarCompraBtn = document.getElementById('finalizarCompraBtn');                          
-                            const formularioPago = document.getElementById('formularioPago');                          
-                            finalizarCompraBtn.addEventListener('click', function(event) {                                
-                                event.preventDefault();                                
-                                formularioPago.style.display = 'block';
-                            });
-                                </script>
+        <script>
+            function abrirModal() {
+                // Adjuntar el evento click al botón dentro del modal
+                document.getElementById("botonPagarPedido").addEventListener("click", pagarPedido);
+            }
+
+            // Esta función se llama cuando se cierra el modal
+            function cerrarModal() {
+                // Remover el evento click del botón dentro del modal
+                document.getElementById("botonPagarPedido").removeEventListener("click", pagarPedido);
+            }
+        </script>
         
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>      
         <script src="js/carrito.js"></script>
 
