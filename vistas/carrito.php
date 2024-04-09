@@ -150,23 +150,46 @@ $conexion->close();
                                     </strong>
 
                                 </dl>
-                                <hr> <a href="../index.php" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a>
-                                 <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" id="finalizarCompraBtn" data-abc="true">Finzalizar la compra</a>
-                                 <!-- Formulario de pago -->
-                                 <div id="formularioPago" style="display: none;">
-                                 <form id="formularioPago">
-                                    <input type="hidden" name="id" id="id" value="<?php echo $id_usuario?>"  >
-                                    <label for="nombreTarjeta">Nombre en la tarjeta:</label>
-                                    <input type="text" id="nombreTarjeta" name="nombreTarjeta" required><br><br>
-                                    <label for="numeroTarjeta">Número de tarjeta:</label>
-                                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" required><br><br>
-                                    
-                                    <a class="btn btn-success" onclick="pagarPedido()">Pagar</a>
-                                </form>
-                                
-
-                                
-                                
+                                <hr> 
+                                <a href="../index.php" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Seguir comprando </a>
+                                <button type="button" class="btn btn-out btn-success btn-square btn-main mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar la compra</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tarjeta de credito o debito</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="./img/iconos/contactless.png" alt="" class="img-body">
+                                            <div class="contenedor-metodos-de-pago">
+                                                <div class="mb-3">
+                                                    <label for="formGroupExampleInput" class="form-label">Nombre del titular</label>
+                                                    <input type="text" class="form-control"id="formGroupExampleInput" placeholder="escriba su nombre">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="formGroupExampleInput2"class="form-label">Numero de tarjeta</label>
+                                                    <input type="text" class="form-control"id="formGroupExampleInput2" placeholder="0000 0000 0000 0000">
+                                                </div>
+                                                <div class="datos-tc">
+                                                    <div class="fecha-expedicion">
+                                                        <label for="formGroupExampleInput2"class="form-label">Fecha de expedicion</label>
+                                                        <input type="date" class="form-control"id="formGroupExampleInput2" placeholder="Another inputplaceholder">
+                                                        </div>
+                                                    <div class="cvv">
+                                                        <label for="formGroupExampleInput2"class="form-label">CCV</label>
+                                                        <input type="password" class="form-control"id="formGroupExampleInput2" placeholder="***">
+                                                        <img src="./img/iconos/credit-card.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Realizar pago</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
