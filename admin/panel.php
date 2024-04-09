@@ -284,15 +284,15 @@
         GROUP BY dia_semana";
         $resultado = mysqli_query($conn, $sql);
 
-        // Preparar los datos para el gráfico
+        
         $datosVentas = array();
         while ($fila = mysqli_fetch_assoc($resultado)) {
             $dia_semana = $fila['dia_semana'];
-            $total = (float)$fila['total']; // Convertir a número flotante
+            $total = (float)$fila['total'];
             $datosVentas[$dia_semana] = $total;
         }
 
-        // Cerrar conexión a la base de datos
+        
         mysqli_close($conn);
                 
 
@@ -300,17 +300,17 @@
           <div class="col-lg-8 col-6">
           <div class="container mt-4">
           <h2 class="text-center">Ventas por Dia</h2>
-          <div id="graficoVentas"></div>
+          <div id="graficoVentas" style="height: 400px"></div>
           </div>
 
           </div>
 
           <!-- Script de ventas diarias -->
           <script>
-        // Obtener los datos de PHP y convertirlos a JavaScript
+        
         var datosVentas = <?php echo json_encode($datosVentas); ?>;
 
-        // Configurar los datos para el gráfico
+        
         google.charts.load('current', { packages: ['corechart', 'bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
@@ -319,7 +319,7 @@
             data.addColumn('string', 'Dia de la semana');
             data.addColumn('number', 'Ventas');
 
-            // Convertir datos de JavaScript a formato de Google Charts
+            
             var filas = Object.keys(datosVentas).map(function(dia) {
                 return [dia, datosVentas[dia]];
             });
@@ -327,9 +327,24 @@
             data.addRows(filas);
 
             var options = {
-                title: 'Ventas por Dia',
-                legend: { position: 'none' },
-            };
+            title: 'Ventas por Día de la Semana',
+            legend: { position: 'none' },
+            backgroundColor: '#f9f9f9',
+            chartArea: { width: '70%', height: '70%' },
+            hAxis: {
+                title: 'Día de la Semana',
+                titleTextStyle: { fontSize: 16, bold: true },
+                textStyle: { fontSize: 12 }
+            },
+            vAxis: {
+                title: 'Ventas',
+                titleTextStyle: { fontSize: 16, bold: true },
+                minValue: 0,
+                format: 'decimal',
+                textStyle: { fontSize: 12 }
+            },
+            colors: ['#3366cc']
+        };
 
             var chart = new google.visualization.BarChart(document.getElementById('graficoVentas'));
             chart.draw(data, options);
