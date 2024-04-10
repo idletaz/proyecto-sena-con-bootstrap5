@@ -413,7 +413,8 @@ if (!isset($_SESSION['user_id'])) {
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-          </article><article class="main-secciones-articulos container-expand-lg">
+          </article>
+          <article class="main-secciones-articulos container-expand-lg">
             <h2 class="display-5 mb-4 text-center texto-categoria">Mas vendidos</h2>
             <div id="carouselMasVendidos" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -670,6 +671,34 @@ if (!isset($_SESSION['user_id'])) {
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+          </article>
+          <article class="container-expand-lg mt-5 mx-5">
+            <h2 class="mb-3">Noticias</h2>
+            <div class="grid-container">
+              <div>
+                <video src="vistas/movies/movie-banner-1.mp4" autoplay loop muted></video>
+                <a href="vistas/catalogo-camisas.php"><button>¡Ver catalogo!</button></a>                
+              </div>
+              <div>
+                <p>Puede ser otro videos o un gif animado</p>
+              </div>
+              <div>
+                <img src="vistas/img/ropas/banners/anchos/banner-grand-opening.jpg" alt="">
+              </div>
+              <div>
+                <p>Un mensaje para las mujeres</p>
+              </div>
+              <div>
+                <img src="vistas/img/ropas/banners/anchos/banner-mujer.jpg" alt="">
+              </div>
+              <div>
+                <p>aqui hay que estilar los metodos de pago</p>
+              </div>
+              <div>
+                <p>aqui va una imagen de promociones</p>
+              </div>
+            </div>
+
           </article>
         </section>      
       </main>       
