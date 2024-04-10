@@ -217,6 +217,56 @@ $conexion->close();
                             </div>                            
                         </div>
                     </div>
+                    <div class="row mx-1">
+                        <div class="contenedor-pedidos col-sm-12 p-5 mt-3" style="background-color: white;">
+                            <h3>Historial de pedidos</h3>
+                            <div class="contenedor-titulos mt-4">
+                                <p>Fecha del pedido</p>
+                                <p>ID del pedido</p>
+                                <p>Total del pedido</p>
+                                <p>Ver mas</p>
+                            </div>                            
+                            <div class="contenedor-de-pedidos">
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                                <div class="card-pedido">
+                                    <p>2024-01-01</p>
+                                    <p>0001</p>
+                                    <p>$ 120.000</p>
+                                    <img src="img/iconos/invoice.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
             </section>            
             <!-- Modal de Edición -->
             <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">

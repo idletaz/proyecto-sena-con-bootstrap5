@@ -188,6 +188,48 @@ nav {
     margin: 0;
 }
 
+.contenedor-pedidos {
+    border: 1px solid #d2d2d2;
+    border-radius: 8px;
+}
+
+.contenedor-titulos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.contenedor-titulos p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contenedor-de-pedidos {
+    display: grid;
+    grid-auto-rows: 1fr;
+}
+
+.card-pedido {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(230, 219, 219);
+    margin-bottom: 12px;
+    border-radius: 12px;
+    height: 50px;
+}
+
+.card-pedido p {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.card-pedido img {
+    width: 40px;
+}
+
 /* FOOTER */
 
 footer {
