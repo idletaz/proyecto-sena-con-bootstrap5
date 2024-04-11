@@ -672,15 +672,15 @@ if (!isset($_SESSION['user_id'])) {
               </button>
             </div>
           </article>
-          <article class="container-expand-lg mt-5 mx-5">
-            <h2 class="mb-3">Noticias</h2>
+          <article class="container-expand-lg mt-5">
+            <h2 class="display-5 mb-3 ms-4 text-center texto-categoria">Noticias</h2>
             <div class="grid-container">
               <div>
                 <video src="vistas/movies/movie-banner-1.mp4" autoplay loop muted></video>
                 <a href="vistas/catalogo-camisas.php"><button>¡Ver catalogo!</button></a>                
               </div>
               <div>
-                <p>Puede ser otro videos o un gif animado</p>
+                <video src="vistas/movies/movie-banner-2.mp4" autoplay loop muted></video>
               </div>
               <div>
                 <img src="vistas/img/ropas/banners/anchos/banner-grand-opening.jpg" alt="">
@@ -692,13 +692,25 @@ if (!isset($_SESSION['user_id'])) {
                 <img src="vistas/img/ropas/banners/anchos/banner-mujer.jpg" alt="">
               </div>
               <div>
-                <p>aqui hay que estilar los metodos de pago</p>
+                <h5>Medios de pago aceptados</h5>
+                <div class="container-payments mt-3">
+                  <div>
+                    <img src="vistas/img/iconos/payment.png" alt="">
+                    <p>Pago contra entrega</p>
+                  </div>
+                  <div>
+                    <img src="vistas/img/iconos/credit-card (1).png" alt="">
+                    <p>Pago con tarjeta</p>
+                  </div>
+                </div>                
               </div>
               <div>
-                <p>aqui va una imagen de promociones</p>
+                <p>agregar algo</p>
+              </div>
+              <div>
+                <p>Hola</p>
               </div>
             </div>
-
           </article>
         </section>      
       </main>       

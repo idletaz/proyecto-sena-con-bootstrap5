@@ -374,14 +374,10 @@ nav {
         "articulo-uno articulo-uno articulo-ocho articulo-cuatro"
         "articulo-uno articulo-uno articulo-ocho articulo-cuatro"
         "articulo-seis articulo-dos articulo-tres articulo-tres"
-        "articulo-siete articulo-dos articulo-tres articulo-tres"
+        "articulo-siete articulo-nueve articulo-tres articulo-tres"
     ;
     gap: 12px;
     margin: 0 auto;
-}
-
-.grid-container > div {
-    background-color: red;
 }
 
 .grid-container > div:nth-child(1) {
@@ -411,6 +407,12 @@ nav {
     grid-area: articulo-dos;
 }
 
+.grid-container > div:nth-child(2) video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .grid-container > div:nth-child(3) {
     grid-area: articulo-tres;
 }
@@ -436,10 +438,34 @@ nav {
 
 .grid-container > div:nth-child(6) {
     grid-area: articulo-siete;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.grid-container > div:nth-child(6) .container-payments {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+}
+
+.grid-container > div:nth-child(6) .container-payments > div img {
+    width: 60px;
+}
+
+.grid-container > div:nth-child(6) .container-payments > div p {
+    margin: 0;
+    padding: 0;
 }
 
 .grid-container > div:nth-child(7) {
     grid-area: articulo-ocho;
+}
+
+.grid-container > div:nth-child(8) {
+    grid-area: articulo-nueve;
 }
 
 
