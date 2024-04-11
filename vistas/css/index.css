@@ -367,9 +367,9 @@ nav {
 .grid-container {
     display: grid;
     width: 96vw;
-    height: 84vh;
+    height: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px 250px 250px;
     grid-template-areas: 
         "articulo-uno articulo-uno articulo-cuatro articulo-cuatro"
         "articulo-uno articulo-uno articulo-cuatro articulo-cuatro"
@@ -392,8 +392,8 @@ nav {
 }
 
 .grid-container > div:nth-child(1) button {
-    width: 200px;
-    height: 60px;
+    width: 150px;
+    height: 50px;
     position: absolute;
     bottom: 8px;
     left: 8px;
@@ -416,8 +416,8 @@ nav {
 }
 
 .grid-container > div:nth-child(2) button {
-    width: 200px;
-    height: 60px;
+    width: 150px;
+    height: 50px;
     position: absolute;
     bottom: 8px;
     left: 8px;
@@ -440,11 +440,14 @@ nav {
 .grid-container > div:nth-child(4) {
     grid-area: articulo-cuatro;
     display: flex;
-    padding: 24px;
+    padding: 44px;
 }
 
 .grid-container > div:nth-child(4) img {
-    height: 100%;
+    width: 180px;
+    height: 180px;
+    align-self: center;
+    justify-self: center;
 }
 
 .grid-container > div:nth-child(4) div {
@@ -482,7 +485,7 @@ nav {
 }
 
 .grid-container > div:nth-child(6) .container-payments > div img {
-    width: 60px;
+    width: 80px;
 }
 
 .grid-container > div:nth-child(6) .container-payments > div p {
@@ -496,7 +499,7 @@ nav {
 
 .grid-container > div:nth-child(7) img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
 }
 
