@@ -681,12 +681,16 @@ if (!isset($_SESSION['user_id'])) {
               </div>
               <div>
                 <video src="vistas/movies/movie-banner-2.mp4" autoplay loop muted></video>
+                <a href="vistas/catalogo-bolsos.php"><button>¡Ver catalogo!</button></a>
               </div>
               <div>
                 <img src="vistas/img/ropas/banners/anchos/banner-grand-opening.jpg" alt="">
               </div>
               <div>
-                <p>Un mensaje para las mujeres</p>
+                <img src="vistas/img/iconos/qr-turno002.jpg" alt="">
+                <div>
+                  <p>Escanea el QR y obten atencion personalizada para tus compras.</p>
+                </div>
               </div>
               <div>
                 <img src="vistas/img/ropas/banners/anchos/banner-mujer.jpg" alt="">
@@ -705,10 +709,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>                
               </div>
               <div>
-                <p>agregar algo</p>
-              </div>
-              <div>
-                <p>Hola</p>
+                <img src="vistas/img/ropas/banners/cuadrados-alargados/gran-oferta.jpg" alt="">
               </div>
             </div>
           </article>
