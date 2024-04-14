@@ -133,7 +133,7 @@
             <div class="parpadeo-cuatro">
                 <div class="card card-cuatro">
                     <div class="frontal">
-                    <img src="img/imgs-equipo-de-desarrollo/IMG_5725.jpg" alt="">
+                    <img src="img/imgs-equipo-de-desarrollo/luis.jpg" alt="">
                         <h3>Tester</h3>
                         <h3 class="title-backend">Diseño UX/UI</h3>
                         <div class="imagenes">
@@ -150,9 +150,9 @@
                     </div>
                     <div class="reverso">
                         <p class="title-reverso carrera">Tecnologo en Analisis y Desarrollo de Software</p>
-                        <p class="title-reverso">Nombre: <span>Gilberto Diaz Marquez</span></p>
-                        <p class="title-reverso enfoque">Desarrollador: <span class="rol">Back end</span><span class="rol">Base de datos</span></p>
-                        <p class="title-reverso">Edad: <span>23 años</span></p>                                        
+                        <p class="title-reverso">Nombre: <span>Luis Manuel</span></p>
+                        <p class="title-reverso enfoque">Desarrollador: <span class="rol">Front end</span><span class="rol">Base de datos</span></p>
+                        <p class="title-reverso">Edad: <span>20 años</span></p>                                        
                         <p class="title-reverso">Tecnologias:</p>
                         <p class="Tecnologias">
                             <span>Java</span> 
@@ -165,7 +165,7 @@
                             <span>GitHub</span>
                             <span>PHP</span>
                         <p>
-                        <p class="title-reverso correo">Correo: <span>gjdiaz.2020@gmail.com</span></p>
+                        <p class="title-reverso correo">Correo: <span>luis.man@gmail.com</span></p>
                     </div>
                 </div>
             </div>            

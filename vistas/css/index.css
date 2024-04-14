@@ -369,7 +369,7 @@ nav {
     width: 96vw;
     height: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px 200px 250px 250px;
+    grid-template-rows: 180px 180px 200px 220px;
     grid-template-areas: 
         "articulo-uno articulo-uno articulo-cuatro articulo-cuatro"
         "articulo-uno articulo-uno articulo-cuatro articulo-cuatro"
