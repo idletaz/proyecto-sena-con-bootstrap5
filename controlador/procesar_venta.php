@@ -30,7 +30,7 @@ foreach ($data['detalleFactura'] as $detalle) {
     $cantidad_producto = $detalle['cantidad'];
 
     $subtotal_producto = $precio_unitario * $cantidad_producto;    
-    $total_venta += $subtotal_producto;
+    $total_venta += $subtotal_producto*1.19;
 
     
     $stmt = $conexion->prepare("INSERT INTO tdetalle_venta (id_venta, id_producto, precio_unitario, cantidad_producto) VALUES (?, ?, ?, ?)");

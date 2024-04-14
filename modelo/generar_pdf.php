@@ -41,49 +41,48 @@ function obtenerDetalleFacturaVenta($id_venta) {
 
 function generarDetalleFacturaPDF($detalle_factura) {
     // Crear una instancia de TCPDF
-    $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 
     // Establecer el título del documento
     $pdf->SetTitle('Detalle de la factura');
+    $pdf->SetMargins(10, 10, 10);
+    $pdf->AddPage('P', array(210, 297));
 
-    // Agregar una página
-    $pdf->AddPage();
-
-    
-    $logo = '../vistas/img/img_users/FacturaPDF.png';
-    $pdf->Image($logo);
-    $x = 461;
-    $y = 567;
-    $pdf->SetXY($x, $y);
-    $pdf->writeHTML('<p>' . $detalle_factura[0]['fecha_venta'] . '</p>');
-    
-    $pdf->SetFont('helvetica', '', 10);
+    $pdf->SetFont('helvetica', 'B', 14);
+    $pdf->SetXY(20, 20);
+    $pdf->writeHTML('<p>Detalle Factura InsideStore</p>');
 
     
-    
+    //$logo = '../vistas/img/img_users/FacturaPDF.png';
+    //$pdf->Image($logo);
+    $pdf->SetXY(250, 90);
+    $pdf->writeHTML('<p>ID Venta: ' . $detalle_factura[0]['id_venta'] . '</p>');
+
+    $pdf->SetXY(200, 70);
+    $pdf->writeHTML('<p>Fecha de Venta: ' . $detalle_factura[0]['fecha_venta'] . '</p>');
+
+    $pdf->SetXY(20, 100);
+    $pdf->writeHTML('<p>Cliente: ' . $detalle_factura[0]['nombre_cliente'] . '</p>');
+
+    $pdf->SetXY(20, 110);
+    $pdf->writeHTML('<p>Teléfono: ' . $detalle_factura[0]['telefono_cliente'] . '</p>');
+    $pdf->writeHTML('<br>');
 
     
-    // $pdf->SetY(70); 
-    // $pdf->writeHTML('<p>Cliente: ' . $detalle_factura[0]['nombre_cliente'] . '</p>');
-    // $pdf->SetY($pdf->GetY() + 5);
-    // $pdf->writeHTML('<p>Dirección: ' . $detalle_factura[0]['direccion_cliente'] . '</p>');
-    // $pdf->writeHTML('<p>Barrio: ' . $detalle_factura[0]['barrio_cliente'] . '</p>');
-    // $pdf->writeHTML('<p>Teléfono: ' . $detalle_factura[0]['telefono_cliente'] . '</p>');
-    // $pdf->writeHTML('<br>');
-
-    
+    $pdf->SetFont('helvetica', '', 10); 
     
 
     
-    $html = '<table border="1">';
-    $html .= '<tr>';
-    $html .= '<th>Producto</th>';
+    $html = '<table border="1" cellpadding="4">';
+    $html .= '<tr style="background-color: #CCCCCC;">';
+    $html .= '<th>Productos</th>';
     $html .= '<th>Precio Unitario</th>';
     $html .= '<th>Cantidad</th>';
     $html .= '<th>Total por Producto</th>';
     $html .= '</tr>';
     
     $total_venta=0;
+    $subtotal=0;
     foreach ($detalle_factura as $item) {
         $html .= '<tr>';
         $html .= '<td>' . $item['nombre_producto'] . '</td>';
@@ -91,7 +90,8 @@ function generarDetalleFacturaPDF($detalle_factura) {
         $html .= '<td>' . $item['cantidad_producto'] . '</td>';
         $html .= '<td>$' . $item['total_x_producto'] . '</td>';
         $html .= '</tr>';
-        $total_venta+=$item['total_x_producto'];
+        $subtotal+=$item['total_x_producto'];
+        $total_venta+=$item['total_x_producto']*1.19;
     }
 
     $html .= '</table>';
@@ -99,11 +99,11 @@ function generarDetalleFacturaPDF($detalle_factura) {
     // Agregar el contenido HTML al PDF
     $pdf->writeHTML($html, true, false, true, false, '');
 
-    // Agregar total de la venta
+    
+    $pdf->writeHTML('<p style="font-size: 14px; font-weight: bold;">subTotal de la Venta: $' . number_format($subtotal, 2) . '</p>');
     $pdf->writeHTML('<br>');
-    $pdf->writeHTML('<p>Total de la venta: $' . $total_venta . '</p>');
-
-    // Generar el PDF en memoria
+    $pdf->writeHTML('<p style="font-size: 14px; font-weight: bold;">Total de la Venta con iva: $' . number_format($total_venta, 2) . '</p>');
+    
     $pdfContent = $pdf->Output('', 'S');
 
     // Configurar las cabeceras para que el navegador entienda que es un archivo PDF que se está descargando
