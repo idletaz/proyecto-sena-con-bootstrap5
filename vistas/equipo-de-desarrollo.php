@@ -54,7 +54,7 @@
             <div class="parpadeo-dos">
                 <div class="card card-dos">
                     <div class="frontal">
-                        <img src="img/imgs-equipo-de-desarrollo/IMG_5725.jpg" alt="">
+                        <img src="img/imgs-equipo-de-desarrollo/Gilberto.jpg" alt="">
                         <h3>Back end</h3>
                         <h3 class="title-backend">Base de datos</h3>
                         <div class="imagenes">
