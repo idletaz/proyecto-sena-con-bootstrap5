@@ -265,6 +265,34 @@
               <a href="Usuarios_admin.php" class="small-box-footer">Ver más <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+              <?php
+                include_once "db_proyecto.php";
+                $conn=mysqli_connect($host,$user,$password,$db);
+                $sql = "SELECT COUNT(*) as total_productos FROM tprodu";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {                    
+                    $row = $result->fetch_assoc();
+                    echo "<h3>" . $row["total_productos"] . "</h3>";
+                    echo "<p>Cantidad de Productos</p>";
+                } else {
+                    echo "No se encontraron productos registrados";
+                }
+
+                // Cerrar conexión
+                $conn->close();               
+                ?>
+              </div>
+              <div class="icon">
+                <i class="ion ion-ios-pricetag"></i>
+              </div>
+              <a href="CrudProductos.php" class="small-box-footer">Ver más  <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
           <!-- Apertura de php -->
         <?php
         require "db_proyecto.php";
