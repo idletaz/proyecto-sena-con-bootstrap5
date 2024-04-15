@@ -425,12 +425,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/883044495_2.webp" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Camisa manga larga de algodon basement</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
+                            <li>Precio: $<span>99.000</span></li>
+                            <li>Colores: <span>Blanca</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
@@ -440,12 +440,27 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/zapatos/royal-county-of-berkshire-polo-club-2307-1870532-1-catalog-new.webp" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Tenis Royal County</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
+                            <li>Precio: $<span>90.000</span></li>
+                            <li>Colores: <span>Blancos con negro</span></li>
+                            <li>Tallas: <span>32, 34 y 38</span></li>
+                          </ul>
+                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="icon-card-best-seller-container">
+                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
+                        </div>                          
+                        <img src="vistas/img/ropas/camisas/mp-7260-3957242-1-catalog-new.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Blusa mujer estampado rayas</h5>
+                          <ul>
+                            <li>Precio: $<span>37.800</span></li>
+                            <li>Colores: <span>Blanca rayas azules</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
@@ -455,28 +470,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/bolsos/81+5lu7KG3L._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Bolso Wide Puser Strap</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
-                          </ul>
-                          <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="icon-card-best-seller-container">
-                          <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
-                        </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
-                          <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>120.000</span></li>
+                            <li>Colores: <span>Papayawhite</span></li>
+                            <li>Tallas: <span>N/A</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -506,13 +506,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/bolsos/81QLXos6FfS._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Bolso Italian Core</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>250.000</span></li>
+                            <li>Colores: <span>Negro</span></li>
+                            <li>Tallas: <span>N/A</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -521,13 +521,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/D_NQ_NP_757216-CBT71992570467_092023-O.webp" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Blusa Teen Caribe</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>42.000</span></li>
+                            <li>Colores: <span>Verde</span></li>
+                            <li>Tallas: <span>L, M</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -536,13 +536,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/D_NQ_NP_812050-CBT75416128585_032024-O.webp" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Camisa Flores de Otoño</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>67.000</span></li>
+                            <li>Colores: <span>Multicolor</span></li>
+                            <li>Tallas: <span>L, M, X</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -551,13 +551,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/zapatos/51x9XOsQoWL._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Tacone Madrid Elegance</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>250.000</span></li>
+                            <li>Colores: <span>Blanco</span></li>
+                            <li>Tallas: <span>32, 34 y 38</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -566,13 +566,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/bolsos/81zBeDVUilL._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Bolso Raelra Beer</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>150.000</span></li>
+                            <li>Colores: <span>Rosado con rojo</span></li>
+                            <li>Tallas: <span>N/A</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -587,12 +587,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/camisas/D_NQ_NP_836300-MCO31046763863_062019-O.webp" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Camisa Jean Alast</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
+                            <li>Precio: $<span>59.000</span></li>
+                            <li>Colores: <span>Azul</span></li>
                             <li>Tallas: <span>L, M, XL</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
@@ -602,13 +602,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/zapatos/613hdqI4VzL._AC_SX575_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Tacones Pasión Suiza</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>180.000</span></li>
+                            <li>Colores: <span>Rojo</span></li>
+                            <li>Tallas: <span>34, 36 y 38</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -617,13 +617,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/bolsos/91ArNQ2pEiL._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Bolso Prestige Veer</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>200.000</span></li>
+                            <li>Colores: <span>Morado con negro</span></li>
+                            <li>Tallas: <span>N/A</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -632,13 +632,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/bolsos/816bTnX4ThS._AC_UL320_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Bolso Marfex Tin</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>130.000</span></li>
+                            <li>Colores: <span>Negro</span></li>
+                            <li>Tallas: <span>N/A</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
@@ -647,13 +647,13 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="icon-card-best-seller-container">
                           <img src="./vistas/img/iconos/best-sellers.png" alt="">                                            
                         </div>                          
-                        <img src="vistas/img/ropas/camisas/1330256-500-auto.webp" class="card-img-top" alt="...">
+                        <img src="vistas/img/ropas/zapatos/61rrfOUmSYL._AC_SY575_.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Camisa formal para mujer</h5>
+                          <h5 class="card-title">Tacones Pullys Vost</h5>
                           <ul>
-                            <li>Precio: $<span>100.000</span></li>
-                            <li>Colores: <span>Rosado</span></li>
-                            <li>Tallas: <span>L, M, XL</span></li>
+                            <li>Precio: $<span>170.000</span></li>
+                            <li>Colores: <span>Negro</span></li>
+                            <li>Tallas: <span>34, 36 y 38</span></li>
                           </ul>
                           <a href="#" class="btn btn-primary btn-carrito"><p class="m-0 p-0">Comprar <span class="carrito-de-compra"></span></p></a>
                         </div>
