@@ -123,7 +123,7 @@ if (!isset($_SESSION['user_id'])) {
                       <?php
                       $query = "SELECT id_producto, nombre_producto, precio_producto,
                         color, talla, descripcion, ruta_img
-                        FROM tprodu WHERE oferta=0 ORDER BY Ingreso_producto DESC LIMIT 5";
+                        FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){
                         echo "
@@ -152,9 +152,11 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="carousel-item">
                   <div class="carousel-contenedor-tarjetas d-flex flex-column justify-content-center">
-                    <div class="d-flex justify-content-center contenedor-tarjetas">
+                  <div class="d-flex justify-content-center contenedor-tarjetas">
                       <?php
-                      $query = "SELECT id_producto,nombre_producto, precio_producto, color, talla, descripcion, ruta_img FROM tprodu WHERE oferta=0 ORDER BY Ingreso_producto DESC LIMIT 5, 5";
+                      $query = "SELECT id_producto, nombre_producto, precio_producto,
+                        color, talla, descripcion, ruta_img
+                        FROM tprodu ORDER BY Ingreso_producto DESC LIMIT 5, 5";
                       $result=$conexion->query($query);
                       while($row = $result->fetch_assoc()){
                         echo "
